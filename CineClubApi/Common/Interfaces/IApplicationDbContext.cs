@@ -9,6 +9,8 @@ public interface IApplicationDbContext
     // public DbSet<Entity> Entities { get; }
     public DbSet<User> Users { get; }
 
+    public DbSet<List> Lists { get; }
+
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
 }

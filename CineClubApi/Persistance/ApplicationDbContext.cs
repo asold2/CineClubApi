@@ -30,4 +30,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     // public DbSet<Entity> Entities { get; }
     public DbSet<User> Users => Set<User>();
+    public DbSet<List> Lists => Set<List>();
 }

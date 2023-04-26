@@ -38,8 +38,6 @@ public class UserServiceImpl : IUserService
         
         var newAccount = new User()
         {
-            Id = Guid.NewGuid(),
-            CreateddAt = DateTime.UtcNow,
             Username = accountDto.Username,
             FirstName = userDto.FirstName,
             LastName = userDto.LastName,
