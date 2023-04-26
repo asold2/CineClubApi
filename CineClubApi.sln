@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineClubApi", "CineClubApi\CineClubApi.csproj", "{06ED7653-CA4A-4C07-A763-9CE8322BF59A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06ED7653-CA4A-4C07-A763-9CE8322BF59A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06ED7653-CA4A-4C07-A763-9CE8322BF59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06ED7653-CA4A-4C07-A763-9CE8322BF59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06ED7653-CA4A-4C07-A763-9CE8322BF59A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
