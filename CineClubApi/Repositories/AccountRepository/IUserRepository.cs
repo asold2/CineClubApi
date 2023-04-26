@@ -13,4 +13,6 @@ public interface IUserRepository
 
     public Task LogoutUser(TokenBody tokenBody);
 
+    public Task<User> GetUserByRefreshToken(string tokenBody);
+
 }
