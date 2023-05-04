@@ -40,8 +40,6 @@ C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\Microso
 C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\appsettings.json
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.exe
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.deps.json
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.runtimeconfig.json
