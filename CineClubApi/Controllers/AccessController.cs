@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CineClubApi.Controllers;
 
-public class AccessController:CineClubControllerBase
+public class AccessController : CineClubControllerBase
 {
 
     private readonly IUserService _userService;
@@ -17,13 +17,13 @@ public class AccessController:CineClubControllerBase
         _userService = userService;
     }
 
-    [HttpPost("/token")]
+    [HttpPost("token")]
     public async Task<ActionResult<ServiceResult>> AuthenticateUser([FromBody] AccountDto accountDto)
     {
         return await _userService.AuthenticateUser(accountDto);
     }
 
-    [HttpPost("/logout")]
+    [HttpPost("logout")]
     public async Task<ActionResult> LogoutUser([FromBody] TokenBody tokenBody)
     {
         

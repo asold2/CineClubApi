@@ -17,7 +17,7 @@ public class ListController : CineClubControllerBase
         _listService = listService;
     }
 
-    [HttpPost("/list")]
+    [HttpPost("list")]
     public async Task<ActionResult<ServiceResult>> CreateNamedList([FromBody] ListDto listDto)
     {
         var result = await _listService.CreateNamedList(listDto);
@@ -25,7 +25,7 @@ public class ListController : CineClubControllerBase
         return Ok(result);
     }
 
-    [HttpPut("/list")]
+    [HttpPut("list")]
     public async Task<ActionResult<ServiceResult>> UpdateNamedList([FromBody] UpdateListDto updateListDto)
     {
         var result = await _listService.UpdateListNameOrStatus(updateListDto);
@@ -38,14 +38,14 @@ public class ListController : CineClubControllerBase
         };
     }
 
-    [HttpGet("/lists")]
+    [HttpGet("lists")]
     public async Task<ActionResult<IList<UpdateListDto>>> GetListsByUserdId([FromQuery] string tokenBody)
     {
         return Ok(await _listService.GetListsByUserId(tokenBody));
     }
 
 
-    [HttpDelete("/list")]
+    [HttpDelete("list")]
     public async Task<ActionResult> DeleteListById([FromQuery] Guid listId)
     {
         var result = await _listService.DeleteListById(listId);
