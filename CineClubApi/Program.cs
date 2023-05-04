@@ -5,6 +5,7 @@ using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Services;
 using CineClubApi.Services.AccountService;
 using CineClubApi.Services.ListService;
+using CineClubApi.Services.TMDBLibService;
 using CineClubApi.Services.TokenService;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IUserRepository, UserRepositoryImpl>();
 builder.Services.AddScoped<IPasswordService, PasswordServiceImpl>();
 builder.Services.AddScoped<IListRepository, ListRepositoryImpl>();
 builder.Services.AddScoped<IListService, ListServiceImpl>();
+builder.Services.AddScoped<ITMDBLibService, TMDBLibServiceImpl>();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

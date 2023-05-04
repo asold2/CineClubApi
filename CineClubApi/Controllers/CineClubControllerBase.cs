@@ -5,7 +5,7 @@ namespace CineClubApi.Controllers;
 
 
 [ApiController]
-[Route("cine_club/[controller]")]
+[Route("cine_club/")]
 public class CineClubControllerBase : Controller
 {
     

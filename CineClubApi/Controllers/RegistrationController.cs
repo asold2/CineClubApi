@@ -17,7 +17,7 @@ public class RegistrationController : CineClubControllerBase
         _userService = userService;
     }
     
-    [HttpPost]
+    [HttpPost("registration")]
     [AllowAnonymous]
     public async Task<ActionResult<ServiceResult>> RegisterNewUserAsync([FromBody] CreateAccountRequestBody createAccountRequestBody)
     {
