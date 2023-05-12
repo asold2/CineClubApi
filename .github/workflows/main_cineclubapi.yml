@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'cineclubapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A79EF4ADE221487A920A2F345BB5451F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ABAF36DED310443EBCAEE131EA3F57A4 }}
           package: .
