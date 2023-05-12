@@ -6,25 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/CineClubApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/CineClubApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,6 +141,7 @@
       <workItem from="1683876388356" duration="2616000" />
       <workItem from="1683880108986" duration="5533000" />
       <workItem from="1683889470605" duration="1550000" />
+      <workItem from="1683893847560" duration="1246000" />
     </task>
     <servers />
   </component>
@@ -197,19 +180,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Persistance\ApplicationDbContext.cs" initialLine="23" containingFunctionPresentation="method 'OnConfiguring'">
-            <startOffsets>
-              <option value="630" />
-            </startOffsets>
-            <endOffsets>
-              <option value="783" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
