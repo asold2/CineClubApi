@@ -5,7 +5,11 @@
     <projectFile profileName="IIS Express">CineClubApi/CineClubApi.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="" />
+    <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,12 +31,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="docker" />
-                    <option name="lastUsedInstant" value="1683874202" />
+                    <option name="branchName" value="Movies" />
+                    <option name="lastUsedInstant" value="1683896092" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="Movies" />
-                    <option name="lastUsedInstant" value="1683205113" />
+                    <option name="branchName" value="docker" />
+                    <option name="lastUsedInstant" value="1683874202" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
