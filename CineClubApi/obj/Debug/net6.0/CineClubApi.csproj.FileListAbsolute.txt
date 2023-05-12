@@ -84,3 +84,10 @@ C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\refint\CineClub
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.pdb
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.genruntimeconfig.cache
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\ref\CineClubApi.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Azure.Data.AppConfiguration.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Azure.Messaging.EventGrid.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.AzureAppConfiguration.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\System.Memory.Data.dll

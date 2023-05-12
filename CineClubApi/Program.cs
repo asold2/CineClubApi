@@ -34,7 +34,12 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Configuration
-    .AddEnvironmentVariables();
+    /*.AddEnvironmentVariables()*/
+    .AddAzureAppConfiguration(options =>
+    {
+        options.Connect("Endpoint=https://cineclubsecrets.azconfig.io;Id=9QRz;Secret=KN56N10rn1WR2lbDN0nkVoOj28cpjYkYZZPwHA5s/wQ=")
+            .UseFeatureFlags();
+    });
 
 
 var app = builder.Build();
