@@ -33,14 +33,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
+builder.Configuration
+    .AddEnvironmentVariables();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
 app.UseHttpsRedirection();
 
@@ -57,3 +61,8 @@ using (var scope = app.Services.CreateScope())
 
 
 app.Run();
+
+/*static void Main()
+{
+    Console.WriteLine("App started");
+}*/

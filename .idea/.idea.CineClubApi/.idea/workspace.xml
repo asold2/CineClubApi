@@ -6,13 +6,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/ListWithMoviesDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
   </component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
@@ -23,12 +34,25 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+<<<<<<< HEAD
                     <option name="branchName" value="List_feature" />
                     <option name="lastUsedInstant" value="1683923495" />
+=======
+                    <option name="branchName" value="Movies" />
+                    <option name="lastUsedInstant" value="1683896092" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="docker" />
+                    <option name="lastUsedInstant" value="1683874202" />
+>>>>>>> 476cfd51b02ed506156dab57a5040ba0be03d419
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1682498143" />
+                    <option name="lastUsedInstant" value="1683205026" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="List_feature" />
+                    <option name="lastUsedInstant" value="1682498688" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="Auth_features" />
@@ -45,8 +69,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27b91272f348469b8fccc471c1ccd767f57a64f55a44975790bfae805b4ebb/Future.cs" root0="SKIP_HIGHLIGHTING" />
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bcbd913e36297541c9fbdef5ca9a326deaafe51992a6419cfa97bc55bad24e/Check.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/CineClubApi/Common/DTOs/Movies/DetailedMovieDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bcbd913e36297541c9fbdef5ca9a326deaafe51992a6419cfa97bc55bad24e/Check.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/appsettings.json" root0="SKIP_HIGHLIGHTING" />
+>>>>>>> 476cfd51b02ed506156dab57a5040ba0be03d419
     <setting file="file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3839fc8fee5ae62538a4469ed86bbba1ccd15d4e0da63bba779abe1719da3/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CineClubApi/Controllers/MoviesController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -67,6 +98,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.5007587" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -117,6 +149,14 @@
       <workItem from="1682518736661" duration="344000" />
       <workItem from="1682860365358" duration="1051000" />
       <workItem from="1683191450900" duration="6328000" />
+      <workItem from="1683657640517" duration="2323000" />
+      <workItem from="1683743372527" duration="4255000" />
+      <workItem from="1683874120725" duration="2231000" />
+      <workItem from="1683876388356" duration="2616000" />
+      <workItem from="1683880108986" duration="5533000" />
+      <workItem from="1683889470605" duration="1550000" />
+      <workItem from="1683893847560" duration="1545000" />
+      <workItem from="1683911669823" duration="5130000" />
     </task>
     <servers />
   </component>
@@ -155,19 +195,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs</url>
-          <line>22</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TMDBLibService\TMDBLibServiceImpl.cs" initialLine="22" containingFunctionPresentation="method 'getAllMovies'">
-            <startOffsets>
-              <option value="555" />
-            </startOffsets>
-            <endOffsets>
-              <option value="580" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

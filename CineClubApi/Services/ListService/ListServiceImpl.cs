@@ -87,4 +87,9 @@ public class ListServiceImpl : IListService
             return new EntityNotFoundResult();
         }
     }
+
+    public async  Task<List<List>> GetAllLists()
+    {
+        return await _listRepository.GetAllLists();
+    }
 }

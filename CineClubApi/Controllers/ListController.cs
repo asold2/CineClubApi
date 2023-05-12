@@ -58,4 +58,13 @@ public class ListController : CineClubControllerBase
         };
 
     }
+
+
+
+    [HttpGet("all_lists")]
+    public async Task<List<List>> getAllListsAsync()
+    {
+        return await  _listService.GetAllLists();
+    }
+    
 }

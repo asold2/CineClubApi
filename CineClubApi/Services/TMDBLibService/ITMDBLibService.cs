@@ -1,7 +1,11 @@
-﻿namespace CineClubApi.Services.TMDBLibService;
+﻿using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Models;
+
+namespace CineClubApi.Services.TMDBLibService;
 
 public interface ITMDBLibService
 {
-    Task getAllMovies();
-
+    Task<List<MovieForListDto>> GetMoviesByKeyword(string keyword);
+    Task<DetailedMovieDto> getMovieById(int id);
+    Task<byte[]> GetMovieImage(string url);
 }

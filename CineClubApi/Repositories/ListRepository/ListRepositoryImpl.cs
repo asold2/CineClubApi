@@ -27,10 +27,18 @@ public class ListRepositoryImpl : IListRepository
 
     
     
-    public Task<IList<Entity>> GetAllEntities(Entity entity)
+    public async Task<List<Entity>> GetAllEntities()
     {
-        throw new NotImplementedException();
+        return null;
     }
+    
+    public async Task<List<List>> GetAllLists()
+    {
+        return await _applicationDbContext.Lists.ToListAsync();
+    }
+
+    
+    
 
     public async Task<Entity> GetEntityById(Guid id)
     {
