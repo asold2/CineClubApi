@@ -7,12 +7,23 @@
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Readme" beforeDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
 >>>>>>> main
+=======
+
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme" beforeDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" afterDir="false" />
+
+>>>>>>> 7838802fde2887773b2b289b9bdc1e75f5bb4b9c
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
