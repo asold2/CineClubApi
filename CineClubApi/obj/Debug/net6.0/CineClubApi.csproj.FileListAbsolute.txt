@@ -84,3 +84,4 @@ C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\TMDbLib.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\appsettings.json

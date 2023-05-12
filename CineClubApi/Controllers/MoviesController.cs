@@ -1,4 +1,5 @@
-﻿using CineClubApi.Models;
+﻿using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Models;
 using CineClubApi.Services.TMDBLibService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,16 +14,24 @@ public class MoviesController : CineClubControllerBase
     {
         _tmdbLibService = tmdbLibService;
     }
-    
-    [HttpGet("movie")]
-    public async Task GetMovieAsync()
+
+
+    [HttpGet("movies/{keyword}")]
+    public async Task<List<MovieForListDto>> GetMovieByKeywordAsync([FromRoute] string keyword )
     {
-        await _tmdbLibService.getAllMovies();
+        return await _tmdbLibService.GetMoviesByKeyword(keyword);
     }
 
-    [HttpGet("movie")]
-    public async Task<MovieDao> GetMovieByKeyword([FromRoute] string keyword)
+    [HttpGet("movie/{id}")]
+    public async Task<DetailedMovieDto> GetMovieByIdAsync([FromRoute]int id)
     {
-        return await _tmdbLibService.GetMovieByKeyword(keyword);
+        return await _tmdbLibService.getMovieById(id);
+    }
+    
+    
+    [HttpGet("movie/image/{url}")]
+    public async Task<byte[]>GetMovieByIdAsync([FromRoute]string url)
+    {
+        return await _tmdbLibService.GetMovieImage(url);
     }
 }
