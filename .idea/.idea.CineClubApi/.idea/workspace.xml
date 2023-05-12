@@ -5,10 +5,7 @@
     <projectFile profileName="IIS Express">CineClubApi/CineClubApi.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +139,7 @@
       <workItem from="1683880108986" duration="5533000" />
       <workItem from="1683889470605" duration="1550000" />
       <workItem from="1683893847560" duration="1545000" />
-      <workItem from="1683911669823" duration="5130000" />
+      <workItem from="1683911669823" duration="5635000" />
     </task>
     <servers />
   </component>
