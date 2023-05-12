@@ -40,13 +40,13 @@ C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\Microso
 C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\asold\Projects\Tutorit\CineClubApi\CineClubApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\appsettings.json
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.exe
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.deps.json
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.runtimeconfig.json
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\CineClubApi.pdb
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Humanizer.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -59,6 +59,7 @@ C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.Ident
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Npgsql.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -66,6 +67,7 @@ C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Swashbuckle.Asp
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\TMDbLib.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.csproj.AssemblyReference.cache
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.AssemblyInfoInputs.cache
@@ -82,7 +84,3 @@ C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\refint\CineClub
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.pdb
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\CineClubApi.genruntimeconfig.cache
 C:\Users\asold\Projects\CineClubApi\CineClubApi\obj\Debug\net6.0\ref\CineClubApi.dll
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\AutoMapper.dll
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Newtonsoft.Json.dll
-C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\TMDbLib.dll
