@@ -61,3 +61,8 @@ using (var scope = app.Services.CreateScope())
 
 
 app.Run();
+
+/*static void Main()
+{
+    Console.WriteLine("App started");
+}*/
