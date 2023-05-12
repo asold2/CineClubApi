@@ -21,7 +21,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         
             var connectionString = Environment.GetEnvironmentVariable("AzureCineClubDb");
-            optionsBuilder.UseNpgsql("Server=cineclubdb.postgres.database.azure.com;Database=cineclubdb;Port=5432;User Id=postgres@cineclubdb;Password=Saphira123;");
+            optionsBuilder.UseNpgsql(connectionString);
 
     }
     
