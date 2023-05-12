@@ -15,4 +15,5 @@ public interface IListService
 
     public Task<ServiceResult> DeleteListById(Guid id);
 
+    public Task<List<List>> GetAllLists();
 }
