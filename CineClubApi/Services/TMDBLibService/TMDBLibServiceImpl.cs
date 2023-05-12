@@ -11,7 +11,7 @@ namespace CineClubApi.Services.TMDBLibService;
 public class TMDBLibServiceImpl : ITMDBLibService
 {
 
-    private readonly IConfiguration _configuration;
+    // private readonly IConfiguration _configuration;
     private readonly IMapper _mapper;
     private TMDbClient client = null;
     private HttpClient httpClient = null;
@@ -19,8 +19,9 @@ public class TMDBLibServiceImpl : ITMDBLibService
     
     public TMDBLibServiceImpl(IConfiguration configuration, IMapper mapper)
     {
-        _configuration = configuration;
-        client = new TMDbClient(_configuration["TMDBapiKey"]);
+        var tmdbAPIKey = Environment.GetEnvironmentVariable("TMDBapiKey");
+        // _configuration = configuration;
+        client = new TMDbClient(tmdbAPIKey);
         _mapper = mapper;
         httpClient = new HttpClient();
     }
