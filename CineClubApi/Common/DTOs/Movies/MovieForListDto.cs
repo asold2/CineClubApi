@@ -10,5 +10,11 @@ public class MovieForListDto
     public double Popularity { get; set; }
     public double VoteAverage { get; set; }
     public int VoteCount { get; set; }
+    public string BackdropPath  { get; set; }
+    public string PosterPath  { get; set; }
+    public byte[] BackdropImage { get; set; }
+    public byte[] PosterImage { get; set; }
+    
+    
     
 }

@@ -11,6 +11,8 @@ public interface IApplicationDbContext
 
     public DbSet<List> Lists { get; }
 
+    // public DbSet<MovieAndList> MoviesAndLists { get; }
+
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
 }
