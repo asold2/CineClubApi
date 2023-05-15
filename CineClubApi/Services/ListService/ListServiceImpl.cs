@@ -38,7 +38,7 @@ public class ListServiceImpl : IListService
         };
         
         
-        await _listRepository.CreateEntity(list);
+        await _listRepository.CreateList(list);
         return new CreatedListResult
         {
             Result = "Created new List named: " + list.Name,
@@ -48,7 +48,7 @@ public class ListServiceImpl : IListService
 
     public async Task<ServiceResult> UpdateListNameOrStatus(UpdateListDto updateListDto)
     {
-        var listToUpdate =(List) await _listRepository.GetEntityById(updateListDto.Id);
+        var listToUpdate =(List) await _listRepository.GetListById(updateListDto.Id);
 
         if (listToUpdate == null)
         {
@@ -58,7 +58,7 @@ public class ListServiceImpl : IListService
         listToUpdate.Name = updateListDto.Name;
         listToUpdate.Public = updateListDto.Public;
         
-        await _listRepository.UpdateEntity(listToUpdate);
+        await _listRepository.UpdateList(listToUpdate);
 
         return new ListSuccessfullyUpdateResult();
     }
@@ -79,7 +79,7 @@ public class ListServiceImpl : IListService
     {
         try
         {
-            await _listRepository.DeleteEntityById(id);
+            await _listRepository.DeleteListById(id);
             return new ListDeletedResult();
         }
         catch (Exception e)
@@ -87,9 +87,5 @@ public class ListServiceImpl : IListService
             return new EntityNotFoundResult();
         }
     }
-
-    public async  Task<List<List>> GetAllLists()
-    {
-        return await _listRepository.GetAllLists();
-    }
+    
 }

@@ -2,5 +2,7 @@
 
 public class MovieDao 
 {
-    // public TYPE Type { get; set; }
+    public Guid Id { get; set; }
+    public int tmdbId { get; set; }
+    public ICollection<List> Lists { get; set; } = new List<List>();
 }
