@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Enums;
+using CineClubApi.Common.Helpers;
 using CineClubApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
@@ -17,16 +18,18 @@ public class TMDBLibServiceImpl : ITMDBLibService
 
     // private readonly IConfiguration _configuration;
     private readonly IMapper _mapper;
-    private TMDbClient client = null;
-    private HttpClient httpClient = null;
+    private readonly TMDbClient client;
+    private readonly HttpClient httpClient;
+    private readonly IPaginator _paginator;
 
     
-    public TMDBLibServiceImpl(IConfiguration configuration, IMapper mapper)
+    public TMDBLibServiceImpl(IConfiguration configuration, IMapper mapper, IPaginator paginator)
     {
         var tmdbAPIKey = Environment.GetEnvironmentVariable("TMDBapiKey");
         client = new TMDbClient(tmdbAPIKey);
         _mapper = mapper;
         httpClient = new HttpClient();
+        _paginator = paginator;
     }
 
     public async Task<List<MovieForListDto>> GetMoviesByKeyword(string keyword)
@@ -77,7 +80,7 @@ public class TMDBLibServiceImpl : ITMDBLibService
 
         var popularMovies = await client.GetMoviePopularListAsync(null, page, null);
 
-        var popularMoviesList = await PaginateList(popularMovies, start, page, pageSize);
+        var popularMoviesList = await _paginator.PaginateMoviesList(popularMovies, start, page, pageSize);
         popularMoviesList = await AssignImagesToMovie(popularMoviesList);
 
         return popularMoviesList;
@@ -91,7 +94,7 @@ public class TMDBLibServiceImpl : ITMDBLibService
         int pageSize = end - start + 1;
 
 
-        var topRatedMoviesList = await PaginateList(topRatedMovies, start, page, pageSize);
+        var topRatedMoviesList = await _paginator.PaginateMoviesList(topRatedMovies, start, page, pageSize);
 
         topRatedMoviesList = await AssignImagesToMovie(topRatedMoviesList);
         
@@ -104,7 +107,7 @@ public class TMDBLibServiceImpl : ITMDBLibService
         
         var upcomingMovies = await  client.GetMovieUpcomingListAsync();
 
-        var upcomingMoviesList = await PaginateList(upcomingMovies, start, page, pageSize);
+        var upcomingMoviesList = await _paginator.PaginateMoviesList(upcomingMovies, start, page, pageSize);
 
         upcomingMoviesList = await AssignImagesToMovie(upcomingMoviesList);
         
@@ -127,7 +130,7 @@ public class TMDBLibServiceImpl : ITMDBLibService
 
 
         var trendingMovies =  await client.GetTrendingMoviesAsync(timeWindow);
-        var trendingMoviesList = await PaginateList(trendingMovies, start, page, pageSize);;
+        var trendingMoviesList = await _paginator.PaginateMoviesList(trendingMovies, start, page, pageSize);;
 
         trendingMoviesList = await AssignImagesToMovie(trendingMoviesList);
         
@@ -146,22 +149,5 @@ public class TMDBLibServiceImpl : ITMDBLibService
         return movies;
     }
 
-
-    private async Task<List<MovieForListDto>> PaginateList(SearchContainer<SearchMovie> list, int start, int page, int pageSize)
-    {
-        var totalPages = list.TotalPages;
-
-        if (page < 1 || page > totalPages)
-        {
-            return new List<MovieForListDto>();
-        }
-
-        var moviesToTake = list.Results.Skip(start - 1).Take(pageSize).AsQueryable();
-        
-        var popularMoviesList = _mapper.ProjectTo<MovieForListDto>(moviesToTake).ToList();
-
-        return popularMoviesList;
-
-    }
 
 }

@@ -1,3 +1,4 @@
+using CineClubApi.Common.Helpers;
 using CineClubApi.Common.Interfaces;
 using CineClubApi.Persistance;
 using CineClubApi.Repositories.AccountRepository;
@@ -32,6 +33,7 @@ builder.Services.AddScoped<IListService, ListServiceImpl>();
 builder.Services.AddScoped<ITMDBLibService, TMDBLibServiceImpl>();
 builder.Services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
 builder.Services.AddScoped<IMovieService, MovieServiceImpl>();
+builder.Services.AddScoped<IPaginator, PaginatorImpl>();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
