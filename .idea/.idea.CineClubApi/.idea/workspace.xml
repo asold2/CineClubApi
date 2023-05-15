@@ -6,12 +6,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/ListWithMoviesDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/Enums/TimePeriod.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Controllers/CollectionsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/ITMDBLibService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/ITMDBLibService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,17 +41,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-<<<<<<< HEAD
-                    <option name="branchName" value="List_feature" />
-                    <option name="lastUsedInstant" value="1683923495" />
-=======
+                    <option name="branchName" value="Category_lists" />
+                    <option name="lastUsedInstant" value="1684142673" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="Movies" />
                     <option name="lastUsedInstant" value="1683896092" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="docker" />
                     <option name="lastUsedInstant" value="1683874202" />
->>>>>>> 476cfd51b02ed506156dab57a5040ba0be03d419
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -53,10 +59,6 @@
                   <RecentBranch>
                     <option name="branchName" value="List_feature" />
                     <option name="lastUsedInstant" value="1682498688" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="Auth_features" />
-                    <option name="lastUsedInstant" value="1682498142" />
                   </RecentBranch>
                 </list>
               </option>
@@ -69,21 +71,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27b91272f348469b8fccc471c1ccd767f57a64f55a44975790bfae805b4ebb/Future.cs" root0="SKIP_HIGHLIGHTING" />
-<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bcbd913e36297541c9fbdef5ca9a326deaafe51992a6419cfa97bc55bad24e/Check.cs" root0="SKIP_HIGHLIGHTING" />
-=======
     <setting file="file://$PROJECT_DIR$/CineClubApi/Common/DTOs/Movies/DetailedMovieDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bcbd913e36297541c9fbdef5ca9a326deaafe51992a6419cfa97bc55bad24e/Check.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/appsettings.json" root0="SKIP_HIGHLIGHTING" />
->>>>>>> 476cfd51b02ed506156dab57a5040ba0be03d419
     <setting file="file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3839fc8fee5ae62538a4469ed86bbba1ccd15d4e0da63bba779abe1719da3/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CineClubApi/Controllers/MoviesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d1f68ef86315497c7b39ddb155d5cf3ace964abca69857f9943cd58479799/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CineClubApi/Common/Mapping/MappingProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/ITMDBLibService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/appsettings.json" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -156,7 +153,7 @@
       <workItem from="1683880108986" duration="5533000" />
       <workItem from="1683889470605" duration="1550000" />
       <workItem from="1683893847560" duration="1545000" />
-      <workItem from="1683911669823" duration="5130000" />
+      <workItem from="1683911669823" duration="5635000" />
     </task>
     <servers />
   </component>
