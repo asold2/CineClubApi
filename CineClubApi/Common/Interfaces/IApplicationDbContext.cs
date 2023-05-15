@@ -10,6 +10,8 @@ public interface IApplicationDbContext
     public DbSet<User> Users { get; }
 
     public DbSet<List> Lists { get; }
+    public DbSet<MovieDao> MovieDaos{ get;  }
+
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 

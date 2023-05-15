@@ -31,6 +31,13 @@ public class TMDBLibServiceImpl : ITMDBLibService
     {
         var result =  client.SearchMovieAsync(keyword, 0, true, 0, null, 0).Result.Results.AsQueryable();
         var movieDtos =  _mapper.ProjectTo<MovieForListDto>(result).ToList();
+
+        foreach (var movie in movieDtos)
+        {
+            movie.BackdropImage = await GetMovieImage(movie.BackdropPath);
+            movie.PosterImage = await GetMovieImage(movie.PosterPath);
+        }
+        
         return movieDtos;
     }
 

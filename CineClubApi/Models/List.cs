@@ -8,4 +8,5 @@ public class List : Entity
     public bool Public { get; set; }
     public Guid CreatorId { get; set; }
     public User Creator { get; set; }
+    public ICollection<MovieDao> MovieDaos { get; set; } = new List<MovieDao>();
 }

@@ -1,0 +1,9 @@
+﻿using CineClubApi.Common.ServiceResults;
+
+namespace CineClubApi.Services.MovieService;
+
+public interface IMovieService
+{
+    Task<Guid> SaveOrGetMovieDao(int tmbdMovieId);
+    Task<ServiceResult> AddMovieToList(Guid listId, int tmdbId);
+}

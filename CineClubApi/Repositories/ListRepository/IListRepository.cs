@@ -4,10 +4,17 @@ using CineClubApi.Models;
 
 namespace CineClubApi.Repositories.ListRepository;
 
-public interface IListRepository : IRepository
+public interface IListRepository
 {
     public Task<IList<UpdateListDto>> GetAllListsByUserId(Guid userId);
-    Task<List<List>> GetAllLists();
+
+
+    Task CreateList(List list);
+
+    Task<List> GetListById(Guid id);
+    Task UpdateList(List list);
+
+    Task DeleteListById(Guid id);
 
 
 }
