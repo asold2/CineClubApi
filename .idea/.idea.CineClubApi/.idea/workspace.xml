@@ -6,14 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/Enums/TimePeriod.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Controllers/CollectionsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/CollectionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/CollectionsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/ITMDBLibService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/ITMDBLibService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" afterDir="false" />
@@ -95,7 +93,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="XThreadsFramesViewSplitterKey" value="0.5007587" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
