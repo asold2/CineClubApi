@@ -1,8 +1,10 @@
 ﻿using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.RequestBody;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
 using CineClubApi.Services.ListService;
+using CineClubApi.Services.MovieService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
@@ -11,10 +13,12 @@ namespace CineClubApi.Controllers;
 public class ListController : CineClubControllerBase
 {
     private readonly IListService _listService;
+    private readonly IMovieService _movieService;
 
-    public ListController(IListService listService)
+    public ListController(IListService listService, IMovieService movieService)
     {
         _listService = listService;
+        _movieService = movieService;
     }
 
     [HttpPost("list")]
@@ -59,12 +63,18 @@ public class ListController : CineClubControllerBase
 
     }
 
-
-
-    [HttpGet("all_lists")]
-    public async Task<List<List>> getAllListsAsync()
+    [HttpPost("list/movie")]
+    public async Task<ActionResult> AddMovieToList([FromBody] AddMovieToListBody body)
     {
-        return await  _listService.GetAllLists();
+        var result = await _movieService.AddMovieToList(body.ListId, body.TmdbId);
+
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
     }
-    
+
+
 }

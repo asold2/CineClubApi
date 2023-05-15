@@ -35,5 +35,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     // public DbSet<Entity> Entities { get; }
     public DbSet<User> Users => Set<User>();
     public DbSet<List> Lists => Set<List>();
-    // public DbSet<MovieAndList> MoviesAndLists => Set<MovieAndList>();
+    public DbSet<MovieDao> MovieDaos => Set<MovieDao>();
 }

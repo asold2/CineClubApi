@@ -17,35 +17,23 @@ public class ListRepositoryImpl : IListRepository
         _applicationDbContext = applicationDbContext;
         _mapper = mapper;
     }
-    
-    
-    public async Task CreateEntity(Entity entity)
+
+
+
+    public async Task CreateList(List list)
     {
-        await _applicationDbContext.Lists.AddAsync((List)entity);
+        await _applicationDbContext.Lists.AddAsync(list);
         await _applicationDbContext.SaveChangesAsync();
     }
 
-    
-    
-    public async Task<List<Entity>> GetAllEntities()
-    {
-        return null;
-    }
-    
-    public async Task<List<List>> GetAllLists()
-    {
-        return await _applicationDbContext.Lists.ToListAsync();
-    }
 
-    
-    
 
-    public async Task<Entity> GetEntityById(Guid id)
+    public async Task<List> GetListById(Guid id)
     {
         return await _applicationDbContext.Lists.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task DeleteEntityById(Guid id)
+    public async Task DeleteListById(Guid id)
     {
         var listToRemove = await _applicationDbContext.Lists.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -59,9 +47,9 @@ public class ListRepositoryImpl : IListRepository
 
     }
 
-    public async Task UpdateEntity(Entity entity)
+    public async Task UpdateList(List list)
     {
-        _applicationDbContext.Lists.Update((List) entity);
+        _applicationDbContext.Lists.Update(list);
         await _applicationDbContext.SaveChangesAsync();
     }
 
