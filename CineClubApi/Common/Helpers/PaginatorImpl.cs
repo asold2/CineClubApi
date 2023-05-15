@@ -17,8 +17,11 @@ public class PaginatorImpl : IPaginator
     
     
     
-    public async Task<List<MovieForListDto>> PaginateMoviesList(SearchContainer<SearchMovie> list, int start, int page, int pageSize)
+    public async Task<List<MovieForListDto>> PaginateMoviesList(SearchContainer<SearchMovie> list, int start, int page, int end)
     {
+        int pageSize = end - start + 1;
+
+        
         var totalPages = list.TotalPages;
 
         if (page < 1 || page > totalPages)

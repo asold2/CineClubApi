@@ -1,6 +1,7 @@
 ﻿using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Enums;
 using CineClubApi.Services.TMDBLibService;
+using CineClubApi.Services.TMDBLibService.Lists;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CineClubApi.Controllers;
@@ -8,29 +9,29 @@ namespace CineClubApi.Controllers;
 public class CollectionsController : CineClubControllerBase
 {
 
-    private readonly ITMDBLibService _tmdbLibService;
+    private readonly ITmdbListService _tmdbListService;
 
-    public CollectionsController(ITMDBLibService tmdbLibService)
+    public CollectionsController(ITmdbListService tmdbLibService)
     {
-        _tmdbLibService = tmdbLibService;
+        _tmdbListService = tmdbLibService;
     }
 
     [HttpGet("collection/popular")]
     public async Task<List<MovieForListDto>> GetPopularMovies([FromQuery]int page, [FromQuery]int start, [FromQuery] int end)
     {
-        return await _tmdbLibService.GetPopularMovies(page, start, end);
+        return await _tmdbListService.GetPopularMovies(page, start, end);
     }
     
     [HttpGet("collection/toprated")]
     public async Task<List<MovieForListDto>> GetTopRatedMovies([FromQuery]int page, [FromQuery]int start, [FromQuery] int end)
     {
-        return await _tmdbLibService.GetTopRatedMovies(page, start, end);
+        return await _tmdbListService.GetTopRatedMovies(page, start, end);
     }
     
     [HttpGet("collection/upcoming")]
     public async Task<List<MovieForListDto>> GetUpcomingMovies([FromQuery]int page, [FromQuery]int start, [FromQuery] int end)
     {
-        return await _tmdbLibService.GetUpcomingMovies(page, start, end);
+        return await _tmdbListService.GetUpcomingMovies(page, start, end);
     }
     
     [HttpGet("collection/trending/{period:int}")]
@@ -48,7 +49,7 @@ public class CollectionsController : CineClubControllerBase
                 break;
         }
         
-        return await _tmdbLibService.GetTrendingMovies(trendingPeriod, page, start, end);
+        return await _tmdbListService.GetTrendingMovies(trendingPeriod, page, start, end);
     }
     
     

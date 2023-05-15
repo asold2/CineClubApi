@@ -8,7 +8,9 @@ using CineClubApi.Services;
 using CineClubApi.Services.AccountService;
 using CineClubApi.Services.ListService;
 using CineClubApi.Services.MovieService;
+using CineClubApi.Services.TmdbGenre;
 using CineClubApi.Services.TMDBLibService;
+using CineClubApi.Services.TMDBLibService.Lists;
 using CineClubApi.Services.TokenService;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,10 +32,13 @@ builder.Services.AddScoped<IUserRepository, UserRepositoryImpl>();
 builder.Services.AddScoped<IPasswordService, PasswordServiceImpl>();
 builder.Services.AddScoped<IListRepository, ListRepositoryImpl>();
 builder.Services.AddScoped<IListService, ListServiceImpl>();
-builder.Services.AddScoped<ITMDBLibService, TMDBLibServiceImpl>();
+builder.Services.AddScoped<ITMDBMovieService, ItmdbMovieServiceImpl>();
 builder.Services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
 builder.Services.AddScoped<IMovieService, MovieServiceImpl>();
 builder.Services.AddScoped<IPaginator, PaginatorImpl>();
+builder.Services.AddScoped<ITmdbListService, TmdbListServiceImpl>();
+builder.Services.AddScoped<ITMDBGenreService, TmdbGenreServiceImpl>();
+
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
