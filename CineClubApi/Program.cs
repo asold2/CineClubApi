@@ -69,6 +69,8 @@ var app = builder.Build();
 // }
 
 app.UseHttpsRedirection();
+app.UseCors();
+
 
 app.UseAuthorization();
 
