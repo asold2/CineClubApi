@@ -5,31 +5,7 @@
     <projectFile profileName="IIS Express">CineClubApi/CineClubApi.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Controllers/GenreController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Genre/ITMDBGenreService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Genre/TmdbGenreServiceImpl.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Lists/ITmdbListService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Lists/TmdbListServiceImpl.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Movies/TMDBMovieServiceImpl.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TmdbLib.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Helpers/IPaginator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Helpers/IPaginator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Helpers/PaginatorImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Helpers/PaginatorImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/CollectionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/CollectionsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/MoviesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/MoviesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/ITMDBLibService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Movies/ITMDBMovieService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TMDBLibServiceImpl.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" afterDir="false" />
-    </list>
+    <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,12 +27,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="list_genre" />
-                    <option name="lastUsedInstant" value="1684156417" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1684160089" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1684156391" />
+                    <option name="branchName" value="list_genre" />
+                    <option name="lastUsedInstant" value="1684156417" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="Category_lists" />
