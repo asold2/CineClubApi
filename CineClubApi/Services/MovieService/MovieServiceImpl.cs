@@ -31,7 +31,6 @@ public class MovieServiceImpl : IMovieService
 
         return movieSavedResult;
 
-
     }
 
     public async Task<ServiceResult> AddMovieToList(Guid listId, int tmdbId)

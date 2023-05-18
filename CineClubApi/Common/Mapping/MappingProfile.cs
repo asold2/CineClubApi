@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
+using CineClubApi.Common.DTOs.Actor;
+using CineClubApi.Common.DTOs.Common;
 using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Models;
+using TMDbLib.Objects.General;
+using TMDbLib.Objects.Languages;
 using TMDbLib.Objects.Movies;
+using TMDbLib.Objects.People;
 using TMDbLib.Objects.Search;
 
 namespace CineClubApi.Common.Mapping;
@@ -17,6 +22,10 @@ public class MappingProfile : Profile
         CreateMap<SearchMovie, MovieForListDto>();
         CreateMap<Movie, MovieForListDto >();
         CreateMap<Movie, DetailedMovieDto >();
+        CreateMap<Cast, MoviePersonDto>();
+        CreateMap<Person, DetailedPersonInfoDto>();
+        CreateMap<Crew, MoviePersonDto>();
+        CreateMap<Language, LanguageDto>();
 
     }
 }

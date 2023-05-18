@@ -17,9 +17,9 @@ public class PaginatorImpl : IPaginator
     
     
     
-    public async Task<List<MovieForListDto>> PaginateMoviesList(SearchContainer<SearchMovie> list, int start, int page, int end)
+    public async Task<List<MovieForListDto>> PaginateMoviesList(SearchContainer<SearchMovie> list, int? start, int page, int? end)
     {
-        int pageSize = end - start + 1;
+        int pageSize = (int)end - (int)start + 1;
 
         var totalPages = list.TotalPages;
 
@@ -28,7 +28,7 @@ public class PaginatorImpl : IPaginator
             return new List<MovieForListDto>();
         }
 
-        var moviesToTake = list.Results.Skip(start - 1).Take(pageSize).AsQueryable();
+        var moviesToTake = list.Results.Skip((int)start - 1).Take(pageSize).AsQueryable();
         
         var popularMoviesList = _mapper.ProjectTo<MovieForListDto>(moviesToTake).ToList();
 

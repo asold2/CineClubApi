@@ -8,5 +8,5 @@ namespace CineClubApi.Common.Helpers;
 public interface IPaginator
 {
     Task<List<MovieForListDto>>
-        PaginateMoviesList(SearchContainer<SearchMovie> list, int start, int page, int end);
+        PaginateMoviesList(SearchContainer<SearchMovie> list, int? start, int page, int? end);
 }

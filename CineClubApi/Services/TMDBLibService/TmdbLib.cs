@@ -22,7 +22,7 @@ public abstract class TmdbLib
     }
     
     
-    public async Task<byte[]> GetMovieImage(string url)
+    public async Task<byte[]> GetImageFromPath(string url)
     {
         var url_base = "https://image.tmdb.org/t/p/original";
         var response = await httpClient.GetAsync(url_base + url);
@@ -39,12 +39,24 @@ public abstract class TmdbLib
     }
 
 
-    protected async Task<List<MovieForListDto>> AssignImagesToMovie(List<MovieForListDto> movies)
+    protected async Task<List<MovieForListDto>> AssignImagesToMovie(List<MovieForListDto> movies, bool both)
     {
-        foreach (var movie in movies)
+
+        if (both)
         {
-            movie.BackdropImage = await GetMovieImage(movie.BackdropPath);
-            movie.PosterImage = await GetMovieImage(movie.PosterPath);
+            foreach (var movie in movies)
+            {
+                movie.BackdropImage = await GetImageFromPath(movie.BackdropPath);
+                movie.PosterImage = await GetImageFromPath(movie.PosterPath);
+            }
+        }
+        else
+        {
+            foreach (var movie in movies)
+            {
+                // movie.BackdropImage = await GetMovieImage(movie.BackdropPath);
+                movie.PosterImage = await GetImageFromPath(movie.PosterPath);
+            }
         }
 
         return movies;

@@ -29,9 +29,9 @@ public class MoviesController : CineClubControllerBase
     }
     
     
-    [HttpGet("movie/image/{url}")]
-    public async Task<byte[]>GetMovieByIdAsync([FromRoute]string url)
-    {
-        return await _itmdbMovieService.GetMovieImage(url);
-    }
+    // [HttpGet("movie/image/{url}")]
+    // public async Task<byte[]>GetMovieByIdAsync([FromRoute]string url)
+    // {
+    //     return await _itmdbMovieService.GetMovieImage(url);
+    // }
 }
