@@ -6,6 +6,7 @@ using CineClubApi.Common.ServiceResults.LoginResult;
 using CineClubApi.Models.Auth;
 using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Services.TokenService;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CineClubApi.Services.AccountService;
 
@@ -28,9 +29,23 @@ public class UserServiceImpl : IUserService
     {
         var allAccounts = await _userRepository.GetAllAccounts();
 
-        if (allAccounts.Any(x => x.Username == accountDto.Username))
+        if (allAccounts.Any(x => x.Username == accountDto.Username ))
         {
-            return new AccountExistsResult();
+            return new UsernameExistsResult();
+        }
+
+        if (accountDto.Password.IsNullOrEmpty() || accountDto.Username.IsNullOrEmpty() || userDto.Email.IsNullOrEmpty())
+        {
+            return new ServiceResult
+            {
+                Result = "Cannot leave username, password or email empty",
+                StatusCode = 400
+            };
+        }
+
+        if (allAccounts.Any(x => x.Email == userDto.Email ))
+        {
+            return new EmailExistsResult();
         }
         
         _passwordService.CreatePasswordHash(accountDto.Password, out byte[] passwordHash,
@@ -41,7 +56,7 @@ public class UserServiceImpl : IUserService
             Username = accountDto.Username,
             FirstName = userDto.FirstName,
             LastName = userDto.LastName,
-            Email = userDto.LastName,
+            Email = userDto.Email,
             PasswordHash = passwordHash,
             PasswordSalt = passwordSalt
         };
@@ -60,7 +75,7 @@ public class UserServiceImpl : IUserService
             return new ServiceResult
             {
                 StatusCode = 400,
-                Result = "Username not found"
+                Result = "Username not found!"
             };
         }
 
@@ -72,7 +87,7 @@ public class UserServiceImpl : IUserService
             return new ServiceResult
             {
                 StatusCode = 400,
-                Result = "Wrong Password"
+                Result = "Wrong Password!"
             };
         }
 
@@ -84,10 +99,8 @@ public class UserServiceImpl : IUserService
 
         return new SuccessfulLoginResult
         {
-            TokenBody = new TokenBody
-            {
-                RefreshToken = refreshToken.Token
-            },
+
+            Result = refreshToken.Token,
             StatusCode = 200
             
         };

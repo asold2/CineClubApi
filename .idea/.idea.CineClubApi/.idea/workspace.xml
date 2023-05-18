@@ -6,7 +6,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/ServiceResults/AccountResults/EmailExistsResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/ServiceResults/AccountResults/AccountExistsResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/ServiceResults/AccountResults/UsernameExistsResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/AccessController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/AccessController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/RegistrationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/RegistrationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +51,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="registration_responses" />
+                    <option name="lastUsedInstant" value="1684433282" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1684160089" />
+                    <option name="lastUsedInstant" value="1684419288" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="list_genre" />
@@ -51,10 +69,6 @@
                   <RecentBranch>
                     <option name="branchName" value="Movies" />
                     <option name="lastUsedInstant" value="1683896092" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="docker" />
-                    <option name="lastUsedInstant" value="1683874202" />
                   </RecentBranch>
                 </list>
               </option>
@@ -152,6 +166,7 @@
       <workItem from="1683893847560" duration="1545000" />
       <workItem from="1683911669823" duration="5635000" />
       <workItem from="1684341576734" duration="2730000" />
+      <workItem from="1684433031379" duration="1380000" />
     </task>
     <servers />
   </component>

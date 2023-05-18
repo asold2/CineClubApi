@@ -78,6 +78,7 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
             discoverer = discoverer.IncludeAdultMovies((bool) includeAdultMovies);
         }
 
+
         var listToReturn = await discoverer.Query();
 
         var listOfDiscoveredMovies =
