@@ -82,6 +82,8 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
 
         var listOfDiscoveredMovies =
             _mapper.ProjectTo<MovieForListDto>(listToReturn.Results.AsQueryable()).ToList();
+
+        listOfDiscoveredMovies = await AssignImagesToMovie(listOfDiscoveredMovies, false);
  
         return  listOfDiscoveredMovies;
     }
