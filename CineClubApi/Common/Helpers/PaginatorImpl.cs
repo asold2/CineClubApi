@@ -21,7 +21,6 @@ public class PaginatorImpl : IPaginator
     {
         int pageSize = end - start + 1;
 
-        
         var totalPages = list.TotalPages;
 
         if (page < 1 || page > totalPages)

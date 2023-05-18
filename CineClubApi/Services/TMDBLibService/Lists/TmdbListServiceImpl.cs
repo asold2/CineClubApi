@@ -26,7 +26,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
     
     public async Task<List<MovieForListDto>> GetTopRatedMovies(int page, int start, int end)
     {
-        var topRatedMovies = await client.GetMovieTopRatedListAsync(null, 2, null);
+        var topRatedMovies = await client.GetMovieTopRatedListAsync(null, page, null);
 
         var topRatedMoviesList = await _paginator.PaginateMoviesList(topRatedMovies, start, page, end);
 
@@ -38,7 +38,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
     public async Task<List<MovieForListDto>> GetUpcomingMovies(int page, int start, int end)
     {
         
-        var upcomingMovies = await  client.GetMovieUpcomingListAsync();
+        var upcomingMovies = await  client.GetMovieUpcomingListAsync(null, page, null);
 
         var upcomingMoviesList = await _paginator.PaginateMoviesList(upcomingMovies, start, page, end);
 
@@ -61,7 +61,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
         }
 
 
-        var trendingMovies =  await client.GetTrendingMoviesAsync(timeWindow);
+        var trendingMovies =  await client.GetTrendingMoviesAsync(timeWindow, page);
         var trendingMoviesList = await _paginator.PaginateMoviesList(trendingMovies, start, page, end);;
 
         trendingMoviesList = await AssignImagesToMovie(trendingMoviesList);
