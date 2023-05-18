@@ -22,12 +22,11 @@ public class TmdbGenreServiceImpl: TmdbLib, ITMDBGenreService
     public async Task<List<MovieForListDto>> GetMoviesByGenre(List<Genre> genres, int page, int start, int end)
     {
         var discoverer = client.DiscoverMoviesAsync();
-
-
+        
         var moviesByGenre =await discoverer.IncludeWithAllOfGenre(genres).Query();
         
         var moviesByGenreList = await _paginator.PaginateMoviesList(moviesByGenre, start, page, end);
-        moviesByGenreList = await AssignImagesToMovie(moviesByGenreList);
+        moviesByGenreList = await AssignImagesToMovie(moviesByGenreList, false);
 
         return moviesByGenreList;
         

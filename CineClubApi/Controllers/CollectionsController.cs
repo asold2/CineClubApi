@@ -17,7 +17,7 @@ public class CollectionsController : CineClubControllerBase
     }
 
     [HttpGet("collection/popular")]
-    public async Task<List<MovieForListDto>> GetPopularMovies([FromQuery]int page, [FromQuery]int start, [FromQuery] int end)
+    public async Task<List<MovieForListDto>> GetPopularMovies([FromQuery]int page, [FromQuery]int? start, [FromQuery] int? end)
     {
         return await _tmdbListService.GetPopularMovies(page, start, end);
     }

@@ -10,6 +10,8 @@ using CineClubApi.Services.ListService;
 using CineClubApi.Services.MovieService;
 using CineClubApi.Services.TmdbGenre;
 using CineClubApi.Services.TMDBLibService;
+using CineClubApi.Services.TMDBLibService.Actor;
+using CineClubApi.Services.TMDBLibService.FilteredLists;
 using CineClubApi.Services.TMDBLibService.Lists;
 using CineClubApi.Services.TokenService;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +40,9 @@ builder.Services.AddScoped<IMovieService, MovieServiceImpl>();
 builder.Services.AddScoped<IPaginator, PaginatorImpl>();
 builder.Services.AddScoped<ITmdbListService, TmdbListServiceImpl>();
 builder.Services.AddScoped<ITMDBGenreService, TmdbGenreServiceImpl>();
+builder.Services.AddScoped<ITMDBPeopleService, ItmdbPeopleServiceImpl>();
+builder.Services.AddScoped<IFilteredListService, FilteredListServiceImpl>();
+builder.Services.AddScoped<ICommonService, CommonServiceImpl>();
 
 
 builder.Services.AddSwaggerGen();

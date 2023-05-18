@@ -26,7 +26,7 @@ public class ItmdbMovieServiceImpl :TmdbLib, ITMDBMovieService
         var result =  client.SearchMovieAsync(keyword, 0, true, 0, null, 0).Result.Results.AsQueryable();
         var movieDtos =  _mapper.ProjectTo<MovieForListDto>(result).ToList();
 
-        movieDtos = await AssignImagesToMovie(movieDtos);
+        movieDtos = await AssignImagesToMovie(movieDtos, false);
         
         return movieDtos;
     }
@@ -36,8 +36,8 @@ public class ItmdbMovieServiceImpl :TmdbLib, ITMDBMovieService
     {
         var result = await client.GetMovieAsync(id);
 
-        byte[] movieBackdrop = await GetMovieImage(result.BackdropPath);
-        byte[] poster = await GetMovieImage(result.PosterPath);
+        byte[] movieBackdrop = await GetImageFromPath(result.BackdropPath);
+        byte[] poster = await GetImageFromPath(result.PosterPath);
         
         
         var movieDto =  _mapper.Map<DetailedMovieDto>(result);
