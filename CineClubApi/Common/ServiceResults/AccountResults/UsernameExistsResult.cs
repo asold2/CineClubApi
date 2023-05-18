@@ -1,8 +1,8 @@
 ﻿namespace CineClubApi.Common.ServiceResults.AccountResults;
 
-public class AccountExistsResult : ServiceResult
+public class UsernameExistsResult : ServiceResult
 {
-    public AccountExistsResult()
+    public UsernameExistsResult()
     {
         Result = "Account with this username already exists";
         StatusCode = 409;

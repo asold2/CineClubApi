@@ -29,12 +29,12 @@ public class RegistrationController : CineClubControllerBase
         var result =
             await _userService.CreateAccount(createAccountRequestBody.AccountDto, createAccountRequestBody.UserDto);
         
-        if (result.StatusCode==200)
+        return new ContentResult
         {
-            return Ok();
-        }
-
-        return new StatusCodeResult(result.StatusCode);
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
 
     }
 

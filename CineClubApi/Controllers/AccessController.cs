@@ -20,7 +20,15 @@ public class AccessController : CineClubControllerBase
     [HttpPost("token")]
     public async Task<ActionResult<ServiceResult>> AuthenticateUser([FromBody] AccountDto accountDto)
     {
-        return await _userService.AuthenticateUser(accountDto);
+        var result =  await _userService.AuthenticateUser(accountDto);
+        
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
+        
     }
 
     [HttpPost("logout")]
