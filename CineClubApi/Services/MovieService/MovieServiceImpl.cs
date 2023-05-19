@@ -2,6 +2,7 @@
 using CineClubApi.Common.ServiceResults.AccountResults;
 using CineClubApi.Common.ServiceResults.MovieResult;
 using CineClubApi.Models;
+using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.MovieRepository;
 
 namespace CineClubApi.Services.MovieService;
@@ -10,10 +11,12 @@ public class MovieServiceImpl : IMovieService
 {
 
     private readonly IMovieRepository _movieRepository;
+    private readonly IListRepository _listRepository;
 
-    public MovieServiceImpl(IMovieRepository movieRepository)
+    public MovieServiceImpl(IMovieRepository movieRepository, IListRepository listRepository)
     {
         _movieRepository = movieRepository;
+        _listRepository = listRepository;
     }
     
     
@@ -33,13 +36,39 @@ public class MovieServiceImpl : IMovieService
 
     }
 
-    public async Task<ServiceResult> AddMovieToList(Guid listId, int tmdbId)
+    public async Task<ServiceResult> AddMovieToList(Guid listId, Guid userId, int tmdbId)
     {
+        
+        if (!await UserHasRightTOUpdateList(listId,userId))
+        {
+            return new ServiceResult
+            {
+                StatusCode = 403,
+                Result = "User has no right to update this list!"
+            };
+        }
+        
+        
+        
         var neededMovieId = await SaveOrGetMovieDao(tmdbId);
 
         await _movieRepository.AddMovieToList(listId, neededMovieId);
 
         return new MovieAddedToListResult();
 
+    }
+    
+    
+    
+    private async Task<bool> UserHasRightTOUpdateList(Guid listId, Guid userId)
+    {
+        var neededList = await _listRepository.GetListById(listId);
+
+        if (neededList.CreatorId == userId)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

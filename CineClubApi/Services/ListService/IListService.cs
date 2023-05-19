@@ -13,7 +13,7 @@ public interface IListService
 
     public Task<IList<UpdateListDto>> GetListsByUserId(string tokenBody);
 
-    public Task<ServiceResult> DeleteListById(Guid id);
+    public Task<ServiceResult> DeleteListById(Guid listId, Guid userId);
 
 
 }

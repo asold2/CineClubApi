@@ -73,4 +73,16 @@ public class UserRepositoryImpl : IUserRepository
         return neededUser;
 
     }
+
+    public async  Task<User> GetUserById(Guid userId)
+    {
+        var neededUser = await _applicationDbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+        if (neededUser == null)
+        {
+            throw new Exception("User not found");
+        }
+
+        return neededUser;
+    }
 }

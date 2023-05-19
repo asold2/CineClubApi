@@ -11,4 +11,6 @@ public interface IUserService
     public Task<ServiceResult> CreateAccount(AccountDto accountDto, UserDto userDto);
     public Task<ServiceResult> AuthenticateUser(AccountDto accountDto);
     Task LogoutUser(TokenBody tokenBody);
+    Task<Guid> GetUserId(string refreshToken);
+
 }
