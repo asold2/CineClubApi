@@ -27,7 +27,7 @@ public class ListServiceImpl : IListService
     public async Task<ServiceResult> CreateNamedList(ListDto listDto)
     {
 
-        var neededUser = await _userRepository.GetUserByRefreshToken(listDto.TokenBody.RefreshToken);
+        var neededUser = await _userRepository.GetUserById(listDto.UserId);
 
         var list = new List
         {
@@ -49,6 +49,16 @@ public class ListServiceImpl : IListService
     public async Task<ServiceResult> UpdateListNameOrStatus(UpdateListDto updateListDto)
     {
         var listToUpdate =(List) await _listRepository.GetListById(updateListDto.Id);
+
+        if (!await UserHasRightTOUpdateList(updateListDto.Id, updateListDto.UserId))
+        {
+            return new ServiceResult
+            {
+                StatusCode = 403,
+                Result = "User has no right to update this list!"
+            };
+        }
+
 
         if (listToUpdate == null)
         {
@@ -75,11 +85,21 @@ public class ListServiceImpl : IListService
 
     }
 
-    public  async Task<ServiceResult> DeleteListById(Guid id)
+    public  async Task<ServiceResult> DeleteListById(Guid listId, Guid userId)
     {
+
+        if (!await UserHasRightTOUpdateList(listId, userId))
+        {
+            return new ServiceResult
+            {
+                StatusCode = 403,
+                Result = "User has no right to delete this list!"
+            };
+        }
+        
         try
         {
-            await _listRepository.DeleteListById(id);
+            await _listRepository.DeleteListById(listId);
             return new ListDeletedResult();
         }
         catch (Exception e)
@@ -87,5 +107,19 @@ public class ListServiceImpl : IListService
             return new EntityNotFoundResult();
         }
     }
-    
+
+
+
+    private async Task<bool> UserHasRightTOUpdateList(Guid listId, Guid userId)
+    {
+        var neededList = await _listRepository.GetListById(listId);
+
+        if (neededList.CreatorId == userId)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 }

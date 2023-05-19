@@ -39,4 +39,10 @@ public class AccessController : CineClubControllerBase
         return Ok();
     }
 
+    [HttpGet("userId")]
+    public async Task<Guid> GetUserIdByRefreshToken([FromQuery] string refreshToken)
+    {
+        return  await _userService.GetUserId(refreshToken);
+    }
+
 }

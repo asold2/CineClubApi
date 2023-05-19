@@ -6,13 +6,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/ServiceResults/AccountResults/EmailExistsResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/Permissions/LoggedInPermission.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/DeleteListBody.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/AuthServiceImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/IAuthService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/ServiceResults/AccountResults/AccountExistsResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/ServiceResults/AccountResults/UsernameExistsResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/ListDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/ListDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/UpdateListDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/UpdateListDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/AddMovieToListBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/AddMovieToListBody.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/AccessController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/AccessController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/RegistrationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/RegistrationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/AccountRepository/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/AccountRepository/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/AccountRepository/UserRepositoryImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/AccountRepository/UserRepositoryImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/AccountService/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/IUserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/IListService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/IListService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/IMovieService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/IMovieService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -51,12 +63,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="registration_responses" />
-                    <option name="lastUsedInstant" value="1684433282" />
+                    <option name="branchName" value="auth_lists" />
+                    <option name="lastUsedInstant" value="1684485648" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1684419288" />
+                    <option name="lastUsedInstant" value="1684434738" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="registration_responses" />
+                    <option name="lastUsedInstant" value="1684433282" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="list_genre" />
@@ -65,10 +81,6 @@
                   <RecentBranch>
                     <option name="branchName" value="Category_lists" />
                     <option name="lastUsedInstant" value="1684142673" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="Movies" />
-                    <option name="lastUsedInstant" value="1683896092" />
                   </RecentBranch>
                 </list>
               </option>
@@ -166,7 +178,8 @@
       <workItem from="1683893847560" duration="1545000" />
       <workItem from="1683911669823" duration="5635000" />
       <workItem from="1684341576734" duration="2730000" />
-      <workItem from="1684433031379" duration="1380000" />
+      <workItem from="1684433031379" duration="1719000" />
+      <workItem from="1684482003156" duration="5744000" />
     </task>
     <servers />
   </component>
@@ -198,10 +211,10 @@
           <line>40</line>
           <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="29" containingFunctionPresentation="method 'CreateNamedList'">
             <startOffsets>
-              <option value="1183" />
+              <option value="1157" />
             </startOffsets>
             <endOffsets>
-              <option value="1224" />
+              <option value="1198" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />

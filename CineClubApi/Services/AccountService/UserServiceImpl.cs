@@ -111,4 +111,11 @@ public class UserServiceImpl : IUserService
     {
         await _userRepository.LogoutUser(tokenBody);
     }
+
+    public async Task<Guid> GetUserId(string refreshToken)
+    {
+        var neededUser = await _userRepository.GetUserByRefreshToken(refreshToken);
+        return neededUser.Id;
+        
+    }
 }

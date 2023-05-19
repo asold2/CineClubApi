@@ -43,6 +43,8 @@ builder.Services.AddScoped<ITMDBGenreService, TmdbGenreServiceImpl>();
 builder.Services.AddScoped<ITMDBPeopleService, ItmdbPeopleServiceImpl>();
 builder.Services.AddScoped<IFilteredListService, FilteredListServiceImpl>();
 builder.Services.AddScoped<ICommonService, CommonServiceImpl>();
+builder.Services.AddScoped<IAuthService, AuthServiceImpl>();
+
 
 
 builder.Services.AddSwaggerGen();

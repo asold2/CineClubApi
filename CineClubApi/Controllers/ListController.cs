@@ -1,4 +1,5 @@
 ﻿using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.Permissions;
 using CineClubApi.Common.RequestBody;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
@@ -21,6 +22,7 @@ public class ListController : CineClubControllerBase
         _movieService = movieService;
     }
 
+    [LoggedInPermission]
     [HttpPost("list")]
     public async Task<ActionResult<ServiceResult>> CreateNamedList([FromBody] ListDto listDto)
     {
@@ -29,6 +31,7 @@ public class ListController : CineClubControllerBase
         return Ok(result);
     }
 
+    [LoggedInPermission]
     [HttpPut("list")]
     public async Task<ActionResult<ServiceResult>> UpdateNamedList([FromBody] UpdateListDto updateListDto)
     {
@@ -48,11 +51,11 @@ public class ListController : CineClubControllerBase
         return Ok(await _listService.GetListsByUserId(tokenBody));
     }
 
-
+    [LoggedInPermission]
     [HttpDelete("list")]
-    public async Task<ActionResult> DeleteListById([FromQuery] Guid listId)
+    public async Task<ActionResult> DeleteListById([FromBody] DeleteListBody body)
     {
-        var result = await _listService.DeleteListById(listId);
+        var result = await _listService.DeleteListById(body.ListId, body.UserId);
         
         return new ContentResult
         {
@@ -63,10 +66,11 @@ public class ListController : CineClubControllerBase
 
     }
 
+    [LoggedInPermission]
     [HttpPost("list/movie")]
     public async Task<ActionResult> AddMovieToList([FromBody] AddMovieToListBody body)
     {
-        var result = await _movieService.AddMovieToList(body.ListId, body.TmdbId);
+        var result = await _movieService.AddMovieToList(body.ListId, body.UserId, body.TmdbId);
 
         return new ContentResult
         {
