@@ -54,7 +54,6 @@ public abstract class TmdbLib
         {
             foreach (var movie in movies)
             {
-                // movie.BackdropImage = await GetMovieImage(movie.BackdropPath);
                 movie.PosterImage = await GetImageFromPath(movie.PosterPath);
             }
         }

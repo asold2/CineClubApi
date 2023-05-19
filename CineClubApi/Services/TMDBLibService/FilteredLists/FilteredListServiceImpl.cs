@@ -65,7 +65,7 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
 
         if (language!=null)
         {
-            discoverer = discoverer.WhereLanguageIs(language);
+            discoverer = discoverer.WhereOriginalLanguageIs(language);
         }
 
         if (sortBy!=null)
