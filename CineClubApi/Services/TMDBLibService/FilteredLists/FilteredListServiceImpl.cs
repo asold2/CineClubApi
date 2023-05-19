@@ -19,7 +19,6 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
 
     public async Task<List<MovieForListDto>> GetFilteredListOfMovies(
         List<int>? genreIds,
-        List<int>? peopleIds,
         int? year,
         DateTime? releasedAfter,
         DateTime? releasedBefore,
@@ -36,12 +35,7 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
         {
             discoverer = discoverer.IncludeWithAllOfGenre(genreIds);
         }
-
-        if (peopleIds != null)
-        {
-            discoverer = discoverer.IncludeWithAllOfPeople(genreIds);
-        }
-        
+    
         if (releasedAfter != null)
         {
             discoverer = discoverer.WherePrimaryReleaseDateIsAfter((DateTime) releasedAfter);

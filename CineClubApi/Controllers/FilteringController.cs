@@ -22,7 +22,6 @@ public class FilteringController : CineClubControllerBase
     {
         return await _filteredListService.GetFilteredListOfMovies(
             body.GenreIds,
-            body.PeopleIds,
             body.Year,
             body.ReleasedAfter,
             body.ReleasedBefore,
