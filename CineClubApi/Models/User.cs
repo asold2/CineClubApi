@@ -11,4 +11,7 @@ public class User : Entity
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
+
+    public ICollection<List> CreatedLists { get; } = new List<List>();
+    public ICollection<Tag> CreatedTags { get; } = new List<Tag>();
 }

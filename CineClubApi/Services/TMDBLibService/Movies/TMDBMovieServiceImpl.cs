@@ -26,7 +26,7 @@ public class ItmdbMovieServiceImpl :TmdbLib, ITMDBMovieService
         var result =  client.SearchMovieAsync(keyword, 0, true, 0, null, 0).Result.Results.AsQueryable();
         var movieDtos =  _mapper.ProjectTo<MovieForListDto>(result).ToList();
 
-        movieDtos = await AssignImagesToMovie(movieDtos, false);
+        // movieDtos = await AssignImagesToMovie(movieDtos, false);
         
         return movieDtos;
     }
@@ -41,8 +41,8 @@ public class ItmdbMovieServiceImpl :TmdbLib, ITMDBMovieService
         
         
         var movieDto =  _mapper.Map<DetailedMovieDto>(result);
-        movieDto.Poster = poster;
-        movieDto.Backdrop = movieBackdrop;
+        // movieDto.Poster = poster;
+        // movieDto.Backdrop = movieBackdrop;
         return movieDto;
     }
 

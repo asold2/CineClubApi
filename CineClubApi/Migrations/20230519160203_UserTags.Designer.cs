@@ -3,6 +3,7 @@ using System;
 using CineClubApi.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CineClubApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519160203_UserTags")]
+    partial class UserTags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,9 +125,12 @@ namespace CineClubApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("ListTags");
                 });
@@ -173,13 +178,13 @@ namespace CineClubApi.Migrations
 
             modelBuilder.Entity("CineClubApi.Models.Tag", b =>
                 {
-                    b.HasOne("CineClubApi.Models.Auth.User", "Creator")
+                    b.HasOne("CineClubApi.Models.Auth.User", "User")
                         .WithMany("CreatedTags")
-                        .HasForeignKey("CreatorId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Creator");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ListMovieDao", b =>

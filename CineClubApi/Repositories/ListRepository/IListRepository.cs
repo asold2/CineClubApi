@@ -15,6 +15,10 @@ public interface IListRepository
     Task UpdateList(List list);
 
     Task DeleteListById(Guid id);
+    Task<bool> UserHasRightToUpdateList(Guid listId, Guid userId);
+
+    // Task AddTagToList();
 
 
+    Task AddTagToList(Guid listId, Guid newTagId);
 }

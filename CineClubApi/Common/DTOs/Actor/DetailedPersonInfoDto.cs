@@ -1,4 +1,6 @@
-﻿namespace CineClubApi.Common.DTOs.Actor;
+﻿using CineClubApi.Common.DTOs.Movies;
+
+namespace CineClubApi.Common.DTOs.Actor;
 
 public class DetailedPersonInfoDto
 {
@@ -12,4 +14,7 @@ public class DetailedPersonInfoDto
     public double Popularity  { get; set; }
     public string ProfilePath { get; set; }
     public byte[] Picture { get; set; }
+
+    public List<MovieForListDto> MoviesPersonTakesPartIn { get; set; }
+    
 }

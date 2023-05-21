@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CineClubApi.Common.DTOs.Actor;
+using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,11 +23,16 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
     {
         var person = await client.GetPersonAsync(personId);
         
-        // var personImage = await client.GetPersonImagesAsync(personId);
-        
         var personToReturn = _mapper.Map<DetailedPersonInfoDto>(person);
         
         personToReturn.Picture = await GetImageFromPath(person.ProfilePath);
+
+
+        personToReturn.MoviesPersonTakesPartIn =
+            await GetMoviesPersonParticipatesIn(personId, person.KnownForDepartment);
+
+        // personToReturn.MoviesPersonTakesPartIn = await AssignImagesToMovie(personToReturn.MoviesPersonTakesPartIn, false);
+        
         
         return personToReturn;
     }
@@ -40,6 +46,27 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
         var crewToReturn = _mapper.ProjectTo<MoviePersonDto>(crew).ToList();
 
         return crewToReturn;
+
+    }
+
+
+    public async Task<List<MovieForListDto>> GetMoviesPersonParticipatesIn(int personId, string knownForDepartment)
+    {
+        var discoverer = client.DiscoverMoviesAsync();
+
+        if (knownForDepartment == "Acting")
+        {
+            var lsitOfMovies = discoverer.IncludeWithAllOfCast(new List<int>(){personId});
+        }
+        else
+        {
+            var listOfMovies = discoverer.IncludeWithAllOfCrew(new List<int>() {personId});
+        }
+
+        var list = await discoverer.Query();
+
+        return  _mapper.ProjectTo<MovieForListDto>(list.Results.AsQueryable()).ToList();
+
 
     }
 

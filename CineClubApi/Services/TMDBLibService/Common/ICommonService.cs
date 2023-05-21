@@ -5,4 +5,6 @@ namespace CineClubApi.Services.TMDBLibService;
 public interface ICommonService
 {
     Task<List<LanguageDto>> GetAllLanguages();
+
+    Task<byte[]> GetImageFromPath(string path);
 }

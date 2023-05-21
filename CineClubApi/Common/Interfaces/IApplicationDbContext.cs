@@ -11,6 +11,7 @@ public interface IApplicationDbContext
 
     public DbSet<List> Lists { get; }
     public DbSet<MovieDao> MovieDaos{ get;  }
+    public DbSet<Tag> ListTags { get; }
 
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

@@ -3,6 +3,7 @@ using System;
 using CineClubApi.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CineClubApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519145841_ListTags")]
+    partial class ListTags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,6 +95,24 @@ namespace CineClubApi.Migrations
                     b.ToTable("Lists");
                 });
 
+            modelBuilder.Entity("CineClubApi.Models.ListTag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ListTags");
+                });
+
             modelBuilder.Entity("CineClubApi.Models.MovieDao", b =>
                 {
                     b.Property<Guid>("Id")
@@ -107,27 +127,19 @@ namespace CineClubApi.Migrations
                     b.ToTable("MovieDaos");
                 });
 
-            modelBuilder.Entity("CineClubApi.Models.Tag", b =>
+            modelBuilder.Entity("ListListTag", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("ListsId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("CreatorId")
+                    b.Property<Guid>("TagsId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasKey("ListsId", "TagsId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("TagsId");
 
-                    b.HasIndex("CreatorId");
-
-                    b.ToTable("ListTags");
+                    b.ToTable("ListListTag");
                 });
 
             modelBuilder.Entity("ListMovieDao", b =>
@@ -145,25 +157,10 @@ namespace CineClubApi.Migrations
                     b.ToTable("ListMovieDao");
                 });
 
-            modelBuilder.Entity("ListTag", b =>
-                {
-                    b.Property<Guid>("ListsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("TagsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("ListsId", "TagsId");
-
-                    b.HasIndex("TagsId");
-
-                    b.ToTable("ListTag");
-                });
-
             modelBuilder.Entity("CineClubApi.Models.List", b =>
                 {
                     b.HasOne("CineClubApi.Models.Auth.User", "Creator")
-                        .WithMany("CreatedLists")
+                        .WithMany()
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -171,15 +168,19 @@ namespace CineClubApi.Migrations
                     b.Navigation("Creator");
                 });
 
-            modelBuilder.Entity("CineClubApi.Models.Tag", b =>
+            modelBuilder.Entity("ListListTag", b =>
                 {
-                    b.HasOne("CineClubApi.Models.Auth.User", "Creator")
-                        .WithMany("CreatedTags")
-                        .HasForeignKey("CreatorId")
+                    b.HasOne("CineClubApi.Models.List", null)
+                        .WithMany()
+                        .HasForeignKey("ListsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Creator");
+                    b.HasOne("CineClubApi.Models.ListTag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ListMovieDao", b =>
@@ -195,28 +196,6 @@ namespace CineClubApi.Migrations
                         .HasForeignKey("MovieDaosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ListTag", b =>
-                {
-                    b.HasOne("CineClubApi.Models.List", null)
-                        .WithMany()
-                        .HasForeignKey("ListsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CineClubApi.Models.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("TagsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CineClubApi.Models.Auth.User", b =>
-                {
-                    b.Navigation("CreatedLists");
-
-                    b.Navigation("CreatedTags");
                 });
 #pragma warning restore 612, 618
         }
