@@ -27,7 +27,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             popularMoviesList = _mapper.ProjectTo<MovieForListDto>(popularMovies.Results.AsQueryable()).ToList();
         }
 
-        popularMoviesList = await AssignImagesToMovie(popularMoviesList, false);
+        // popularMoviesList = await AssignImagesToMovie(popularMoviesList, false);
 
         return popularMoviesList;
     }
@@ -47,7 +47,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             topRatedMoviesList = _mapper.ProjectTo<MovieForListDto>(topRatedMovies.Results.AsQueryable()).ToList();
         }
         
-        topRatedMoviesList = await AssignImagesToMovie(topRatedMoviesList, false);
+        // topRatedMoviesList = await AssignImagesToMovie(topRatedMoviesList, false);
         
         return topRatedMoviesList;
     }
@@ -66,7 +66,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             upcomingMoviesList = _mapper.ProjectTo<MovieForListDto>(upcomingMovies.Results.AsQueryable()).ToList();
         }
 
-        upcomingMoviesList = await AssignImagesToMovie(upcomingMoviesList, false);
+        // upcomingMoviesList = await AssignImagesToMovie(upcomingMoviesList, false);
         
         return upcomingMoviesList;
     }
@@ -96,7 +96,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             trendingMoviesList = _mapper.ProjectTo<MovieForListDto>(trendingMovies.Results.AsQueryable()).ToList();
         }
 
-        trendingMoviesList = await AssignImagesToMovie(trendingMoviesList, false);
+        // trendingMoviesList = await AssignImagesToMovie(trendingMoviesList, false);
         
         return trendingMoviesList;
     }

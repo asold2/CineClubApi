@@ -18,8 +18,8 @@ public class DetailedMovieDto
     public string OriginalTitile { get; set; }
     public string Overview { get; set; }
     public double Popularity { get; set; }
-    public byte[] Backdrop { get; set; }
-    public byte[] Poster { get; set; }
+    // public byte[] Backdrop { get; set; }
+    // public byte[] Poster { get; set; }
     public IList<ProductionCompany> ProductionCompanies { get; set; }
     public IList<ProductionCountry> ProductionCountries { get; set; }
     public DateTime ReleaseDate { get; set; }

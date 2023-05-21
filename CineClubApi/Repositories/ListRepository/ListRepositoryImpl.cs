@@ -47,6 +47,34 @@ public class ListRepositoryImpl : IListRepository
 
     }
 
+    public async Task<bool> UserHasRightToUpdateList(Guid listId, Guid userId)
+    {
+        var neededList = await _applicationDbContext.Lists.FirstOrDefaultAsync(x=>x.Id==listId);
+
+        if (neededList == null)
+        {
+            return false;
+        }
+
+        if (neededList.CreatorId == userId)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public async Task AddTagToList(Guid listId, Guid newTagId)
+    {
+        var neededList = await _applicationDbContext.Lists.FirstOrDefaultAsync(x => x.Id == listId);
+        
+        var neededTag =  await _applicationDbContext.ListTags.FirstOrDefaultAsync(x => x.Id == newTagId);
+        
+        neededList.Tags.Add(neededTag);
+
+        await UpdateList(neededList);
+    }
+
     public async Task UpdateList(List list)
     {
         _applicationDbContext.Lists.Update(list);

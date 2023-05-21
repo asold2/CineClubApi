@@ -26,7 +26,7 @@ public class TmdbGenreServiceImpl: TmdbLib, ITMDBGenreService
         var moviesByGenre =await discoverer.IncludeWithAllOfGenre(genres).Query();
         
         var moviesByGenreList = await _paginator.PaginateMoviesList(moviesByGenre, start, page, end);
-        moviesByGenreList = await AssignImagesToMovie(moviesByGenreList, false);
+        // moviesByGenreList = await AssignImagesToMovie(moviesByGenreList, false);
 
         return moviesByGenreList;
         

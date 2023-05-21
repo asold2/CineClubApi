@@ -6,12 +6,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/TagBody.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Controllers/TagController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Models/Tag.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/ITagRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/TagRepositoryImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TagService/ITagService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TagService/TagServiceImpl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/DTOs/Actor/DetailedPersonInfoDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/Actor/DetailedPersonInfoDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Actor/ITMDBPeopleService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/People/ITMDBPeopleService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Actor/ItmdbPeopleServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/People/ItmdbPeopleServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TmdbLib.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/TmdbLib.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Interfaces/IApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Interfaces/IApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/CommonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/CommonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Models/List.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Models/List.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/IListRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/IListRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Common/ICommonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Common/ICommonService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -106,7 +120,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="XThreadsFramesViewSplitterKey" value="0.46534654" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.49604222" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -169,7 +183,8 @@
       <workItem from="1684433031379" duration="1719000" />
       <workItem from="1684482003156" duration="5744000" />
       <workItem from="1684494180082" duration="912000" />
-      <workItem from="1684499592859" duration="4229000" />
+      <workItem from="1684499592859" duration="13573000" />
+      <workItem from="1684681422656" duration="1544000" />
     </task>
     <servers />
   </component>
@@ -263,16 +278,29 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs</url>
-          <line>67</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TMDBLibService\FilteredLists\FilteredListServiceImpl.cs" initialLine="67" containingFunctionPresentation="method 'GetFilteredListOfMovies'">
+          <line>80</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TMDBLibService\FilteredLists\FilteredListServiceImpl.cs" initialLine="86" containingFunctionPresentation="method 'GetFilteredListOfMovies'">
             <startOffsets>
-              <option value="1812" />
+              <option value="2186" />
             </startOffsets>
             <endOffsets>
-              <option value="1870" />
+              <option value="2268" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="36" />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CineClubApi/Services/TagService/TagServiceImpl.cs</url>
+          <line>87</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TagService\TagServiceImpl.cs" initialLine="87" containingFunctionPresentation="method 'AddTag'">
+            <startOffsets>
+              <option value="2360" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2414" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

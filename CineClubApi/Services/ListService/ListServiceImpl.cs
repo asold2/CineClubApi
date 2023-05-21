@@ -50,7 +50,7 @@ public class ListServiceImpl : IListService
     {
         var listToUpdate =(List) await _listRepository.GetListById(updateListDto.Id);
 
-        if (!await UserHasRightTOUpdateList(updateListDto.Id, updateListDto.UserId))
+        if (!await _listRepository.UserHasRightToUpdateList(updateListDto.Id, updateListDto.UserId))
         {
             return new ServiceResult
             {
@@ -88,7 +88,7 @@ public class ListServiceImpl : IListService
     public  async Task<ServiceResult> DeleteListById(Guid listId, Guid userId)
     {
 
-        if (!await UserHasRightTOUpdateList(listId, userId))
+        if (!await _listRepository.UserHasRightToUpdateList(listId, userId))
         {
             return new ServiceResult
             {
@@ -110,16 +110,6 @@ public class ListServiceImpl : IListService
 
 
 
-    private async Task<bool> UserHasRightTOUpdateList(Guid listId, Guid userId)
-    {
-        var neededList = await _listRepository.GetListById(listId);
 
-        if (neededList.CreatorId == userId)
-        {
-            return true;
-        }
-
-        return false;
-    }
 
 }

@@ -36,4 +36,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<User> Users => Set<User>();
     public DbSet<List> Lists => Set<List>();
     public DbSet<MovieDao> MovieDaos => Set<MovieDao>();
+    public DbSet<Tag> ListTags  => Set<Tag>();
 }

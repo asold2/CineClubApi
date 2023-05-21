@@ -1,5 +1,4 @@
 ﻿using CineClubApi.Common.ServiceResults;
-using CineClubApi.Common.ServiceResults.AccountResults;
 using CineClubApi.Common.ServiceResults.MovieResult;
 using CineClubApi.Models;
 using CineClubApi.Repositories.ListRepository;
@@ -7,7 +6,7 @@ using CineClubApi.Repositories.MovieRepository;
 
 namespace CineClubApi.Services.MovieService;
 
-public class MovieServiceImpl : IMovieService
+public class MovieServiceImpl :  IMovieService
 {
 
     private readonly IMovieRepository _movieRepository;

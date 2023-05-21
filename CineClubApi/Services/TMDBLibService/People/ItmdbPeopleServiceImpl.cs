@@ -31,7 +31,7 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
         personToReturn.MoviesPersonTakesPartIn =
             await GetMoviesPersonParticipatesIn(personId, person.KnownForDepartment);
 
-        personToReturn.MoviesPersonTakesPartIn = await AssignImagesToMovie(personToReturn.MoviesPersonTakesPartIn, false);
+        // personToReturn.MoviesPersonTakesPartIn = await AssignImagesToMovie(personToReturn.MoviesPersonTakesPartIn, false);
         
         
         return personToReturn;

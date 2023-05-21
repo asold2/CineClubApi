@@ -39,25 +39,25 @@ public abstract class TmdbLib
     }
 
 
-    protected async Task<List<MovieForListDto>> AssignImagesToMovie(List<MovieForListDto> movies, bool both)
-    {
-
-        if (both)
-        {
-            foreach (var movie in movies)
-            {
-                movie.BackdropImage = await GetImageFromPath(movie.BackdropPath);
-                movie.PosterImage = await GetImageFromPath(movie.PosterPath);
-            }
-        }
-        else
-        {
-            foreach (var movie in movies)
-            {
-                movie.PosterImage = await GetImageFromPath(movie.PosterPath);
-            }
-        }
-
-        return movies;
-    }
+    // protected async Task<List<MovieForListDto>> AssignImagesToMovie(List<MovieForListDto> movies, bool both)
+    // {
+    //
+    //     if (both)
+    //     {
+    //         foreach (var movie in movies)
+    //         {
+    //             movie.BackdropImage = await GetImageFromPath(movie.BackdropPath);
+    //             movie.PosterImage = await GetImageFromPath(movie.PosterPath);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         foreach (var movie in movies)
+    //         {
+    //             movie.PosterImage = await GetImageFromPath(movie.PosterPath);
+    //         }
+    //     }
+    //
+    //     return movies;
+    // }
 }
