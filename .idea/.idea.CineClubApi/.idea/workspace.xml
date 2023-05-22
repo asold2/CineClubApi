@@ -7,6 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Helpers/IPaginator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Helpers/IPaginator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Helpers/PaginatorImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Helpers/PaginatorImpl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" afterDir="false" />
@@ -18,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/IMovieService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/IMovieService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" afterDir="false" />
+>>>>>>> 1126620ab8472c24d34b7a29ef435ef4c1b6af70
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
@@ -57,6 +61,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
+<<<<<<< HEAD
+                    <option name="lastUsedInstant" value="1684786632" />
+                  </RecentBranch>
+                  <RecentBranch>
+=======
                     <option name="lastUsedInstant" value="1684778185" />
                   </RecentBranch>
                   <RecentBranch>
@@ -64,6 +73,7 @@
                     <option name="lastUsedInstant" value="1684769806" />
                   </RecentBranch>
                   <RecentBranch>
+>>>>>>> 1126620ab8472c24d34b7a29ef435ef4c1b6af70
                     <option name="branchName" value="auth_lists" />
                     <option name="lastUsedInstant" value="1684485648" />
                   </RecentBranch>
