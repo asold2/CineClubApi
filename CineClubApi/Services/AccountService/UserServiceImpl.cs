@@ -3,8 +3,10 @@ using CineClubApi.Common.DTOs.User;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Common.ServiceResults.AccountResults;
 using CineClubApi.Common.ServiceResults.LoginResult;
+using CineClubApi.Models;
 using CineClubApi.Models.Auth;
 using CineClubApi.Repositories.AccountRepository;
+using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Services.TokenService;
 using Microsoft.IdentityModel.Tokens;
 
@@ -16,12 +18,14 @@ public class UserServiceImpl : IUserService
     private readonly IUserRepository _userRepository;
     private readonly IPasswordService _passwordService;
     private readonly ITokenService _tokenService;
+    private readonly IListRepository _listRepository;
 
-    public UserServiceImpl(IUserRepository userRepository, IPasswordService passwordService, ITokenService tokenService)
+    public UserServiceImpl(IUserRepository userRepository, IPasswordService passwordService, ITokenService tokenService, IListRepository listRepository)
     {
         _userRepository = userRepository;
         _passwordService = passwordService;
         _tokenService = tokenService;
+        _listRepository = listRepository;
     }
     
     
@@ -62,6 +66,27 @@ public class UserServiceImpl : IUserService
         };
 
         await _userRepository.CreateAccount(newAccount);
+
+
+        var likedList = new List
+        {
+            Name = "Liked Movies",
+            Public = false,
+            CreatorId = newAccount.Id,
+            Creator = newAccount
+        };
+        
+        
+        var watchedList = new List
+        {
+            Name = "Watched Movies",
+            Public = false,
+            CreatorId = newAccount.Id,
+            Creator = newAccount
+        };
+
+        await _listRepository.CreateList(likedList);
+        await _listRepository.CreateList(watchedList);
 
         return new CreatedAccountResult();
     }
