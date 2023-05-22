@@ -19,10 +19,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        
-            var connectionString = Environment.GetEnvironmentVariable("AzureCineClubDb");
+        var connectionString = Environment.GetEnvironmentVariable("AzureCineClubDb");
             optionsBuilder.UseNpgsql(connectionString);
-
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,7 +30,6 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
 
 
-    // public DbSet<Entity> Entities { get; }
     public DbSet<User> Users => Set<User>();
     public DbSet<List> Lists => Set<List>();
     public DbSet<MovieDao> MovieDaos => Set<MovieDao>();

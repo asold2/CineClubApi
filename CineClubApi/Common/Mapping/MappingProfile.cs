@@ -3,6 +3,7 @@ using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.Common;
 using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.DTOs.Tag;
 using CineClubApi.Models;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Languages;
@@ -26,6 +27,9 @@ public class MappingProfile : Profile
         CreateMap<Person, DetailedPersonInfoDto>();
         CreateMap<Crew, MoviePersonDto>();
         CreateMap<Language, LanguageDto>();
+        CreateMap<Tag, TagForListDto>();
+        CreateMap<Tag, TagDto>();
+        CreateMap<List, ListDto>();
 
     }
 }

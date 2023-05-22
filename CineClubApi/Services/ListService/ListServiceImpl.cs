@@ -6,6 +6,9 @@ using CineClubApi.Models;
 using CineClubApi.Models.Auth;
 using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.ListRepository;
+using CineClubApi.Repositories.ListTagsRepository;
+using CineClubApi.Services.ListTagService;
+using Microsoft.EntityFrameworkCore;
 
 namespace CineClubApi.Services.ListService;
 
@@ -14,20 +17,39 @@ public class ListServiceImpl : IListService
 
     private readonly IListRepository _listRepository;
     private readonly IUserRepository _userRepository;
+    private readonly ITagRepository _tagRepository;
     private readonly IMapper _mapper;
     
-    public ListServiceImpl(IListRepository listRepository, IUserRepository userRepository, IMapper mapper)
+    public ListServiceImpl(IListRepository listRepository, IUserRepository userRepository, IMapper mapper, ITagRepository tagRepository)
     {
         _listRepository = listRepository;
         _userRepository = userRepository;
         _mapper = mapper;
+        _tagRepository = tagRepository;
     }
     
     
     public async Task<ServiceResult> CreateNamedList(ListDto listDto)
     {
 
-        var neededUser = await _userRepository.GetUserById(listDto.UserId);
+        var neededUser = await _userRepository.GetUserById(listDto.CreatorId);
+
+
+        var usersLists = await _listRepository.GetAllListsByUserId(neededUser.Id);
+
+
+        if (usersLists.Any(x => x.Name == listDto.Name))
+        {
+            return new ServiceResult
+            {
+                StatusCode = 409,
+                Result = "User already has a list named like this one!"
+            };
+
+        }
+
+
+
 
         var list = new List
         {
@@ -108,8 +130,29 @@ public class ListServiceImpl : IListService
         }
     }
 
+    public async Task<List<ListDto>> GetListsByTags(List<Guid> tagIds)
+    {
+        var listOfNeededTags = new List<Tag>();
 
+        foreach (var id in tagIds)
+        {
+            var tag = await _tagRepository.GetTagWithListsById(id);
+            if (tag == null)
+            {
+                continue;
+            }
+            listOfNeededTags.Add(tag);
+        }
 
+        var listOfNeededLists = new List<List>();
 
+        foreach (var tag in listOfNeededTags)
+        {
+            listOfNeededLists.AddRange(tag.Lists);
+        }
 
+        var result =  _mapper.ProjectTo<ListDto>(listOfNeededLists.AsQueryable()).ToList();
+
+        return result;
+    }
 }

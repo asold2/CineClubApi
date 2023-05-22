@@ -10,19 +10,15 @@ namespace CineClubApi.Common.Permissions;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class LoggedInPermission : Attribute, IAuthorizationFilter
 {
-
     private readonly IAuthService _authService;
-
     public LoggedInPermission(IAuthService authService)
     {
         _authService = authService;
     }
-
     public LoggedInPermission()
     {
         
     }
-    
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         var authService = context.HttpContext.RequestServices.GetRequiredService<IAuthService>();

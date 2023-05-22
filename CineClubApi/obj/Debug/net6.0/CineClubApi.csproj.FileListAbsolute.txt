@@ -91,3 +91,10 @@ C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Azure.Security.
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.AzureAppConfiguration.dll
 C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\asold\Projects\CineClubApi\CineClubApi\bin\Debug\net6.0\System.Security.Permissions.dll

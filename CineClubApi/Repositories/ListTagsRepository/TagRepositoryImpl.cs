@@ -2,6 +2,7 @@
 using CineClubApi.Models;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Azure;
 
 namespace CineClubApi.Repositories.ListTagsRepository;
 
@@ -14,9 +15,9 @@ public class TagRepositoryImpl : ITagRepository
         _applicationDbContext = applicationDbContext;
     }
 
-    public async Task<List<Tag>> GetAllTags()
+    public async Task<IQueryable<Tag>> GetAllTags()
     {
-        return await _applicationDbContext.ListTags.ToListAsync();
+        return  _applicationDbContext.ListTags.AsSingleQuery();
     }
 
     public async Task<bool> TagExistsByName(string name)
@@ -40,6 +41,33 @@ public class TagRepositoryImpl : ITagRepository
     public async Task<Tag> GetTagById(Guid tagId)
     {
         var result = await _applicationDbContext.ListTags.FirstOrDefaultAsync(x => x.Id == tagId);
+        return result;
+    }
+
+    public async Task<bool> UserHasRightToModifyTag(Guid tagId, Guid userId)
+    {
+        var neededTag = await _applicationDbContext.ListTags.FirstOrDefaultAsync(x=>x.Id==tagId);
+
+        if (neededTag == null)
+        {
+            return false;
+        }
+
+        if (neededTag.CreatorId != userId)
+        {
+            return false;
+        }
+
+        return true;
+
+
+    }
+
+    public async Task<Tag> GetTagWithListsById(Guid id)
+    {
+        var result = await _applicationDbContext.ListTags
+            .Include(x=>x.Lists)
+            .FirstOrDefaultAsync(x => x.Id == id);
         return result;
     }
 }
