@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.Helpers;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Common.ServiceResults.ListResults;
 using CineClubApi.Models;
@@ -19,13 +20,15 @@ public class ListServiceImpl : IListService
     private readonly IUserRepository _userRepository;
     private readonly ITagRepository _tagRepository;
     private readonly IMapper _mapper;
+    private readonly IPaginator _paginator;
     
-    public ListServiceImpl(IListRepository listRepository, IUserRepository userRepository, IMapper mapper, ITagRepository tagRepository)
+    public ListServiceImpl(IListRepository listRepository, IUserRepository userRepository, IMapper mapper, ITagRepository tagRepository, IPaginator paginator)
     {
         _listRepository = listRepository;
         _userRepository = userRepository;
         _mapper = mapper;
         _tagRepository = tagRepository;
+        _paginator = paginator;
     }
     
     
@@ -33,10 +36,7 @@ public class ListServiceImpl : IListService
     {
 
         var neededUser = await _userRepository.GetUserById(listDto.CreatorId);
-
-
         var usersLists = await _listRepository.GetAllListsByUserId(neededUser.Id);
-
 
         if (usersLists.Any(x => x.Name == listDto.Name))
         {
@@ -47,9 +47,6 @@ public class ListServiceImpl : IListService
             };
 
         }
-
-
-
 
         var list = new List
         {
@@ -130,7 +127,7 @@ public class ListServiceImpl : IListService
         }
     }
 
-    public async Task<List<ListDto>> GetListsByTags(List<Guid> tagIds)
+    public async Task<List<ListDto>> GetListsByTags(List<Guid> tagIds, int? page, int? start, int? end)
     {
         var listOfNeededTags = new List<Tag>();
 
@@ -152,6 +149,15 @@ public class ListServiceImpl : IListService
         }
 
         var result =  _mapper.ProjectTo<ListDto>(listOfNeededLists.AsQueryable()).ToList();
+
+        //getting only public lists
+        result = result.Where(x => x.Public).ToList();
+
+        if (page != null && start != null && end != null)
+        {
+            result = await _paginator.PaginateLists(result, page, start, end);
+        }
+
 
         return result;
     }
