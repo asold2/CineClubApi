@@ -15,7 +15,5 @@ public class MovieForListDto
     // public byte[] BackdropImage { get; set; }
     // public byte[] PosterImage { get; set; }
     public DateTime ReleaseDate { get; set; }
-    
-    
-    
+  
 }

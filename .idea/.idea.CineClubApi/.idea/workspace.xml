@@ -6,33 +6,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/TagBody.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Controllers/TagController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Models/Tag.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/ITagRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/TagRepositoryImpl.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TagService/ITagService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineClubApi/Services/TagService/TagServiceImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/Tag/TagDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/Tag/TagForListDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/AssignTagToListBody.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/DeleteTagBody.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Interfaces/IApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Interfaces/IApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/CommonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/CommonController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Models/List.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Models/List.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/CineClubApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/CineClubApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/ListDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/List/ListDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/DTOs/Movies/MovieForListDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/DTOs/Movies/MovieForListDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Permissions/LoggedInPermission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Permissions/LoggedInPermission.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/TagBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/RequestBody/TagBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/TagController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/TagController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Persistance/ApplicationDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/IListRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/IListRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/ITagRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/ITagRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/TagRepositoryImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListTagsRepository/TagRepositoryImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/IListService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/IListService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Common/ICommonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Common/ICommonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TagService/ITagService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TagService/ITagService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/TagService/TagServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/TagService/TagServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/CineClubApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/CineClubApi.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/CineClubApi.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/CineClubApi.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/ref/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/refint/CineClubApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,6 +117,7 @@
     <setting file="file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Movies/TMDBMovieServiceImpl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/appsettings.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27b91272f348469b8fccc471c1ccd767f57a64f55a44975790bfae805b4ebb/Future.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f5297661c332adde375e682e974228832372ef64d6fd9c55e716bce7f72c655/ResourceInvoker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Movies/ITMDBMovieService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ee44aee7e4b3211f94f598e371bfb5e69693443a75eb87e1a1c7a87219131/SearchContainer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -185,6 +199,9 @@
       <workItem from="1684494180082" duration="912000" />
       <workItem from="1684499592859" duration="13573000" />
       <workItem from="1684681422656" duration="1544000" />
+      <workItem from="1684692832279" duration="2119000" />
+      <workItem from="1684756439550" duration="6678000" />
+      <workItem from="1684767760446" duration="1935000" />
     </task>
     <servers />
   </component>
@@ -211,19 +228,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs</url>
-          <line>40</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="29" containingFunctionPresentation="method 'CreateNamedList'">
-            <startOffsets>
-              <option value="1157" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1198" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Lists/TmdbListServiceImpl.cs</url>
           <line>91</line>
@@ -252,7 +256,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/Lists/TmdbListServiceImpl.cs</url>
-          <line>98</line>
+          <line>97</line>
           <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TMDBLibService\Lists\TmdbListServiceImpl.cs" initialLine="98" containingFunctionPresentation="method 'GetTrendingMovies'">
             <startOffsets>
               <option value="3390" />
@@ -277,30 +281,30 @@
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CineClubApi/Services/TMDBLibService/FilteredLists/FilteredListServiceImpl.cs</url>
-          <line>80</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TMDBLibService\FilteredLists\FilteredListServiceImpl.cs" initialLine="86" containingFunctionPresentation="method 'GetFilteredListOfMovies'">
+          <url>file://$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs</url>
+          <line>146</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="129" containingFunctionPresentation="method 'GetListsByTags'">
             <startOffsets>
-              <option value="2186" />
+              <option value="4014" />
             </startOffsets>
             <endOffsets>
-              <option value="2268" />
+              <option value="4055" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="37" />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CineClubApi/Services/TagService/TagServiceImpl.cs</url>
-          <line>87</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\TagService\TagServiceImpl.cs" initialLine="87" containingFunctionPresentation="method 'AddTag'">
+          <url>file://$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs</url>
+          <line>150</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="133" containingFunctionPresentation="method 'GetListsByTags'">
             <startOffsets>
-              <option value="2360" />
+              <option value="4125" />
             </startOffsets>
             <endOffsets>
-              <option value="2414" />
+              <option value="4163" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="40" />
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

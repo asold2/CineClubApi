@@ -16,4 +16,5 @@ public interface IListService
     public Task<ServiceResult> DeleteListById(Guid listId, Guid userId);
 
 
+    Task<List<ListDto>> GetListsByTags(List<Guid> tagIds);
 }

@@ -16,6 +16,8 @@ using CineClubApi.Services.TMDBLibService.Actor;
 using CineClubApi.Services.TMDBLibService.FilteredLists;
 using CineClubApi.Services.TMDBLibService.Lists;
 using CineClubApi.Services.TokenService;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,6 +57,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+        options => builder.Configuration.Bind("JwtSettings", options))
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+        options => builder.Configuration.Bind("CookieSettings", options));
+
+
+
+builder.Services.AddAuthorization();
+
 builder.Configuration
     .AddEnvironmentVariables();
 
@@ -76,15 +90,12 @@ var app = builder.Build();
 app.UseCors();
 
 
-// Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
     app.UseSwagger();
     app.UseSwaggerUI();
-// }
+
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 
 app.UseAuthorization();
 
@@ -100,7 +111,3 @@ using (var scope = app.Services.CreateScope())
 
 app.Run();
 
-/*static void Main()
-{
-    Console.WriteLine("App started");
-}*/

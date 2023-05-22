@@ -6,7 +6,7 @@ namespace CineClubApi.Repositories.ListRepository;
 
 public interface IListRepository
 {
-    public Task<IList<UpdateListDto>> GetAllListsByUserId(Guid userId);
+    public Task<List<UpdateListDto>> GetAllListsByUserId(Guid userId);
 
 
     Task CreateList(List list);

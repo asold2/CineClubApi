@@ -81,7 +81,7 @@ public class ListRepositoryImpl : IListRepository
         await _applicationDbContext.SaveChangesAsync();
     }
 
-    public async Task<IList<UpdateListDto>> GetAllListsByUserId(Guid userId)
+    public async Task<List<UpdateListDto>> GetAllListsByUserId(Guid userId)
     {
         var lists = await _applicationDbContext.Lists
             .Where(x => x.CreatorId == userId)
