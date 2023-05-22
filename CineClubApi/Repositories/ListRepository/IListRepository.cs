@@ -18,7 +18,9 @@ public interface IListRepository
     Task<bool> UserHasRightToUpdateList(Guid listId, Guid userId);
 
     // Task AddTagToList();
-
-
+    
     Task AddTagToList(Guid listId, Guid newTagId);
+
+    Task<List> GetListWithMovies(Guid listId);
+
 }

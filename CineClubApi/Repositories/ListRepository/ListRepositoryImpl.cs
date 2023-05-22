@@ -75,6 +75,15 @@ public class ListRepositoryImpl : IListRepository
         await UpdateList(neededList);
     }
 
+    public async Task<List> GetListWithMovies(Guid listId)
+    {
+        var result = await _applicationDbContext.Lists
+            .Include(x => x.MovieDaos)
+            .FirstOrDefaultAsync(x => x.Id == listId);
+
+        return result;
+    }
+
     public async Task UpdateList(List list)
     {
         _applicationDbContext.Lists.Update(list);

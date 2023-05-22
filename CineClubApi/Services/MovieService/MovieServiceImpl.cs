@@ -37,6 +37,15 @@ public class MovieServiceImpl :  IMovieService
 
     public async Task<ServiceResult> AddMovieToList(Guid listId, Guid userId, int tmdbId)
     {
+
+        if (await _listRepository.GetListById(listId) == null)
+        {
+            return new ServiceResult
+            {
+                StatusCode = 400,
+                Result = "List not found!"
+            };
+        }
         
         if (!await UserHasRightTOUpdateList(listId,userId))
         {
@@ -47,8 +56,6 @@ public class MovieServiceImpl :  IMovieService
             };
         }
         
-        
-        
         var neededMovieId = await SaveOrGetMovieDao(tmdbId);
 
         await _movieRepository.AddMovieToList(listId, neededMovieId);
@@ -56,9 +63,53 @@ public class MovieServiceImpl :  IMovieService
         return new MovieAddedToListResult();
 
     }
-    
-    
-    
+
+    public async Task<ServiceResult> DeleteMovieFromList(Guid listId, Guid userId, int tmdbId)
+    {
+        if (!await UserHasRightTOUpdateList(listId,userId))
+        {
+            return new ServiceResult
+            {
+                StatusCode = 403,
+                Result = "User has no right to update this list!"
+            };
+        }
+
+        var neededList = await _listRepository.GetListWithMovies(listId);
+
+        if (neededList==null)
+        {
+            return new ServiceResult
+            {
+                StatusCode = 400,
+                Result = "List not found!"
+            }; 
+        }
+
+        if (!neededList.MovieDaos.Any(x => x.tmdbId == tmdbId))
+        {
+            return new ServiceResult
+            {
+                StatusCode = 400,
+                Result = "Movie does not belong to this list!"
+            }; 
+        }
+
+        var neededMovie = await _movieRepository.GetMovieByTmdbId(tmdbId);
+
+
+        neededList.MovieDaos.Remove(neededMovie);
+
+        await _listRepository.UpdateList(neededList);
+        
+        return new ServiceResult
+        {
+            StatusCode = 200,
+            Result = "Movie successfully deleted from list!"
+        }; 
+    }
+
+
     private async Task<bool> UserHasRightTOUpdateList(Guid listId, Guid userId)
     {
         var neededList = await _listRepository.GetListById(listId);

@@ -7,7 +7,21 @@
   <component name="ChangeListManager">
     <list default="true" id="38d4875f-7f18-466b-86fb-c13d57f29010" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CineClubApi/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/AccountService/UserServiceImpl.cs" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Helpers/IPaginator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Helpers/IPaginator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Common/Helpers/PaginatorImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Common/Helpers/PaginatorImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Controllers/ListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/IListRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/IListRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/ListRepository/ListRepositoryImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/MovieRepository/IMovieRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/MovieRepository/IMovieRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Repositories/MovieRepository/MovieRepositoryImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Repositories/MovieRepository/MovieRepositoryImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/IListService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/IListService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/IMovieService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/IMovieService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs" afterDir="false" />
+>>>>>>> 1126620ab8472c24d34b7a29ef435ef4c1b6af70
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/bin/Debug/net6.0/CineClubApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CineClubApi/obj/Debug/net6.0/CineClubApi.dll" afterDir="false" />
@@ -47,9 +61,19 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
+<<<<<<< HEAD
                     <option name="lastUsedInstant" value="1684786632" />
                   </RecentBranch>
                   <RecentBranch>
+=======
+                    <option name="lastUsedInstant" value="1684778185" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="tag_list" />
+                    <option name="lastUsedInstant" value="1684769806" />
+                  </RecentBranch>
+                  <RecentBranch>
+>>>>>>> 1126620ab8472c24d34b7a29ef435ef4c1b6af70
                     <option name="branchName" value="auth_lists" />
                     <option name="lastUsedInstant" value="1684485648" />
                   </RecentBranch>
@@ -60,10 +84,6 @@
                   <RecentBranch>
                     <option name="branchName" value="list_genre" />
                     <option name="lastUsedInstant" value="1684156417" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="Category_lists" />
-                    <option name="lastUsedInstant" value="1684142673" />
                   </RecentBranch>
                 </list>
               </option>
@@ -251,29 +271,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs</url>
-          <line>146</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="129" containingFunctionPresentation="method 'GetListsByTags'">
+          <line>150</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="156" containingFunctionPresentation="method 'GetListsByTags'">
             <startOffsets>
-              <option value="4014" />
+              <option value="4342" />
             </startOffsets>
             <endOffsets>
-              <option value="4055" />
+              <option value="4425" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="33" />
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CineClubApi/Services/ListService/ListServiceImpl.cs</url>
-          <line>150</line>
-          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\ListService\ListServiceImpl.cs" initialLine="133" containingFunctionPresentation="method 'GetListsByTags'">
+          <url>file://$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs</url>
+          <line>97</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\MovieService\MovieServiceImpl.cs" initialLine="97" containingFunctionPresentation="method 'DeleteMovieFromList'">
             <startOffsets>
-              <option value="4125" />
+              <option value="2605" />
             </startOffsets>
             <endOffsets>
-              <option value="4163" />
+              <option value="2671" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="34" />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CineClubApi/Services/MovieService/MovieServiceImpl.cs</url>
+          <line>102</line>
+          <properties documentPath="C:\Users\asold\Projects\CineClubApi\CineClubApi\Services\MovieService\MovieServiceImpl.cs" initialLine="102" containingFunctionPresentation="method 'DeleteMovieFromList'">
+            <startOffsets>
+              <option value="2733" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2778" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

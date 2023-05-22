@@ -66,7 +66,7 @@ public class ListController : CineClubControllerBase
 
     }
 
-    [LoggedInPermission]
+    // [LoggedInPermission]
     [HttpPost("list/movie")]
     public async Task<ActionResult> AddMovieToList([FromBody] AddMovieToListBody body)
     {
@@ -80,10 +80,25 @@ public class ListController : CineClubControllerBase
         };
     }
 
-    [HttpGet("lists/tags")]
-    public async Task<List<ListDto>> GetListsWithTags([FromQuery] List<Guid> tagIds)
+    // [LoggedInPermission]
+    [HttpDelete("list/movie")]
+    public async Task<ActionResult> DeleteMovieFromList([FromBody] AddMovieToListBody body)
     {
-        var result = await _listService.GetListsByTags(tagIds);
+        var result = await _movieService.DeleteMovieFromList(body.ListId, body.UserId, body.TmdbId);
+        
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
+        
+    }
+
+    [HttpGet("lists/tags")]
+    public async Task<List<ListDto>> GetListsWithTags([FromQuery] List<Guid> tagIds, [FromQuery]int? page, [FromQuery]int? start, [FromQuery]int? end)
+    {
+        var result = await _listService.GetListsByTags(tagIds, page, start, end);
 
         return result;
 
