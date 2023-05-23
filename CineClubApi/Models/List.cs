@@ -10,4 +10,6 @@ public class List : Entity
     public User Creator { get; set; }
     public ICollection<MovieDao> MovieDaos { get;  } = new List<MovieDao>();
     public ICollection<Tag> Tags { get;  } = new List<Tag>();
+    public ICollection<Like> Likes { get; } = new List<Like>();
+
 }

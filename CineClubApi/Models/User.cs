@@ -14,4 +14,5 @@ public class User : Entity
 
     public ICollection<List> CreatedLists { get; } = new List<List>();
     public ICollection<Tag> CreatedTags { get; } = new List<Tag>();
+    public ICollection<Like> Likes { get; } = new List<Like>();
 }
