@@ -28,7 +28,9 @@ public class UserRepositoryImpl : IUserRepository
 
     public async Task<User> GetUserByUsername(string username)
     {
-        return await _applicationDbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+        var result = await _applicationDbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+        return result;
+
     }
 
     public async Task SetUserRefreshToken(User user, RefreshToken refreshToken)
@@ -77,11 +79,6 @@ public class UserRepositoryImpl : IUserRepository
     public async  Task<User> GetUserById(Guid userId)
     {
         var neededUser = await _applicationDbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
-
-        if (neededUser == null)
-        {
-            throw new Exception("User not found");
-        }
 
         return neededUser;
     }

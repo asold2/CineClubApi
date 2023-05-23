@@ -13,6 +13,8 @@ public interface IApplicationDbContext
     public DbSet<MovieDao> MovieDaos{ get;  }
     public DbSet<Tag> ListTags { get; }
 
+    public DbSet<Like> Likes { get; }
+
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
