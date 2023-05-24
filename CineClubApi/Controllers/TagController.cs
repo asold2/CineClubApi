@@ -71,7 +71,7 @@ public class TagController : CineClubControllerBase
     }
 
     [HttpGet("tag/{tagId}")]
-    public async Task<TagDto> GetTagById([FromQuery] Guid tagId)
+    public async Task<TagDto> GetTagById([FromRoute] Guid tagId)
     {
         var result = await _tagService.GetTag(tagId);
 
