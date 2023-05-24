@@ -15,7 +15,7 @@ public class DetailedMovieDto
     public Images Images { get; set; }
     public KeywordsContainer  KeywordsContainer { get; set; }
     public string OriginalLanguage { get; set; }
-    public string OriginalTitile { get; set; }
+    public string OriginalTitle { get; set; }
     public string Overview { get; set; }
     public double Popularity { get; set; }
     // public byte[] Backdrop { get; set; }
