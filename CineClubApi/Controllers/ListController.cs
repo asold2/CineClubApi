@@ -96,9 +96,9 @@ public class ListController : CineClubControllerBase
     }
 
     [HttpGet("lists/tags")]
-    public async Task<List<ListDto>> GetListsWithTags([FromQuery] List<Guid> tagIds, [FromQuery]int? page, [FromQuery]int? start, [FromQuery]int? end)
+    public async Task<List<ListDto>> GetListsWithTags([FromQuery] List<Guid> tagIds)
     {
-        var result = await _listService.GetListsByTags(tagIds, page, start, end);
+        var result = await _listService.GetListsByTags(tagIds);
 
         return result;
 

@@ -127,7 +127,7 @@ public class ListServiceImpl : IListService
         }
     }
 
-    public async Task<List<ListDto>> GetListsByTags(List<Guid> tagIds, int? page, int? start, int? end)
+    public async Task<List<ListDto>> GetListsByTags(List<Guid> tagIds)
     {
         var listOfNeededTags = new List<Tag>();
 
@@ -152,12 +152,6 @@ public class ListServiceImpl : IListService
 
         //getting only public lists
         result = result.Where(x => x.Public).ToList();
-
-        if (page != null && start != null && end != null)
-        {
-            result = await _paginator.PaginateLists(result, page, start, end);
-        }
-
 
         return result;
     }
