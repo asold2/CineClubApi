@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.DTOs.Movies;
+﻿using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Services.TmdbGenre;
 using Microsoft.AspNetCore.Mvc;
 using TMDbLib.Objects.General;
@@ -21,9 +22,9 @@ public class GenreController : CineClubControllerBase
     }
 
     [HttpPost("movies/genre/")]
-    public async Task<List<MovieForListDto>> GetMoviesByGenre([FromBody] List<Genre> genres, [FromQuery]int page, [FromQuery]int start, [FromQuery] int end)
+    public async Task<PaginatedListOfMovies> GetMoviesByGenre([FromBody] List<int> genreIds, [FromQuery]int page, [FromQuery]int start, [FromQuery] int end)
     {
-        return await _tmdbGenreService.GetMoviesByGenre(genres, page, start, end);
+        return await _tmdbGenreService.GetMoviesByGenre(genreIds, page, start, end);
     }
 
 

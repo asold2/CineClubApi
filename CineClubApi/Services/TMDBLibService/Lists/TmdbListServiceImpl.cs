@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Enums;
 using CineClubApi.Common.Helpers;
@@ -12,7 +13,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
     {
     }
 
-    public async Task<List<MovieForListDto>> GetPopularMovies(int page, int? start, int? end)
+    public async Task<PaginatedListOfMovies> GetPopularMovies(int page, int? start, int? end)
     {
 
         var popularMoviesList = new List<MovieForListDto>();
@@ -27,12 +28,17 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             popularMoviesList = _mapper.ProjectTo<MovieForListDto>(popularMovies.Results.AsQueryable()).ToList();
         }
 
-        // popularMoviesList = await AssignImagesToMovie(popularMoviesList, false);
 
-        return popularMoviesList;
+        var paginatedList = new PaginatedListOfMovies
+        {
+            Movies = popularMoviesList,
+            numberOfPages = popularMovies.TotalPages - 1
+        };
+ 
+        return paginatedList;
     }
     
-    public async Task<List<MovieForListDto>> GetTopRatedMovies(int page, int? start, int? end)
+    public async Task<PaginatedListOfMovies> GetTopRatedMovies(int page, int? start, int? end)
     {
         var topRatedMoviesList = new List<MovieForListDto>();
         
@@ -47,12 +53,16 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             topRatedMoviesList = _mapper.ProjectTo<MovieForListDto>(topRatedMovies.Results.AsQueryable()).ToList();
         }
         
-        // topRatedMoviesList = await AssignImagesToMovie(topRatedMoviesList, false);
-        
-        return topRatedMoviesList;
+        var paginatedList = new PaginatedListOfMovies
+        {
+            Movies = topRatedMoviesList,
+            numberOfPages = topRatedMovies.TotalPages - 1
+        };
+ 
+        return paginatedList;
     }
     
-    public async Task<List<MovieForListDto>> GetUpcomingMovies(int page, int? start, int? end)
+    public async Task<PaginatedListOfMovies> GetUpcomingMovies(int page, int? start, int? end)
     {
         var upcomingMoviesList = new List<MovieForListDto>();
         var upcomingMovies = await  client.GetMovieUpcomingListAsync(null, page, null);
@@ -66,11 +76,15 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             upcomingMoviesList = _mapper.ProjectTo<MovieForListDto>(upcomingMovies.Results.AsQueryable()).ToList();
         }
 
-        // upcomingMoviesList = await AssignImagesToMovie(upcomingMoviesList, false);
-        
-        return upcomingMoviesList;
+        var paginatedList = new PaginatedListOfMovies
+        {
+            Movies = upcomingMoviesList,
+            numberOfPages = upcomingMovies.TotalPages - 1
+        };
+ 
+        return paginatedList;
     }
-    public async Task<List<MovieForListDto>> GetTrendingMovies(TimePeriod period, int page, int? start, int? end)
+    public async Task<PaginatedListOfMovies> GetTrendingMovies(TimePeriod period, int page, int? start, int? end)
     {
         TimeWindow timeWindow = new TimeWindow();
 
@@ -96,8 +110,12 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
             trendingMoviesList = _mapper.ProjectTo<MovieForListDto>(trendingMovies.Results.AsQueryable()).ToList();
         }
 
-        // trendingMoviesList = await AssignImagesToMovie(trendingMoviesList, false);
-        
-        return trendingMoviesList;
+        var paginatedList = new PaginatedListOfMovies
+        {
+            Movies = trendingMoviesList,
+            numberOfPages = trendingMovies.TotalPages - 1
+        };
+ 
+        return paginatedList;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Services.TMDBLibService;
@@ -19,16 +20,23 @@ public class TmdbGenreServiceImpl: TmdbLib, ITMDBGenreService
         return await client.GetMovieGenresAsync();
     }
 
-    public async Task<List<MovieForListDto>> GetMoviesByGenre(List<Genre> genres, int page, int start, int end)
+    public async Task<PaginatedListOfMovies> GetMoviesByGenre(List<int> genreIds, int page, int start, int end)
     {
         var discoverer = client.DiscoverMoviesAsync();
         
-        var moviesByGenre =await discoverer.IncludeWithAllOfGenre(genres).Query();
-        
+        var moviesByGenre =await discoverer.IncludeWithAllOfGenre(genreIds).Query();
+
         var moviesByGenreList = await _paginator.PaginateMoviesList(moviesByGenre, start, page, end);
         // moviesByGenreList = await AssignImagesToMovie(moviesByGenreList, false);
 
-        return moviesByGenreList;
+        var paginatedList = new PaginatedListOfMovies
+        {
+            Movies = moviesByGenreList,
+            numberOfPages = moviesByGenre.TotalPages - page
+        };
+        
+        
+        return paginatedList;
         
     }
 }
