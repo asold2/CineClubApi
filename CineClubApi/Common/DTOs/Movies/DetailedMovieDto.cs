@@ -31,5 +31,7 @@ public class DetailedMovieDto
     public string Title { get; set; }
     public double VoteAverage { get; set; }
     public int VoteCount { get; set; }
+    public string BackdropPath  { get; set; }
+    public string PosterPath  { get; set; }
  
 }
