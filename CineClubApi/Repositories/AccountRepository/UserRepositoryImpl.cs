@@ -66,11 +66,7 @@ public class UserRepositoryImpl : IUserRepository
     {
         var neededUser =
             await _applicationDbContext.Users.FirstOrDefaultAsync(x => x.RefreshToken == tokenBody);
-
-        if (neededUser == null)
-        {
-            throw new Exception("User not found");
-        }
+        
 
         return neededUser;
 

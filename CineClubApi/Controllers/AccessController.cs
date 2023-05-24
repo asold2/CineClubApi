@@ -18,16 +18,45 @@ public class AccessController : CineClubControllerBase
     }
 
     [HttpPost("token")]
-    public async Task<ActionResult<ServiceResult>> AuthenticateUser([FromBody] AccountDto accountDto)
+    public async Task<ActionResult<SuccessfulLoginResult>> AuthenticateUser([FromBody] AccountDto accountDto)
     {
         var result =  await _userService.AuthenticateUser(accountDto);
-        
-        return new ContentResult
+
+        if (result.StatusCode == 400)
         {
-            Content = result.Result,
-            ContentType = "text/plain",
-            StatusCode = result.StatusCode
+            if (result.Result == "Username not found!")
+            {
+                return new ContentResult
+                {
+                    Content = "User not found!",
+                    ContentType = "text/plain",
+                    StatusCode = result.StatusCode
+                };
+            }
+            
+            if (result.Result == "Wrong Password!")
+            {
+                return new ContentResult
+                {
+                    Content = "Wrong password!",
+                    ContentType = "text/plain",
+                    StatusCode = result.StatusCode
+                };
+            }
+        }
+
+        var neededUser = await _userService.GetUserId(result.Result);
+
+        var success = new SuccessfulLoginResult
+        {
+            Token = result.Result,
+            UserId = neededUser,
+            Result = "Successful Login!"
         };
+
+        return Ok(success);
+        
+
         
     }
 
