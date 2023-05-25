@@ -36,6 +36,11 @@ public class ItmdbMovieServiceImpl :TmdbLib, ITMDBMovieService
     {
         var result = await client.GetMovieAsync(id);
 
+        if (result == null)
+        {
+            return null;
+        }
+
         byte[] movieBackdrop = await GetImageFromPath(result.BackdropPath);
         byte[] poster = await GetImageFromPath(result.PosterPath);
         

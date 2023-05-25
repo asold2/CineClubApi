@@ -78,7 +78,7 @@ public class ListController : CineClubControllerBase
 
     }
 
-    // [LoggedInPermission]
+    [LoggedInPermission]
     [HttpPost("list/movie")]
     public async Task<ActionResult> AddMovieToList([FromBody] AddMovieToListBody body)
     {
@@ -92,7 +92,7 @@ public class ListController : CineClubControllerBase
         };
     }
 
-    // [LoggedInPermission]
+    [LoggedInPermission]
     [HttpDelete("list/movie")]
     public async Task<ActionResult> DeleteMovieFromList([FromBody] AddMovieToListBody body)
     {
