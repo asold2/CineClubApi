@@ -2,5 +2,5 @@
 
 public interface IAuthService
 {
-    bool ValidateToken(string token);
+    Task<bool> ValidateToken(string token);
 }
