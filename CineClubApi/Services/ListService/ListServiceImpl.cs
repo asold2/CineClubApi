@@ -174,4 +174,66 @@ public class ListServiceImpl : IListService
         return paginatedResult;
 
     }
+
+    public async Task<UpdateListDto> GetUsersLikedList(Guid userId)
+    {
+        var allLists = await _listRepository.GetAllListsByUserId(userId);
+
+        var neededUser = await _userRepository.GetUserById(userId);
+
+        if (neededUser == null)
+        {
+            return null;
+        }
+        
+        var likedList = allLists.FirstOrDefault(x => x.Name == "Liked Movies");
+        
+        if (likedList==null)
+        {
+            var newLikedList = new List
+            {
+                Name = "Liked Movies",
+                Public = false,
+                CreatorId = userId,
+                Creator = neededUser
+            };
+            await _listRepository.CreateList(newLikedList);
+
+            await GetUsersLikedList(userId);
+        }
+
+        return likedList;
+
+    }
+    
+    public async Task<UpdateListDto> GetUsersWatchedList(Guid userId)
+    {
+        var allLists = await _listRepository.GetAllListsByUserId(userId);
+
+        var neededUser = await _userRepository.GetUserById(userId);
+
+        if (neededUser == null)
+        {
+            return null;
+        }
+
+        var watchedList = allLists.FirstOrDefault(x => x.Name == "Watched Movies");
+
+        if (watchedList==null)
+        {
+            var newWatchedList = new List
+            {
+                Name = "Watched Movies",
+                Public = false,
+                CreatorId = userId,
+                Creator = neededUser
+            };
+            await _listRepository.CreateList(newWatchedList);
+
+            await GetUsersWatchedList(userId);
+        }
+
+        return watchedList;
+
+    }
 }
