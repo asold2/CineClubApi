@@ -106,12 +106,7 @@ public class ListRepositoryImpl : IListRepository
 
     public async Task<List<UpdateListDto>> GetAllListsByUserId(Guid userId)
     {
-        var options = new JsonSerializerOptions
-        {
-            ReferenceHandler = ReferenceHandler.Preserve
-        };
-        
-        
+
         var lists = await _applicationDbContext.Lists
             .Where(x => x.CreatorId == userId)
             .ProjectTo<UpdateListDto>(_mapper.ConfigurationProvider).ToListAsync();
