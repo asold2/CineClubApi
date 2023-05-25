@@ -46,7 +46,10 @@ public class MovieRepositoryImpl : IMovieRepository
 
     public async Task<MovieDao> GetMovieByTmdbId(int tmdnId)
     {
-        var result = await _applicationDbContext.MovieDaos.FirstOrDefaultAsync(x => x.tmdbId == tmdnId);
+        var result = await _applicationDbContext.MovieDaos
+            .Include(x=>x.Lists)
+            .ThenInclude(l=>l.Tags)
+            .FirstOrDefaultAsync(x => x.tmdbId == tmdnId);
         return result;
     }
 }

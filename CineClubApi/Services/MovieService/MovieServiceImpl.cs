@@ -1,8 +1,11 @@
-﻿using CineClubApi.Common.ServiceResults;
+﻿using AutoMapper;
+using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.ServiceResults;
 using CineClubApi.Common.ServiceResults.MovieResult;
 using CineClubApi.Models;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.MovieRepository;
+using CineClubApi.Services.TMDBLibService;
 
 namespace CineClubApi.Services.MovieService;
 
@@ -11,16 +14,30 @@ public class MovieServiceImpl :  IMovieService
 
     private readonly IMovieRepository _movieRepository;
     private readonly IListRepository _listRepository;
+    private readonly ITMDBMovieService _tmdbMovieService;
+    private readonly IMapper _mapper;
 
-    public MovieServiceImpl(IMovieRepository movieRepository, IListRepository listRepository)
+    public MovieServiceImpl(IMovieRepository movieRepository,
+        IListRepository listRepository,
+        ITMDBMovieService tmdbMovieService,
+        IMapper mapper)
     {
         _movieRepository = movieRepository;
         _listRepository = listRepository;
+        _tmdbMovieService = tmdbMovieService;
+        _mapper = mapper;
     }
     
     
     public async Task<Guid> SaveOrGetMovieDao(int tmdbMovieId)
     {
+        var result = await _tmdbMovieService.getMovieById(tmdbMovieId);
+        
+        if ( result == null)
+        {
+            return Guid.Empty;
+        }
+        
 
         MovieDao movieDaoToSave = new MovieDao
         {
@@ -57,6 +74,15 @@ public class MovieServiceImpl :  IMovieService
         }
         
         var neededMovieId = await SaveOrGetMovieDao(tmdbId);
+
+        if (neededMovieId == Guid.Empty)
+        {
+            return new ServiceResult
+            {
+                Result = "Movie with this TMDB id not found",
+                StatusCode = 400
+            };
+        }
 
         await _movieRepository.AddMovieToList(listId, neededMovieId);
 
@@ -107,6 +133,32 @@ public class MovieServiceImpl :  IMovieService
             StatusCode = 200,
             Result = "Movie successfully deleted from list!"
         }; 
+    }
+
+    public async Task<List<UpdateListDto>> GetUsersListsToWhichMovieBelongs(Guid userId, int tmdbId)
+    {
+        var neededMovie = await  _movieRepository.GetMovieByTmdbId(tmdbId);
+
+        var listsMovieBelongsTo =  neededMovie.Lists
+            .Where(x=>x.CreatorId==userId)
+            .ToList();
+
+        var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
+
+        return result;
+    }
+
+    public async Task<List<UpdateListDto>> GetAllListsMoviebelongsTo(int tmdbId)
+    {
+        var neededMovie = await  _movieRepository.GetMovieByTmdbId(tmdbId);
+        
+        var listsMovieBelongsTo =  neededMovie.Lists
+            .Where(x=>x.Public)
+            .ToList();
+        
+        var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
+
+        return result;
     }
 
 
