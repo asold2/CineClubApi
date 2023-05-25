@@ -199,7 +199,7 @@ public class ListServiceImpl : IListService
             };
             await _listRepository.CreateList(newLikedList);
 
-            await GetUsersLikedList(userId);
+            return _mapper.Map<UpdateListDto>(newLikedList);
         }
 
         return likedList;
@@ -230,7 +230,8 @@ public class ListServiceImpl : IListService
             };
             await _listRepository.CreateList(newWatchedList);
 
-            await GetUsersWatchedList(userId);
+            return _mapper.Map<UpdateListDto>(newWatchedList);
+
         }
 
         return watchedList;
