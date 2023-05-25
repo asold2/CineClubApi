@@ -2,6 +2,7 @@
 
 public class MovieForListDto
 {
+    public long Budget { get; set; }
     public int Id { get; set; }
     public List<int> GenreIds { get; set; }
     public string OriginalLanguage { get; set; }

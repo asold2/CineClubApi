@@ -25,10 +25,7 @@ public class MovieRepositoryImpl : IMovieRepository
             .Include(x=>x.Lists)
             .FirstOrDefaultAsync(x => x.Id == movieDaoId);
 
-        // if (neededList.)
-        // {
-        //     
-        // }
+
         
         neededList.MovieDaos.Add(neededMovieDao);
 
