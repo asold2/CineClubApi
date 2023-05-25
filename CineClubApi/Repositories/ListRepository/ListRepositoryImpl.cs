@@ -107,9 +107,9 @@ public class ListRepositoryImpl : IListRepository
     public async Task<List<UpdateListDto>> GetAllListsByUserId(Guid userId)
     {
 
-        var lists = await _applicationDbContext.Lists
+        var lists =  _applicationDbContext.Lists
             .Where(x => x.CreatorId == userId)
-            .ProjectTo<UpdateListDto>(_mapper.ConfigurationProvider).ToListAsync();
+            .ProjectTo<UpdateListDto>(_mapper.ConfigurationProvider).ToList();
 
         
         return lists;
