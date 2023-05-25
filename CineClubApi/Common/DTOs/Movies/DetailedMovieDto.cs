@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using TMDbLib.Objects.General;
+﻿using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Reviews;
 
@@ -8,7 +7,7 @@ namespace CineClubApi.Common.DTOs.Movies;
 public class DetailedMovieDto
 {
     public long Budget { get; set; }
-    public IList<Genre> Genres { get; set; }
+    public IList<TMDbLib.Objects.General.Genre> Genres { get; set; }
     public string Homepage { get; set; }
     public int Id { get; set; }
     public string ImdbId  { get; set; }

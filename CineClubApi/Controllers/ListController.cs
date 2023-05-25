@@ -125,6 +125,7 @@ public class ListController : CineClubControllerBase
 
     }
 
+    [LoggedInPermission]
     [HttpGet("liked_list")]
     public async Task<UpdateListDto> GetUsersLikedList([FromQuery] Guid userId)
     {
@@ -132,7 +133,7 @@ public class ListController : CineClubControllerBase
 
         return result;
     }
-    
+    [LoggedInPermission]
     [HttpGet("watched_list")]
     public async Task<UpdateListDto> GetUsersWatchedList([FromQuery] Guid userId)
     {

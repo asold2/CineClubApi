@@ -17,6 +17,7 @@ using CineClubApi.Services.TMDBLibService;
 using CineClubApi.Services.TMDBLibService.Actor;
 using CineClubApi.Services.TMDBLibService.FilteredLists;
 using CineClubApi.Services.TMDBLibService.Lists;
+using CineClubApi.Services.TMDBLibService.Statistics;
 using CineClubApi.Services.TokenService;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -54,6 +55,8 @@ builder.Services.AddScoped<ITagRepository, TagRepositoryImpl>();
 builder.Services.AddScoped<ITagService, TagServiceImpl>();
 builder.Services.AddScoped<ILikeRepository,LikeRepositoryImpl>();
 builder.Services.AddScoped<ILikeService, LikeServiceImpl>();
+builder.Services.AddScoped<IStatisticsService, StatisticsServiceImpl>();
+
 
 
 
