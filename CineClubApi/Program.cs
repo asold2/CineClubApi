@@ -97,8 +97,8 @@ var app = builder.Build();
 app.UseCors();
 
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 
 app.UseHttpsRedirection();
