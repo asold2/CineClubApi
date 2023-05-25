@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
 using CineClubApi.Services.MovieService;
 using CineClubApi.Services.TMDBLibService;
@@ -46,6 +47,32 @@ public class MoviesController : CineClubControllerBase
         var result = await _movieService.GetAllListsMoviebelongsTo(tmdbId);
 
         return result;
+    }
+
+    [HttpPost("movie/like")]
+    public async Task<ActionResult> LikeMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)
+    {
+        var result = await _movieService.AddMovieToLikedList(userid, tmdbId);
+
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
+    }
+    
+    [HttpPost("movie/watched")]
+    public async Task<ActionResult> WatchedMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)
+    {
+        var result = await _movieService.AddMovieToWatchedList(userid, tmdbId);
+
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
     }
 
 
