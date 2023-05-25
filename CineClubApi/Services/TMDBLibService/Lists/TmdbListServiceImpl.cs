@@ -32,7 +32,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
         var paginatedList = new PaginatedListOfMovies
         {
             Movies = popularMoviesList,
-            numberOfPages = popularMovies.TotalPages - page
+            numberOfPages = popularMovies.TotalPages
         };
  
         return paginatedList;
@@ -56,7 +56,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
         var paginatedList = new PaginatedListOfMovies
         {
             Movies = topRatedMoviesList,
-            numberOfPages = topRatedMovies.TotalPages - page
+            numberOfPages = topRatedMovies.TotalPages
         };
  
         return paginatedList;
@@ -79,7 +79,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
         var paginatedList = new PaginatedListOfMovies
         {
             Movies = upcomingMoviesList,
-            numberOfPages = upcomingMovies.TotalPages - page
+            numberOfPages = upcomingMovies.TotalPages 
         };
  
         return paginatedList;
@@ -113,7 +113,7 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
         var paginatedList = new PaginatedListOfMovies
         {
             Movies = trendingMoviesList,
-            numberOfPages = trendingMovies.TotalPages - page
+            numberOfPages = trendingMovies.TotalPages
         };
  
         return paginatedList;

@@ -93,7 +93,7 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
             discoveredMovies= await _paginator.PaginateMoviesList(listToReturn, start, page, end);
 
             paginatedList.Movies = discoveredMovies;
-            paginatedList.numberOfPages = listToReturn.TotalPages - page;
+            paginatedList.numberOfPages = listToReturn.TotalPages;
             
             return paginatedList;
         }
@@ -102,7 +102,7 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
         // listOfDiscoveredMovies = await AssignImagesToMovie(listOfDiscoveredMovies, false);
  
         paginatedList.Movies = listOfDiscoveredMovies;
-        paginatedList.numberOfPages = listToReturn.TotalPages - page;
+        paginatedList.numberOfPages = listToReturn.TotalPages;
             
         return paginatedList;
         
