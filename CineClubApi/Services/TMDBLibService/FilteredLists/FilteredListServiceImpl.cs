@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Models;
@@ -17,7 +18,8 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
     }
 
 
-    public async Task<List<MovieForListDto>> GetFilteredListOfMovies(
+    public async Task<PaginatedListOfMovies> GetFilteredListOfMovies(
+        int page, int? start, int? end,
         List<int>? genreIds,
         int? year,
         DateTime? releasedAfter,
@@ -73,14 +75,37 @@ public class FilteredListServiceImpl : TmdbLib, IFilteredListService
         }
 
 
-        var listToReturn = await discoverer.Query();
+        var listToReturn = await discoverer.Query(page);
+        
+        
 
         var listOfDiscoveredMovies =
             _mapper.ProjectTo<MovieForListDto>(listToReturn.Results.AsQueryable()).ToList();
 
+        var discoveredMovies = new List<MovieForListDto>();
+
+        
+        var paginatedList = new PaginatedListOfMovies();
+
+        
+        if (start != null && end != null)
+        {
+            discoveredMovies= await _paginator.PaginateMoviesList(listToReturn, start, page, end);
+
+            paginatedList.Movies = discoveredMovies;
+            paginatedList.numberOfPages = listToReturn.TotalPages - page;
+            
+            return paginatedList;
+        }
+
+
         // listOfDiscoveredMovies = await AssignImagesToMovie(listOfDiscoveredMovies, false);
  
-        return  listOfDiscoveredMovies;
+        paginatedList.Movies = listOfDiscoveredMovies;
+        paginatedList.numberOfPages = listToReturn.TotalPages - page;
+            
+        return paginatedList;
+        
     }
 
 }

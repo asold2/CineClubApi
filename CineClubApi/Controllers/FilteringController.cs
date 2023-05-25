@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.DTOs.Movies;
+﻿using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.RequestBody;
 using CineClubApi.Services.TMDBLibService.FilteredLists;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,9 @@ public class FilteringController : CineClubControllerBase
     
     
     [HttpGet("filter")]
-    public async Task<List<MovieForListDto>> GetFilteredListOfMovies([FromQuery] FilteringRequestBody body)
+    public async Task<PaginatedListOfMovies> GetFilteredListOfMovies([FromQuery]int page, [FromQuery]int? start, [FromQuery] int? end, [FromQuery] FilteringRequestBody body)
     {
-        return await _filteredListService.GetFilteredListOfMovies(
+        return await _filteredListService.GetFilteredListOfMovies(page, start, end,
             body.GenreIds,
             body.Year,
             body.ReleasedAfter,
