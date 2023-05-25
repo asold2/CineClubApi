@@ -67,7 +67,7 @@ public class ListServiceImpl : IListService
 
     public async Task<ServiceResult> UpdateListNameOrStatus(UpdateListDto updateListDto)
     {
-        var listToUpdate =(List) await _listRepository.GetListById(updateListDto.Id);
+        var listToUpdate = await _listRepository.GetListById(updateListDto.Id);
 
         if (!await _listRepository.UserHasRightToUpdateList(updateListDto.Id, updateListDto.CreatorId))
         {
