@@ -53,4 +53,20 @@ public class PaginatorImpl : IPaginator
 
         return  listsToTake.ToList();
     }
+
+    public async Task<List<UpdateListDto>> PaginateUpdatedListDto(List<UpdateListDto> lists, int page, int start, int end)
+    {
+        int pageSize = end - start + 1;
+
+        if (page < 1 )
+        {
+            return new List<UpdateListDto>();
+        }
+
+        var listsToTake = lists.Skip((int)start - 1).Take(pageSize).AsQueryable();
+        
+        // var lists = _mapper.ProjectTo<ListDto>(listsToTake).ToList();
+
+        return  listsToTake.ToList();
+    }
 }

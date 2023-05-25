@@ -17,10 +17,10 @@ public interface IListRepository
     Task DeleteListById(Guid id);
     Task<bool> UserHasRightToUpdateList(Guid listId, Guid userId);
 
-    // Task AddTagToList();
-    
     Task AddTagToList(Guid listId, Guid newTagId);
 
     Task<List> GetListWithMovies(Guid listId);
+
+    Task<List<List>> GetAllPublicLists();
 
 }
