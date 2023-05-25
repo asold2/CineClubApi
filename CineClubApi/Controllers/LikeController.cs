@@ -45,6 +45,7 @@ public class LikeController : CineClubControllerBase
         };
         
     }
+    [LoggedInPermission]
 
     [HttpGet("liked_lists")]
     public async Task<List<UpdateListDto>> GetAllLikedLists([FromQuery] Guid userId)
