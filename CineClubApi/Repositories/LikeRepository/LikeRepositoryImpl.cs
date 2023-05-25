@@ -30,7 +30,9 @@ public class LikeRepositoryImpl : ILikeRepository
 
     public async Task<List<Like>> GetAllLikesByUserId(Guid userId)
     {
-        var result = await _applicationDbContext.Likes.Where(x => x.UserId == userId).ToListAsync();
+        var result = await _applicationDbContext.Likes
+            .Include(x=>x.List)
+            .Where(x => x.UserId == userId).ToListAsync();
 
         return result;
     }

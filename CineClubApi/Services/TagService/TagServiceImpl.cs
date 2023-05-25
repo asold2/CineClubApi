@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CineClubApi.Common.DTOs.Tag;
 using CineClubApi.Common.ServiceResults;
+using CineClubApi.Common.ServiceResults.TagResults;
 using CineClubApi.Models;
 using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.ListRepository;
@@ -34,11 +35,11 @@ public class TagServiceImpl : ITagService
         return neededList;
     }
 
-    public async Task<ServiceResult> CreateTag( Guid userId, string name)
+    public async Task<CreatedTagResult> CreateTag( Guid userId, string name)
     {
         if (await _tagRepository.TagExistsByName(name))
         {
-            return new ServiceResult
+            return new CreatedTagResult
             {
                 StatusCode = 409,
                 Result = "Tag with this name already exists!"
@@ -50,7 +51,7 @@ public class TagServiceImpl : ITagService
 
         if (creator==null)
         {
-            return new ServiceResult
+            return new CreatedTagResult
             {
                 StatusCode = 400,
                 Result = "User not found!"
@@ -66,11 +67,11 @@ public class TagServiceImpl : ITagService
     
         await _tagRepository.AddTag(newTag);
         
-        return new ServiceResult
+        return new CreatedTagResult
         {
             StatusCode = 200,
-            Result = "Tag created with id:" +
-                     newTag.Id
+            Result = "Tag created!",
+            tagId = newTag.Id
         };
     }
 
