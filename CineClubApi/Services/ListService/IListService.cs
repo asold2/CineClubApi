@@ -18,4 +18,6 @@ public interface IListService
 
     Task<List<ListDto>> GetListsByTags(List<Guid> tagIds);
     Task<List<UpdateListDto>> GetAllLists(int page, int start, int end);
+    Task<UpdateListDto> GetUsersLikedList(Guid userId);
+    Task<UpdateListDto> GetUsersWatchedList(Guid userId);
 }

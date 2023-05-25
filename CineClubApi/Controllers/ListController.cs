@@ -116,8 +116,6 @@ public class ListController : CineClubControllerBase
 
     }
 
-
-
     [HttpGet("all_lists")]
     public async Task<ActionResult<List<UpdateListDto>>> GetAllLists([FromQuery]int page, [FromQuery]int start,[FromQuery] int end)
     {
@@ -125,6 +123,22 @@ public class ListController : CineClubControllerBase
 
         return result;
 
+    }
+
+    [HttpGet("liked_list")]
+    public async Task<UpdateListDto> GetUsersLikedList([FromQuery] Guid userId)
+    {
+        var result = await _listService.GetUsersLikedList(userId);
+
+        return result;
+    }
+    
+    [HttpGet("watched_list")]
+    public async Task<UpdateListDto> GetUsersWatchedList([FromQuery] Guid userId)
+    {
+        var result = await _listService.GetUsersWatchedList(userId);
+
+        return result;
     }
 
 
