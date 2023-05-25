@@ -46,9 +46,9 @@ public class ListController : CineClubControllerBase
     }
 
     [HttpGet("lists")]
-    public async Task<ActionResult<IList<UpdateListDto>>> GetListsByUserdId([FromQuery] string tokenBody)
+    public async Task<ActionResult<IList<UpdateListDto>>> GetListsByUserdId([FromQuery] Guid userId)
     {
-        var result = await _listService.GetListsByUserId(tokenBody);
+        var result = await _listService.GetListsByUserId(userId);
 
         if (result==null)
         {
@@ -127,19 +127,19 @@ public class ListController : CineClubControllerBase
 
     [LoggedInPermission]
     [HttpGet("liked_list")]
-    public async Task<UpdateListDto> GetUsersLikedList([FromQuery] Guid userId)
+    public async Task<ActionResult<UpdateListDto>> GetUsersLikedList([FromQuery] Guid userId)
     {
         var result = await _listService.GetUsersLikedList(userId);
 
-        return result;
+        return Ok(result);
     }
     [LoggedInPermission]
     [HttpGet("watched_list")]
-    public async Task<UpdateListDto> GetUsersWatchedList([FromQuery] Guid userId)
+    public async Task<ActionResult<UpdateListDto>> GetUsersWatchedList([FromQuery] Guid userId)
     {
         var result = await _listService.GetUsersWatchedList(userId);
 
-        return result;
+        return Ok(result);
     }
 
 

@@ -92,9 +92,9 @@ public class ListServiceImpl : IListService
         return new ListSuccessfullyUpdateResult();
     }
 
-    public async Task<IList<UpdateListDto>> GetListsByUserId(string tokenBody)
+    public async Task<IList<UpdateListDto>> GetListsByUserId(Guid userId)
     {
-        var neededUser = await _userRepository.GetUserByRefreshToken(tokenBody);
+        var neededUser = await _userRepository.GetUserById(userId);
 
         if (neededUser==null)
         {

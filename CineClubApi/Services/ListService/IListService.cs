@@ -11,7 +11,7 @@ public interface IListService
 
     public Task<ServiceResult> UpdateListNameOrStatus(UpdateListDto updateListDto);
 
-    public Task<IList<UpdateListDto>> GetListsByUserId(string tokenBody);
+    public Task<IList<UpdateListDto>> GetListsByUserId(Guid userId);
 
     public Task<ServiceResult> DeleteListById(Guid listId, Guid userId);
 
