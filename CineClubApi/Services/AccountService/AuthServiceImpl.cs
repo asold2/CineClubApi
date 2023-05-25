@@ -1,4 +1,5 @@
 ﻿using CineClubApi.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace CineClubApi.Services.AccountService;
@@ -14,14 +15,14 @@ public class AuthServiceImpl : IAuthService
     }
     
     
-    public  bool ValidateToken(string token)
+    public async Task<bool> ValidateToken(string token)
     {
         if (token.IsNullOrEmpty())
         {
             return false;
         }
         
-        if (_applicationDbContext.Users.Any(x => x.RefreshToken == token))
+        if (await _applicationDbContext.Users.AnyAsync(x => x.RefreshToken == token))
         {
             return true;
         }
