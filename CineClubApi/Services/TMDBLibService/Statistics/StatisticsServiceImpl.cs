@@ -31,6 +31,7 @@ public class StatisticsServiceImpl :TmdbLib, IStatisticsService
             var detailedMovie = await _tmdbMovieService.getMovieById(movieDto.Id);
 
             movieDto.Budget = detailedMovie.Budget;
+            movieDto.Revenue = detailedMovie.Revenue;
 
         }
         
