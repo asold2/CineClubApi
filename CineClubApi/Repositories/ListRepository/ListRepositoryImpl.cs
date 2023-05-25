@@ -1,6 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Security.Cryptography.Xml;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Tag;
 using CineClubApi.Common.Interfaces;
 using CineClubApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -84,6 +88,16 @@ public class ListRepositoryImpl : IListRepository
         return result;
     }
 
+    public async Task<List<List>> GetAllPublicLists()
+    {
+        var result = await _applicationDbContext.Lists
+            .Where(x => x.Public)
+            .Include(x=>x.Tags)
+            .ToListAsync();
+
+        return result;
+    }
+
     public async Task UpdateList(List list)
     {
         _applicationDbContext.Lists.Update(list);
@@ -92,9 +106,17 @@ public class ListRepositoryImpl : IListRepository
 
     public async Task<List<UpdateListDto>> GetAllListsByUserId(Guid userId)
     {
+        var options = new JsonSerializerOptions
+        {
+            ReferenceHandler = ReferenceHandler.Preserve
+        };
+        
+        
         var lists = await _applicationDbContext.Lists
             .Where(x => x.CreatorId == userId)
             .ProjectTo<UpdateListDto>(_mapper.ConfigurationProvider).ToListAsync();
+
+        
         return lists;
     }
 }

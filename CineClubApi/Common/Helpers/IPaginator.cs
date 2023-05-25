@@ -13,4 +13,6 @@ public interface IPaginator
     
     Task<List<ListDto>>
         PaginateLists(List<ListDto> list, int? page, int? start, int? end);
+
+    Task<List<UpdateListDto>> PaginateUpdatedListDto(List<UpdateListDto> lists, int page, int start, int end);
 }

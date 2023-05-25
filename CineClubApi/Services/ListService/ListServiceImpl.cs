@@ -69,7 +69,7 @@ public class ListServiceImpl : IListService
     {
         var listToUpdate =(List) await _listRepository.GetListById(updateListDto.Id);
 
-        if (!await _listRepository.UserHasRightToUpdateList(updateListDto.Id, updateListDto.UserId))
+        if (!await _listRepository.UserHasRightToUpdateList(updateListDto.Id, updateListDto.CreatorId))
         {
             return new ServiceResult
             {
@@ -94,7 +94,12 @@ public class ListServiceImpl : IListService
 
     public async Task<IList<UpdateListDto>> GetListsByUserId(string tokenBody)
     {
-        var neededUser = await _userRepository.GetUserByRefreshToken(tokenBody); 
+        var neededUser = await _userRepository.GetUserByRefreshToken(tokenBody);
+
+        if (neededUser==null)
+        {
+            return null;
+        }
         
         
         var lists = await _listRepository.GetAllListsByUserId(neededUser.Id);
@@ -154,5 +159,19 @@ public class ListServiceImpl : IListService
         result = result.Where(x => x.Public).ToList();
 
         return result;
+    }
+
+    public async Task<List<UpdateListDto>> GetAllLists(int page, int start, int end)
+    {
+        var lists = await _listRepository.GetAllPublicLists();
+
+
+        var result = _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
+        
+        var paginatedResult =await  _paginator.PaginateUpdatedListDto(result, page, start, end);
+
+
+        return paginatedResult;
+
     }
 }
