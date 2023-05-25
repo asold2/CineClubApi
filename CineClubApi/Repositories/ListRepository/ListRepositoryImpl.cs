@@ -108,10 +108,11 @@ public class ListRepositoryImpl : IListRepository
     {
 
         var lists = await _applicationDbContext.Lists
-            .Where(x => x.CreatorId == userId)
-            .ProjectTo<UpdateListDto>(_mapper.ConfigurationProvider).ToListAsync();
+            .Where(x => x.CreatorId == userId).ToListAsync();
 
+        var result =  _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
         
-        return lists;
+        
+        return result;
     }
 }
