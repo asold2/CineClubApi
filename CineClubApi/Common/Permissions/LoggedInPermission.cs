@@ -19,7 +19,7 @@ public class LoggedInPermission : Attribute, IAuthorizationFilter
     {
         
     }
-    public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
+    public void OnAuthorization(AuthorizationFilterContext context)
     {
         var authService = context.HttpContext.RequestServices.GetRequiredService<IAuthService>();
 
@@ -42,7 +42,7 @@ public class LoggedInPermission : Attribute, IAuthorizationFilter
         string token = authorizationHeader.Substring("Bearer ".Length).Trim();
 
         // Perform token validation and authorization checks
-        var isAuthorized = await authService.ValidateToken(token);
+        bool isAuthorized = authService.ValidateToken(token);
 
         if (!isAuthorized)
         {
@@ -50,10 +50,5 @@ public class LoggedInPermission : Attribute, IAuthorizationFilter
             return;
         }
 
-    }
-    
-    public void OnAuthorization(AuthorizationFilterContext context)
-    {
-        _ = OnAuthorizationAsync(context); // Start the async operation without waiting for it
     }
 }
