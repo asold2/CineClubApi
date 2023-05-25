@@ -6,7 +6,9 @@ namespace CineClubApi.Services.TMDBLibService.FilteredLists;
 
 public interface IFilteredListService
 {
-    Task<List<MovieForListDto>> GetFilteredListOfMovies(List<int>? genreIds,
+    Task<PaginatedListOfMovies> GetFilteredListOfMovies(
+        int page, int? start, int? end,
+        List<int>? genreIds,
         int? year,
         DateTime? releasedAfter,
         DateTime? releasedBefore,
