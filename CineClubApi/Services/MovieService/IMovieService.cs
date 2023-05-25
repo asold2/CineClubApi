@@ -11,5 +11,7 @@ public interface IMovieService
 
     Task<List<UpdateListDto>> GetUsersListsToWhichMovieBelongs(Guid userId, int tmdbId);
     Task<List<UpdateListDto>> GetAllListsMoviebelongsTo(int tmdbId);
-    
+
+    Task<ServiceResult> AddMovieToLikedList(Guid userid, int tmdbId);
+    Task<ServiceResult> AddMovieToWatchedList(Guid userid, int tmdbId);
 }

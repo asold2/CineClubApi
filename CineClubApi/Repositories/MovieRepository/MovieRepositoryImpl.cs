@@ -17,9 +17,18 @@ public class MovieRepositoryImpl : IMovieRepository
     
     public async Task AddMovieToList(Guid listId, Guid movieDaoId)
     {
-        var neededList = await _applicationDbContext.Lists.FirstOrDefaultAsync(x => x.Id == listId);
+        var neededList = await _applicationDbContext.Lists
+            .Include(x=>x.MovieDaos)
+            .FirstOrDefaultAsync(x => x.Id == listId);
 
-        var neededMovieDao = await _applicationDbContext.MovieDaos.FirstOrDefaultAsync(x => x.Id == movieDaoId);
+        var neededMovieDao = await _applicationDbContext.MovieDaos
+            .Include(x=>x.Lists)
+            .FirstOrDefaultAsync(x => x.Id == movieDaoId);
+
+        // if (neededList.)
+        // {
+        //     
+        // }
         
         neededList.MovieDaos.Add(neededMovieDao);
 

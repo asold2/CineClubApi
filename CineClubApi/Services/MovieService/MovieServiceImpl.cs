@@ -5,6 +5,7 @@ using CineClubApi.Common.ServiceResults.MovieResult;
 using CineClubApi.Models;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.MovieRepository;
+using CineClubApi.Services.ListService;
 using CineClubApi.Services.TMDBLibService;
 
 namespace CineClubApi.Services.MovieService;
@@ -16,16 +17,19 @@ public class MovieServiceImpl :  IMovieService
     private readonly IListRepository _listRepository;
     private readonly ITMDBMovieService _tmdbMovieService;
     private readonly IMapper _mapper;
+    private readonly IListService _listService;
 
     public MovieServiceImpl(IMovieRepository movieRepository,
         IListRepository listRepository,
         ITMDBMovieService tmdbMovieService,
-        IMapper mapper)
+        IMapper mapper,
+        IListService listService)
     {
         _movieRepository = movieRepository;
         _listRepository = listRepository;
         _tmdbMovieService = tmdbMovieService;
         _mapper = mapper;
+        _listService = listService;
     }
     
     
@@ -159,6 +163,44 @@ public class MovieServiceImpl :  IMovieService
         var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
 
         return result;
+    }
+
+    public async Task<ServiceResult> AddMovieToLikedList(Guid userid, int tmdbId)
+    {
+        var likedList =await  _listService.GetUsersLikedList(userid);
+
+        if (likedList==null)
+        {
+            return new ServiceResult
+            {
+                Result = "List of liked movies not found!",
+                StatusCode = 400
+            };
+        }
+        
+        var result = await AddMovieToList(likedList.Id, userid, tmdbId);
+
+        return result;
+
+    }
+    
+    public async Task<ServiceResult> AddMovieToWatchedList(Guid userid, int tmdbId)
+    {
+        var watchedList = await  _listService.GetUsersWatchedList(userid);
+
+        if (watchedList==null)
+        {
+            return new ServiceResult
+            {
+                Result = "List of watched movies not found!",
+                StatusCode = 400
+            };
+        }
+        
+        var result = await AddMovieToList(watchedList.Id, userid, tmdbId);
+
+        return result;
+
     }
 
 
