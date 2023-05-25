@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.Permissions;
+﻿using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.Permissions;
 using CineClubApi.Common.RequestBody;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Services.LikeService;
@@ -45,6 +46,15 @@ public class LikeController : CineClubControllerBase
         
     }
 
+    [HttpGet("liked_lists")]
+    public async Task<List<UpdateListDto>> GetAllLikedLists([FromQuery] Guid userId)
+    {
+
+        var result = await _likeService.GetLikedLists(userId);
+
+        return result;
+
+    }
 
 
 }

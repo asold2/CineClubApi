@@ -1,4 +1,6 @@
-﻿using CineClubApi.Common.ServiceResults;
+﻿using AutoMapper;
+using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
 using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.LikeRepository;
@@ -11,14 +13,17 @@ public class LikeServiceImpl : ILikeService
     private readonly ILikeRepository _likeRepository;
     private readonly IListRepository _listRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
 
     public LikeServiceImpl(ILikeRepository likeRepository,
         IListRepository listRepository,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        IMapper mapper)
     {
         _likeRepository = likeRepository;
         _listRepository = listRepository;
         _userRepository = userRepository;
+        _mapper = mapper;
     }
     
     
@@ -123,6 +128,39 @@ public class LikeServiceImpl : ILikeService
         };
 
 
+
+    }
+
+    public async Task<List<UpdateListDto>> GetLikedLists(Guid userId)
+    {
+        var neededUser = await _userRepository.GetUserById(userId);
+
+        if (neededUser==null)
+        {
+            return null;
+        }
+
+        var usersLikes = await _likeRepository.GetAllLikesByUserId(userId);
+
+        var likedLists = new List<UpdateListDto>();
+
+        foreach (var like in usersLikes)
+        {
+
+            if (! await _listRepository.UserHasRightToUpdateList(like.ListId, userId) && !like.List.Public )
+            {
+                continue;
+            }
+            
+            
+            var updatedListDto = _mapper.Map<UpdateListDto>(like.List);
+
+
+
+            likedLists.Add(updatedListDto);
+        }
+
+        return likedLists;
 
     }
 }

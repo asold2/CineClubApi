@@ -2,6 +2,7 @@
 using CineClubApi.Common.Permissions;
 using CineClubApi.Common.RequestBody;
 using CineClubApi.Common.ServiceResults;
+using CineClubApi.Common.ServiceResults.TagResults;
 using CineClubApi.Models;
 using CineClubApi.Services.ListTagService;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +20,14 @@ public class TagController : CineClubControllerBase
 
     [LoggedInPermission]
     [HttpPost("tag")]
-    public async Task<ActionResult> AddTag([FromBody] TagBody tag)
+    public async Task<ActionResult<CreatedTagResult>> AddTag([FromBody] TagBody tag)
     {
         var result = await _tagService.CreateTag( tag.UserId, tag.Name);
+
+        if (result.StatusCode==200)
+        {
+            return Ok(result);
+        }
         
         return new ContentResult
         {
