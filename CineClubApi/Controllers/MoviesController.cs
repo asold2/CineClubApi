@@ -34,20 +34,32 @@ public class MoviesController : CineClubControllerBase
     }
 
     [HttpGet("user/lists")]
-    public async Task<List<UpdateListDto>> GetUsersListsMovieBelongsTo([FromQuery]Guid userId, [FromQuery] int tmdbId)
+    public async Task<ActionResult<List<UpdateListDto>>> GetUsersListsMovieBelongsTo([FromQuery]Guid userId, [FromQuery] int tmdbId)
     {
         var result = await _movieService.GetUsersListsToWhichMovieBelongs(userId, tmdbId);
 
-        return result;
+
+        if (result ==null)
+        {
+            return new ContentResult
+            {
+                Content = "Couldn't find the movie in any user's lists!",
+                ContentType = "text/plain",
+                StatusCode = 400
+            };
+        }
+        
+        
+        return Ok(result);
     }
     
-    [HttpGet("movie/lists")]
-    public async Task<List<UpdateListDto>> GetAllListsMovieBelongsTo( [FromQuery] int tmdbId)
-    {
-        var result = await _movieService.GetAllListsMoviebelongsTo(tmdbId);
-
-        return result;
-    }
+    // [HttpGet("movie/lists")]
+    // public async Task<List<UpdateListDto>> GetAllListsMovieBelongsTo( [FromQuery] int tmdbId)
+    // {
+    //     var result = await _movieService.GetAllListsMoviebelongsTo(tmdbId);
+    //
+    //     return result;
+    // }
 
     [HttpPost("movie/like")]
     public async Task<ActionResult> LikeMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)

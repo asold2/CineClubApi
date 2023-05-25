@@ -143,6 +143,11 @@ public class MovieServiceImpl :  IMovieService
     {
         var neededMovie = await  _movieRepository.GetMovieByTmdbId(tmdbId);
 
+        if (neededMovie==null)
+        {
+            return null;
+        }
+        
         var listsMovieBelongsTo =  neededMovie.Lists
             .Where(x=>x.CreatorId==userId)
             .ToList();
