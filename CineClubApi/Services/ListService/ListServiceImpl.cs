@@ -104,7 +104,9 @@ public class ListServiceImpl : IListService
         
         var lists = await _listRepository.GetAllListsByUserId(neededUser.Id);
 
-        return lists;
+        var result = _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
+
+        return result;
 
 
     }
@@ -202,7 +204,9 @@ public class ListServiceImpl : IListService
             return _mapper.Map<UpdateListDto>(newLikedList);
         }
 
-        return likedList;
+        var result = _mapper.Map<UpdateListDto>(likedList);
+        
+        return result;
 
     }
     
@@ -234,7 +238,9 @@ public class ListServiceImpl : IListService
 
         }
 
-        return watchedList;
+        var result = _mapper.Map<UpdateListDto>(watchedList);
+        
+        return result;
 
     }
 }
