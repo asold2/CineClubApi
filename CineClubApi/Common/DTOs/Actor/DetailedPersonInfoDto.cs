@@ -13,7 +13,7 @@ public class DetailedPersonInfoDto
     public string PlaceOfBirth { get; set; }
     public double Popularity  { get; set; }
     public string ProfilePath { get; set; }
-    public byte[] Picture { get; set; }
+    // public byte[] Picture { get; set; }
 
     public List<MovieForListDto> MoviesPersonTakesPartIn { get; set; }
     

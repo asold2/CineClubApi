@@ -9,4 +9,6 @@ public class MoviePersonDto
     public string OriginalName { get; set; }
     public float Popularity { get; set; }
     public string Job { get; set; }
+    public string ProfilePath { get; set; }
+
 }
