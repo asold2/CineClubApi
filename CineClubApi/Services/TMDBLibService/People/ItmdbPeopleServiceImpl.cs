@@ -15,7 +15,17 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
     public async Task<List<MoviePersonDto>> GetAllActors(int movieId)
     {
         var movieCredits = client.GetMovieCreditsAsync(movieId).Result.Cast.AsQueryable();
+
+        movieCredits = movieCredits.Take(15);
+        
         var movieCast = _mapper.ProjectTo<MoviePersonDto>(movieCredits).ToList();
+
+        foreach (var member in movieCast)
+        {
+            var person = await client.GetPersonAsync(member.Id);
+
+            member.ProfilePath = person.ProfilePath;
+        }
         return movieCast;
     }
 
@@ -25,7 +35,7 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
         
         var personToReturn = _mapper.Map<DetailedPersonInfoDto>(person);
         
-        personToReturn.Picture = await GetImageFromPath(person.ProfilePath);
+        // personToReturn.Picture = await GetImageFromPath(person.ProfilePath);
 
 
         personToReturn.MoviesPersonTakesPartIn =
@@ -40,7 +50,7 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
     public  async Task<List<MoviePersonDto>> GetMovieCrew(int movieId)
     {
         var crew = client.GetMovieCreditsAsync(movieId).Result.Crew
-            .Where(x=>x.Job=="Producer" || x.Job=="Director" || x.Job=="Writer" || x.Job=="Composer")
+            .Where(x=>x.Job=="Producer" || x.Job=="Director" || x.Job=="Writer" || x.Job=="Composer" || x.Job=="Original Music Composer")
             .AsQueryable();
 
         var crewToReturn = _mapper.ProjectTo<MoviePersonDto>(crew).ToList();
@@ -64,9 +74,14 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
         }
 
         var list = await discoverer.Query();
+        
+        
 
-        return  _mapper.ProjectTo<MovieForListDto>(list.Results.AsQueryable()).ToList();
+        var result = _mapper.ProjectTo<MovieForListDto>(list.Results.AsQueryable()).ToList();
 
+        result = result.Take(10).ToList();
+
+        return result;
 
     }
 
