@@ -1,4 +1,5 @@
-﻿using CineClubApi.Models;
+﻿using CineClubApi.Common.DTOs.Genre;
+using CineClubApi.Models;
 using CineClubApi.Models.Auth;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,8 @@ public interface IApplicationDbContext
     public DbSet<Tag> ListTags { get; }
 
     public DbSet<Like> Likes { get; }
+
+    public DbSet<RatingGenreDto> GenreRatings { get; }
 
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

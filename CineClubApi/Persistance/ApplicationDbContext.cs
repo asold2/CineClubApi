@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.Interfaces;
+﻿using CineClubApi.Common.DTOs.Genre;
+using CineClubApi.Common.Interfaces;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
 using Microsoft.EntityFrameworkCore;
@@ -35,4 +36,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<MovieDao> MovieDaos => Set<MovieDao>();
     public DbSet<Tag> ListTags  => Set<Tag>();
     public DbSet<Like> Likes => Set<Like>();
+    public DbSet<RatingGenreDto> GenreRatings => Set<RatingGenreDto>();
 }

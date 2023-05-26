@@ -39,4 +39,14 @@ public class TmdbGenreServiceImpl: TmdbLib, ITMDBGenreService
         return paginatedList;
         
     }
+
+    public async Task<Genre> GetGenreById(int genreId)
+    {
+        var genres = await client.GetMovieGenresAsync();
+
+        var result = genres.FirstOrDefault(x => x.Id == genreId);
+
+        return result;
+
+    }
 }
