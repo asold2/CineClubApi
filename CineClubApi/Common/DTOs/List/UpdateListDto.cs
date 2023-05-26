@@ -9,6 +9,7 @@ public class UpdateListDto
 
     public Guid CreatorId { get; set; }
     public List<TagDto> Tags{ get; set; }
+    public string BackdropPath { get; set; }
 
 
 }

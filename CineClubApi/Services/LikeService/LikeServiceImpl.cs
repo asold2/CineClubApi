@@ -5,6 +5,7 @@ using CineClubApi.Models;
 using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.LikeRepository;
 using CineClubApi.Repositories.ListRepository;
+using CineClubApi.Services.ListService;
 
 namespace CineClubApi.Services.LikeService;
 
@@ -14,16 +15,19 @@ public class LikeServiceImpl : ILikeService
     private readonly IListRepository _listRepository;
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
+    private readonly IListService _listService;
 
     public LikeServiceImpl(ILikeRepository likeRepository,
         IListRepository listRepository,
         IUserRepository userRepository,
-        IMapper mapper)
+        IMapper mapper,
+        IListService listService)
     {
         _likeRepository = likeRepository;
         _listRepository = listRepository;
         _userRepository = userRepository;
         _mapper = mapper;
+        _listService = listService;
     }
     
     
@@ -155,7 +159,7 @@ public class LikeServiceImpl : ILikeService
             
             var updatedListDto = _mapper.Map<UpdateListDto>(like.List);
 
-
+            updatedListDto = await _listService.AssignImageToList(updatedListDto);
 
             likedLists.Add(updatedListDto);
         }

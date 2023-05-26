@@ -20,4 +20,6 @@ public interface IListService
     Task<List<UpdateListDto>> GetAllLists(int page, int start, int end);
     Task<UpdateListDto> GetUsersLikedList(Guid userId);
     Task<UpdateListDto> GetUsersWatchedList(Guid userId);
+    Task<UpdateListDto> AssignImageToList(UpdateListDto listDto);
+
 }

@@ -3,6 +3,7 @@ using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.Interfaces;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
+using CineClubApi.Models.Statistics;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineClubApi.Persistance;
@@ -39,4 +40,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Like> Likes => Set<Like>();
     public DbSet<RatingGenreDto> GenreRatings => Set<RatingGenreDto>();
     public DbSet<NumberOfMoviesPerYear> MoviesPerYears => Set<NumberOfMoviesPerYear>();
+    public DbSet<RatingPerDirector> RatingPerDirectors => Set<RatingPerDirector>();
 }

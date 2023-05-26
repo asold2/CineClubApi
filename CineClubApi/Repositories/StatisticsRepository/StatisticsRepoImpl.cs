@@ -1,6 +1,7 @@
 ﻿using CineClubApi.Common.DTOs.Genre;
 using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.Interfaces;
+using CineClubApi.Models.Statistics;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineClubApi.Repositories.StatisticsRepository;
@@ -61,5 +62,16 @@ public class StatisticsRepoImpl : IStatisticsRepo
     public async Task<List<NumberOfMoviesPerYear>> GetNumberOfMoviesPerYear()
     {
         return await _applicationDbContext.MoviesPerYears.ToListAsync();
+    }
+
+    public async Task AddRatingPerDirector(RatingPerDirector ratingPerDirector)
+    {
+        await _applicationDbContext.RatingPerDirectors.AddAsync(ratingPerDirector);
+        await _applicationDbContext.SaveChangesAsync();
+    }
+
+    public async Task<List<RatingPerDirector>> GetRatingPerDirectors()
+    {
+        return await _applicationDbContext.RatingPerDirectors.ToListAsync();
     }
 }
