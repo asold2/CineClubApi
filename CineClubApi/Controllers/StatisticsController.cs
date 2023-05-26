@@ -1,4 +1,6 @@
-﻿using CineClubApi.Common.DTOs.Movies;
+﻿using CineClubApi.Common.DTOs.Genre;
+using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Models;
 using CineClubApi.Services.TMDBLibService.Statistics;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,4 +22,10 @@ public class StatisticsController : CineClubControllerBase
         return await _statisticsService.TopGrossingMoviesOfAllTime();
     }
 
+
+    [HttpGet("avg_genres")]
+    public async Task<List<RatingGenreDto>> getAvergaeScoreByGenre()
+    {
+        return await _statisticsService.GetAverageRatingByGenre();
+    }
 }

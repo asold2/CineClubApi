@@ -8,4 +8,6 @@ public interface ITMDBGenreService
 {
     Task<List<Genre>> GetAllGenres();
     Task<PaginatedListOfMovies> GetMoviesByGenre(List<int> genreIds , int page, int start, int end);
+
+    Task<Genre> GetGenreById(int genreId);
 }

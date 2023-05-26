@@ -6,6 +6,7 @@ using CineClubApi.Repositories.LikeRepository;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.ListTagsRepository;
 using CineClubApi.Repositories.MovieRepository;
+using CineClubApi.Repositories.StatisticsRepository;
 using CineClubApi.Services;
 using CineClubApi.Services.AccountService;
 using CineClubApi.Services.LikeService;
@@ -56,6 +57,7 @@ builder.Services.AddScoped<ITagService, TagServiceImpl>();
 builder.Services.AddScoped<ILikeRepository,LikeRepositoryImpl>();
 builder.Services.AddScoped<ILikeService, LikeServiceImpl>();
 builder.Services.AddScoped<IStatisticsService, StatisticsServiceImpl>();
+builder.Services.AddScoped<IStatisticsRepo, StatisticsRepoImpl>();
 
 
 
