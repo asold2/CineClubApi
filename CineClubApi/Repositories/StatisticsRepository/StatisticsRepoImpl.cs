@@ -1,4 +1,5 @@
 ﻿using CineClubApi.Common.DTOs.Genre;
+using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,5 +50,16 @@ public class StatisticsRepoImpl : IStatisticsRepo
         }
         
         return result;
+    }
+
+    public async Task AddMoviesPerYear(NumberOfMoviesPerYear moviesPerYear)
+    {
+        await _applicationDbContext.MoviesPerYears.AddAsync(moviesPerYear);
+        await _applicationDbContext.SaveChangesAsync();
+    }
+
+    public async Task<List<NumberOfMoviesPerYear>> GetNumberOfMoviesPerYear()
+    {
+        return await _applicationDbContext.MoviesPerYears.ToListAsync();
     }
 }

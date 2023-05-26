@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CineClubApi.Common.DTOs.Genre;
 using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Repositories.StatisticsRepository;
 using CineClubApi.Services.TmdbGenre;
@@ -110,5 +111,50 @@ public class StatisticsServiceImpl :TmdbLib, IStatisticsService
             return await _statisticsRepo.GetGenreStatistics();
         }
         
+    }
+
+    public async Task<List<NumberOfMoviesPerYearDto>> GetNumberOfMoviesPerYear()
+    {
+        var listMoviesPerYear = await _statisticsRepo.GetNumberOfMoviesPerYear();
+        
+        if (listMoviesPerYear.Count!=0)
+        {
+            var result = _mapper.ProjectTo<NumberOfMoviesPerYearDto>(listMoviesPerYear.AsQueryable()).ToList();
+            return result;
+        }
+        
+        
+        
+        // Get the current year
+        int currentYear = DateTime.UtcNow.Year;
+
+        // Calculate the start year
+        int startYear = currentYear - 100;
+
+        // Create a list to store the results
+        List<NumberOfMoviesPerYear> results = new List<NumberOfMoviesPerYear>();
+
+        // Iterate through each year from startYear to currentYear
+        for (int year = startYear; year <= currentYear; year++)
+        {
+            // Query the TMDB API to get the movies released in the current year
+            var moviesResponse = await client.DiscoverMoviesAsync().WherePrimaryReleaseIsInYear(year)
+                .Query();
+
+            // Get the total number of movies in the response
+            int numberOfMovies = moviesResponse.TotalResults;
+
+            // Create a new NumberOfMoviesPerYear object and add it to the results list
+            NumberOfMoviesPerYear moviesPerYear = new NumberOfMoviesPerYear
+            {
+                Year = year,
+                NumberOfMovies = numberOfMovies
+            };
+
+            results.Add(moviesPerYear);
+            await _statisticsRepo.AddMoviesPerYear(moviesPerYear);
+        }
+
+        return _mapper.ProjectTo<NumberOfMoviesPerYearDto>(results.AsQueryable()).ToList();
     }
 }

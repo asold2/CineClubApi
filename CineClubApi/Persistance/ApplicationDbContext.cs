@@ -1,4 +1,5 @@
 ﻿using CineClubApi.Common.DTOs.Genre;
+using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.Interfaces;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
@@ -37,4 +38,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Tag> ListTags  => Set<Tag>();
     public DbSet<Like> Likes => Set<Like>();
     public DbSet<RatingGenreDto> GenreRatings => Set<RatingGenreDto>();
+    public DbSet<NumberOfMoviesPerYear> MoviesPerYears => Set<NumberOfMoviesPerYear>();
 }
