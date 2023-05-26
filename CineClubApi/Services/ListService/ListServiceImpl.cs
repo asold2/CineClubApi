@@ -9,6 +9,7 @@ using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.ListTagsRepository;
 using CineClubApi.Services.ListTagService;
+using CineClubApi.Services.TMDBLibService;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineClubApi.Services.ListService;
@@ -21,14 +22,21 @@ public class ListServiceImpl : IListService
     private readonly ITagRepository _tagRepository;
     private readonly IMapper _mapper;
     private readonly IPaginator _paginator;
+    private ITMDBMovieService _movieService;
     
-    public ListServiceImpl(IListRepository listRepository, IUserRepository userRepository, IMapper mapper, ITagRepository tagRepository, IPaginator paginator)
+    public ListServiceImpl(IListRepository listRepository, 
+        IUserRepository userRepository, 
+        IMapper mapper, 
+        ITagRepository tagRepository,
+        IPaginator paginator,
+        ITMDBMovieService movieService)
     {
         _listRepository = listRepository;
         _userRepository = userRepository;
         _mapper = mapper;
         _tagRepository = tagRepository;
         _paginator = paginator;
+        _movieService = movieService;
     }
     
     
@@ -106,6 +114,13 @@ public class ListServiceImpl : IListService
 
         var result = _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
 
+        foreach (var tempList in result)
+        {
+            var l = await AssignImageToList(tempList);
+            tempList.BackdropPath = l.BackdropPath;
+
+        }
+
         return result;
 
 
@@ -172,7 +187,14 @@ public class ListServiceImpl : IListService
         
         var paginatedResult =await  _paginator.PaginateUpdatedListDto(result, page, start, end);
 
+        foreach (var tempList in paginatedResult)
+        {
+            var l = await AssignImageToList(tempList);
+            tempList.BackdropPath = l.BackdropPath;
 
+        }
+        
+        
         return paginatedResult;
 
     }
@@ -205,6 +227,8 @@ public class ListServiceImpl : IListService
         }
 
         var result = _mapper.Map<UpdateListDto>(likedList);
+
+        result = await AssignImageToList(result);
         
         return result;
 
@@ -240,7 +264,30 @@ public class ListServiceImpl : IListService
 
         var result = _mapper.Map<UpdateListDto>(watchedList);
         
+        result = await AssignImageToList(result);
+
+        
         return result;
+
+    }
+
+    public async Task<UpdateListDto> AssignImageToList(UpdateListDto listDto)
+    {
+        var neededList = await _listRepository.GetListWithMovies(listDto.Id);
+
+
+        if (neededList.MovieDaos.Count==0)
+        {
+            return listDto;
+        }
+
+        var randomMovie = neededList.MovieDaos.FirstOrDefault();
+
+        var movieFromTmdb = await _movieService.getMovieById(randomMovie.tmdbId);
+
+        listDto.BackdropPath = movieFromTmdb.BackdropPath;
+        return listDto;
+
 
     }
 }

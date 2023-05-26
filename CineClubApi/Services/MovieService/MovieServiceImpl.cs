@@ -154,6 +154,14 @@ public class MovieServiceImpl :  IMovieService
 
         var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
 
+        foreach (var tempList in result)
+        {
+            var t = await _listService.AssignImageToList(tempList);
+
+            tempList.BackdropPath = t.BackdropPath;
+
+        }
+
         return result;
     }
 
@@ -166,6 +174,14 @@ public class MovieServiceImpl :  IMovieService
             .ToList();
         
         var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
+        
+        foreach (var tempList in result)
+        {
+            var t = await _listService.AssignImageToList(tempList);
+
+            tempList.BackdropPath = t.BackdropPath;
+
+        }
 
         return result;
     }

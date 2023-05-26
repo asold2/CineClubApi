@@ -6,6 +6,7 @@ using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.DTOs.Tag;
 using CineClubApi.Models;
+using CineClubApi.Models.Statistics;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Languages;
 using TMDbLib.Objects.Movies;
@@ -25,13 +26,14 @@ public class MappingProfile : Profile
         CreateMap<Movie, MovieForListDto >();
         CreateMap<Movie, DetailedMovieDto >();
         CreateMap<Cast, MoviePersonDto>();
+        CreateMap<Person, MoviePersonDto>();
         CreateMap<Person, DetailedPersonInfoDto>();
         CreateMap<Crew, MoviePersonDto>();
         CreateMap<Language, LanguageDto>();
         CreateMap<Tag, TagForListDto>();
         CreateMap<Tag, TagDto>();
         CreateMap<List, ListDto>();
-        CreateMap<NumberOfMoviesPerYear, NumberOfMoviesPerYearDto>();
+        CreateMap<RatingPerDirector, MoviePersonDto>();
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.DTOs.Genre;
+﻿using CineClubApi.Common.DTOs.Actor;
+using CineClubApi.Common.DTOs.Genre;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Models;
@@ -34,5 +35,17 @@ public class StatisticsController : CineClubControllerBase
     public async Task<List<NumberOfMoviesPerYearDto>> GetNumberOfMoviesPerYear()
     {
         return await _statisticsService.GetNumberOfMoviesPerYear();
+    }
+
+    [HttpGet("actor_popularity")]
+    public async Task<List<MoviePersonDto>> GetPopularActors()
+    {
+        return await _statisticsService.GetMostPopularActors();
+    }
+    
+    [HttpGet("director_rating")]
+    public async Task<List<MoviePersonDto>> GetDirectorsRating()
+    {
+        return await _statisticsService.GetAverageRatingPerDirector();
     }
 }
