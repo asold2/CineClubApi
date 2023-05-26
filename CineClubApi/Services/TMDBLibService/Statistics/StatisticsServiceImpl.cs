@@ -210,7 +210,7 @@ public class StatisticsServiceImpl :TmdbLib, IStatisticsService
         }
 
         const int pageSize = 20; // Results per page
-        const int totalPeople = 500; // Total number of people to retrieve
+        const int totalPeople = 31; // Total number of people to retrieve
 
         var popularDirectors = new List<MoviePersonDto>();
         var currentPage = 1;

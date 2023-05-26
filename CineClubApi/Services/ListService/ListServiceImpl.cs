@@ -112,6 +112,8 @@ public class ListServiceImpl : IListService
         
         var lists = await _listRepository.GetAllListsByUserId(neededUser.Id);
 
+        lists = lists.Where(x => x.Name != "Liked Movies" && x.Name != "Watched Movies").ToList();
+
         var result = _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
 
         foreach (var tempList in result)
@@ -286,6 +288,7 @@ public class ListServiceImpl : IListService
         var movieFromTmdb = await _movieService.getMovieById(randomMovie.tmdbId);
 
         listDto.BackdropPath = movieFromTmdb.BackdropPath;
+        listDto.MovieName = movieFromTmdb.OriginalTitle;
         return listDto;
 
 
