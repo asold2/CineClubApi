@@ -139,7 +139,7 @@ public class MovieServiceImpl :  IMovieService
         }; 
     }
 
-    public async Task<List<UpdateListDto>> GetUsersListsToWhichMovieBelongs(Guid userId, int tmdbId)
+    public async Task<List<SimpleListDto>> GetUsersListsToWhichMovieBelongs(Guid userId, int tmdbId)
     {
         var neededMovie = await  _movieRepository.GetMovieByTmdbId(tmdbId);
 
@@ -154,15 +154,17 @@ public class MovieServiceImpl :  IMovieService
 
         var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
 
-        foreach (var tempList in result)
-        {
-            var t = await _listService.AssignImageToList(tempList);
+        // foreach (var tempList in result)
+        // {
+        //     var t = await _listService.AssignImageToList(tempList);
+        //
+        //     tempList.BackdropPath = t.BackdropPath;
+        //
+        // }
 
-            tempList.BackdropPath = t.BackdropPath;
-
-        }
-
-        return result;
+        var listsToReturn = _mapper.ProjectTo<SimpleListDto>(result.AsQueryable()).ToList();
+        
+        return listsToReturn;
     }
 
     public async Task<List<UpdateListDto>> GetAllListsMoviebelongsTo(int tmdbId)

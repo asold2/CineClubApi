@@ -34,19 +34,14 @@ public class MoviesController : CineClubControllerBase
     }
 
     [HttpGet("user/lists")]
-    public async Task<ActionResult<List<UpdateListDto>>> GetUsersListsMovieBelongsTo([FromQuery]Guid userId, [FromQuery] int tmdbId)
+    public async Task<ActionResult<List<SimpleListDto>>> GetUsersListsMovieBelongsTo([FromQuery]Guid userId, [FromQuery] int tmdbId)
     {
         var result = await _movieService.GetUsersListsToWhichMovieBelongs(userId, tmdbId);
 
 
         if (result ==null)
         {
-            return new ContentResult
-            {
-                Content = "Couldn't find the movie in any user's lists!",
-                ContentType = "text/plain",
-                StatusCode = 400
-            };
+            return Ok(new List<SimpleListDto>());
         }
         
         
