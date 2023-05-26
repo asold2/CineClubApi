@@ -1,4 +1,5 @@
 ﻿using CineClubApi.Common.DTOs.Genre;
+using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ public interface IApplicationDbContext
     public DbSet<Like> Likes { get; }
 
     public DbSet<RatingGenreDto> GenreRatings { get; }
+    public DbSet<NumberOfMoviesPerYear> MoviesPerYears { get; }
 
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

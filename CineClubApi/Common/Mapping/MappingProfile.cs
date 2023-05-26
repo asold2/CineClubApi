@@ -3,6 +3,7 @@ using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.Common;
 using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Common.DTOs.Tag;
 using CineClubApi.Models;
 using TMDbLib.Objects.General;
@@ -30,6 +31,7 @@ public class MappingProfile : Profile
         CreateMap<Tag, TagForListDto>();
         CreateMap<Tag, TagDto>();
         CreateMap<List, ListDto>();
+        CreateMap<NumberOfMoviesPerYear, NumberOfMoviesPerYearDto>();
 
     }
 }

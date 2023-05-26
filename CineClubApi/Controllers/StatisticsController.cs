@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.Genre;
 using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.DTOs.Statistics;
 using CineClubApi.Models;
 using CineClubApi.Services.TMDBLibService.Statistics;
 using Microsoft.AspNetCore.Mvc;
@@ -24,8 +25,14 @@ public class StatisticsController : CineClubControllerBase
 
 
     [HttpGet("avg_genres")]
-    public async Task<List<RatingGenreDto>> getAvergaeScoreByGenre()
+    public async Task<List<RatingGenreDto>> GetAvergaeScoreByGenre()
     {
         return await _statisticsService.GetAverageRatingByGenre();
+    }
+
+    [HttpGet("nr_movies_year")]
+    public async Task<List<NumberOfMoviesPerYearDto>> GetNumberOfMoviesPerYear()
+    {
+        return await _statisticsService.GetNumberOfMoviesPerYear();
     }
 }
