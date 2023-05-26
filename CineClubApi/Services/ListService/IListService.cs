@@ -22,4 +22,5 @@ public interface IListService
     Task<UpdateListDto> GetUsersWatchedList(Guid userId);
     Task<UpdateListDto> AssignImageToList(UpdateListDto listDto);
 
+    Task<DetailedListDto> GetListsById(Guid listId);
 }

@@ -23,4 +23,5 @@ public interface IListRepository
 
     Task<List<List>> GetAllPublicLists();
 
+    Task<List> GetListByIdWithEverythingIncluded(Guid listId);
 }

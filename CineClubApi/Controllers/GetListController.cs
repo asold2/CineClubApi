@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.Permissions;
+using CineClubApi.Models;
 using CineClubApi.Services.ListService;
 using CineClubApi.Services.MovieService;
 using Microsoft.AspNetCore.Mvc;
@@ -72,5 +73,16 @@ public class GetListController : CineClubControllerBase
         return result;
 
     }
-    
+
+    [HttpGet("list/")]
+    public async Task<ActionResult<List>> GetListById([FromQuery] Guid listId)
+    {
+
+        // var neededGuid = Guid.NewGuid(listId);
+        
+        var result = await _listService.GetListsById(listId);
+
+        return Ok(result);
+    }
+
 }

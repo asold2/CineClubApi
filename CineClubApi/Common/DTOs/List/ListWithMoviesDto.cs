@@ -7,6 +7,7 @@ using CineClubApi.Models;
 public class ListWithMoviesDto
 {
     private List List { get; set; }
-    private IList<MovieForListDto> MoviesInList { get; set; }
+    // private IList<MovieForListDto> MoviesInList { get; set; }
+    
     
 }

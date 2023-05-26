@@ -98,6 +98,17 @@ public class ListRepositoryImpl : IListRepository
         return result;
     }
 
+    public async Task<List> GetListByIdWithEverythingIncluded(Guid listId)
+    {
+        var result = await _applicationDbContext.Lists
+            .Include(x=>x.Tags)
+            .Include(x=>x.MovieDaos)
+            .FirstOrDefaultAsync(x => x.Id == listId);
+
+        return result;
+
+    }
+
     public async Task UpdateList(List list)
     {
         _applicationDbContext.Lists.Update(list);

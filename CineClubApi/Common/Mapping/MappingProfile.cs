@@ -35,6 +35,8 @@ public class MappingProfile : Profile
         CreateMap<List, ListDto>();
         CreateMap<RatingPerDirector, MoviePersonDto>();
         CreateMap<UpdateListDto, SimpleListDto>();
+        CreateMap<List, DetailedListDto>();
+        CreateMap<DetailedMovieDto, MovieForListDto>();
 
     }
 }

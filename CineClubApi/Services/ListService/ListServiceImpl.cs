@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.DTOs.Tag;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Common.ServiceResults.ListResults;
@@ -10,6 +13,7 @@ using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.ListTagsRepository;
 using CineClubApi.Services.ListTagService;
 using CineClubApi.Services.TMDBLibService;
+using CineClubApi.Services.TMDBLibService.Actor;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineClubApi.Services.ListService;
@@ -23,13 +27,15 @@ public class ListServiceImpl : IListService
     private readonly IMapper _mapper;
     private readonly IPaginator _paginator;
     private ITMDBMovieService _movieService;
+    private ITMDBPeopleService _peopleService; 
     
     public ListServiceImpl(IListRepository listRepository, 
         IUserRepository userRepository, 
         IMapper mapper, 
         ITagRepository tagRepository,
         IPaginator paginator,
-        ITMDBMovieService movieService)
+        ITMDBMovieService movieService,
+        ITMDBPeopleService peopleService)
     {
         _listRepository = listRepository;
         _userRepository = userRepository;
@@ -37,6 +43,7 @@ public class ListServiceImpl : IListService
         _tagRepository = tagRepository;
         _paginator = paginator;
         _movieService = movieService;
+        _peopleService = peopleService;
     }
     
     
@@ -292,5 +299,49 @@ public class ListServiceImpl : IListService
         return listDto;
 
 
+    }
+
+    public async Task<DetailedListDto> GetListsById(Guid listId)
+    {
+        var neededList = await _listRepository.GetListByIdWithEverythingIncluded(listId);
+
+        if (neededList==null)
+        {
+            return new DetailedListDto();
+        }
+
+        // var movieDtos = _mapper.ProjectTo<MovieForListDto>(neededList.MovieDaos.AsQueryable()).ToList();
+        var tagDtos = _mapper.ProjectTo<TagForListDto>(neededList.Tags.AsQueryable()).ToList();
+        
+        
+        var result = _mapper.Map<DetailedListDto>(neededList);
+
+        // result.MovieDtos = movieDtos;
+        result.TagsDtos = tagDtos;
+
+        var topActorsFromEachMove = new List<MoviePersonDto>();
+        
+        foreach (var movie in neededList.MovieDaos)
+        {
+
+            var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
+            var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
+            
+            result.MovieDtos.Add(movieDto);
+            
+            var top15Actors = await _peopleService.GetAllActors(movie.tmdbId);
+
+            topActorsFromEachMove.AddRange(top15Actors);
+        }
+        
+        var top5Actors = topActorsFromEachMove
+            .OrderByDescending(actor => actor.Popularity)
+            .Take(5)
+            .ToList();
+
+        result.Top5ActorsFromList = top5Actors;
+        
+
+        return result;
     }
 }
