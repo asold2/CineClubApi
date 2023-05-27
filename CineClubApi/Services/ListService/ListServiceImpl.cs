@@ -376,7 +376,6 @@ public class ListServiceImpl : IListService
     public async Task<List<MoviePersonDto>> GetTop5DirectorsByListId(Guid listId)
     {
         var neededList = await _listRepository.GetListByIdWithEverythingIncluded(listId);
-
         
         var topDirectorsFromEachMove = new List<MoviePersonDto>();
         
