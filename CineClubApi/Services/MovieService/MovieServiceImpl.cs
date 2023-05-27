@@ -94,6 +94,42 @@ public class MovieServiceImpl :  IMovieService
 
     }
 
+    // public async Task<ServiceResult> RemoveMovieFromList(Guid listId, Guid userId, int tmdbId)
+    // {
+    //     if (await _listRepository.GetListById(listId) == null)
+    //     {
+    //         return new ServiceResult
+    //         {
+    //             StatusCode = 400,
+    //             Result = "List not found!"
+    //         };
+    //     }
+    //     
+    //     if (!await UserHasRightTOUpdateList(listId,userId))
+    //     {
+    //         return new ServiceResult
+    //         {
+    //             StatusCode = 403,
+    //             Result = "User has no right to update this list!"
+    //         };
+    //     }
+    //     
+    //     var neededMovieId = await SaveOrGetMovieDao(tmdbId);
+    //
+    //     if (neededMovieId == Guid.Empty)
+    //     {
+    //         return new ServiceResult
+    //         {
+    //             Result = "Movie with this TMDB id not found",
+    //             StatusCode = 400
+    //         };
+    //     }
+    //
+    //     await _movieRepository.RemoveMovieFromList(listId, neededMovieId);
+    //
+    //     return new MovieRemovedFromList();
+    // }
+
     public async Task<ServiceResult> DeleteMovieFromList(Guid listId, Guid userId, int tmdbId)
     {
         if (!await UserHasRightTOUpdateList(listId,userId))
@@ -221,6 +257,44 @@ public class MovieServiceImpl :  IMovieService
         }
         
         var result = await AddMovieToList(watchedList.Id, userid, tmdbId);
+
+        return result;
+
+    }
+
+    public async Task<ServiceResult> RemoveMovieFromWatchedList(Guid userid, int tmdbId)
+    {
+        var watchedList = await  _listService.GetUsersWatchedList(userid);
+
+        if (watchedList==null)
+        {
+            return new ServiceResult
+            {
+                Result = "List of watched movies not found!",
+                StatusCode = 400
+            };
+        }
+        
+        var result = await DeleteMovieFromList(watchedList.Id, userid, tmdbId);
+
+        return result;
+
+    }
+    
+    public async Task<ServiceResult> RemoveMovieFromLikedList(Guid userid, int tmdbId)
+    {
+        var likedList = await  _listService.GetUsersLikedList(userid);
+
+        if (likedList==null)
+        {
+            return new ServiceResult
+            {
+                Result = "List of watched movies not found!",
+                StatusCode = 400
+            };
+        }
+        
+        var result = await DeleteMovieFromList(likedList.Id, userid, tmdbId);
 
         return result;
 

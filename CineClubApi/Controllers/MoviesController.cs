@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
+using CineClubApi.Common.Permissions;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
 using CineClubApi.Services.MovieService;
@@ -22,40 +23,35 @@ public class MoviesController : CineClubControllerBase
 
 
     [HttpGet("movies/{keyword}")]
-    public async Task<List<MovieForListDto>> GetMovieByKeywordAsync([FromRoute] string keyword )
+    public async Task<List<MovieForListDto>> GetMovieByKeywordAsync([FromRoute] string keyword)
     {
         return await _itmdbMovieService.GetMoviesByKeyword(keyword);
     }
 
     [HttpGet("movie/{id}")]
-    public async Task<DetailedMovieDto> GetMovieByIdAsync([FromRoute]int id)
+    public async Task<DetailedMovieDto> GetMovieByIdAsync([FromRoute] int id)
     {
         return await _itmdbMovieService.getMovieById(id);
     }
 
+    
+    
     [HttpGet("user/lists")]
-    public async Task<ActionResult<List<SimpleListDto>>> GetUsersListsMovieBelongsTo([FromQuery]Guid userId, [FromQuery] int tmdbId)
+    public async Task<ActionResult<List<SimpleListDto>>> GetUsersListsMovieBelongsTo([FromQuery] Guid userId,
+        [FromQuery] int tmdbId)
     {
         var result = await _movieService.GetUsersListsToWhichMovieBelongs(userId, tmdbId);
 
 
-        if (result ==null)
+        if (result == null)
         {
             return Ok(new List<SimpleListDto>());
         }
-        
-        
+
+
         return Ok(result);
     }
-    
-    // [HttpGet("movie/lists")]
-    // public async Task<List<UpdateListDto>> GetAllListsMovieBelongsTo( [FromQuery] int tmdbId)
-    // {
-    //     var result = await _movieService.GetAllListsMoviebelongsTo(tmdbId);
-    //
-    //     return result;
-    // }
-
+    [LoggedInPermission]
     [HttpPost("movie/like")]
     public async Task<ActionResult> LikeMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)
     {
@@ -68,7 +64,7 @@ public class MoviesController : CineClubControllerBase
             StatusCode = result.StatusCode
         };
     }
-    
+    [LoggedInPermission]
     [HttpPost("movie/watched")]
     public async Task<ActionResult> WatchedMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)
     {
@@ -82,10 +78,37 @@ public class MoviesController : CineClubControllerBase
         };
     }
 
+    [LoggedInPermission]
+    [HttpDelete("movie/watched")]
+    public async Task<ActionResult> RemoveFromWatchedMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)
+    {
+        var result = await _movieService.RemoveMovieFromWatchedList(userid, tmdbId);
 
-    // [HttpGet("movie/image/{url}")]
-    // public async Task<byte[]>GetMovieByIdAsync([FromRoute]string url)
-    // {
-    //     return await _itmdbMovieService.GetMovieImage(url);
-    // }
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
+    }
+    
+    
+    [LoggedInPermission]
+    [HttpDelete("movie/liked")]
+    public async Task<ActionResult> RemoveFromLikedMovie([FromQuery] Guid userid, [FromQuery] int tmdbId)
+    {
+        var result = await _movieService.RemoveMovieFromLikedList(userid, tmdbId);
+
+        return new ContentResult
+        {
+            Content = result.Result,
+            ContentType = "text/plain",
+            StatusCode = result.StatusCode
+        };
+    }
+    
+    
+    
 }
+
+    

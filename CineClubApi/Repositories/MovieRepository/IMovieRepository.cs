@@ -8,4 +8,5 @@ public interface IMovieRepository
     Task<Guid> SaveMovieDao(MovieDao movieDao);
     Task<MovieDao> GetMovieByTmdbId(int tmdnId);
 
+    Task RemoveMovieFromList(Guid listId, Guid neededMovieId);
 }

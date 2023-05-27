@@ -58,4 +58,20 @@ public class MovieRepositoryImpl : IMovieRepository
             .FirstOrDefaultAsync(x => x.tmdbId == tmdnId);
         return result;
     }
+
+    public async Task RemoveMovieFromList(Guid listId, Guid neededMovieId)
+    {
+        var neededList = await _applicationDbContext.Lists
+            .Include(x=>x.MovieDaos)
+            .FirstOrDefaultAsync(x => x.Id == listId);
+
+        var neededMovieDao = await _applicationDbContext.MovieDaos
+            .Include(x=>x.Lists)
+            .FirstOrDefaultAsync(x => x.Id == neededMovieId);
+
+        neededList.MovieDaos.Remove(neededMovieDao);
+
+        _applicationDbContext.Lists.Update(neededList);
+        await _applicationDbContext.SaveChangesAsync();
+    }
 }

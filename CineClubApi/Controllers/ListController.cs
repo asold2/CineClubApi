@@ -75,6 +75,22 @@ public class ListController : CineClubControllerBase
             StatusCode = result.StatusCode
         };
     }
+    
+    // [LoggedInPermission]
+    // [HttpDelete("list/movie")]
+    // public async Task<ActionResult> RemoveMovieFromList([FromBody] AddMovieToListBody body)
+    // {
+    //     var result = await _movieService.RemoveMovieFromList(body.ListId, body.UserId, body.TmdbId);
+    //
+    //     return new ContentResult
+    //     {
+    //         Content = result.Result,
+    //         ContentType = "text/plain",
+    //         StatusCode = result.StatusCode
+    //     };
+    // }
+    
+    
 
     [LoggedInPermission]
     [HttpDelete("list/movie")]
