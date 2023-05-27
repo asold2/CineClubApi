@@ -187,27 +187,43 @@ public class ListServiceImpl : IListService
         return result;
     }
 
-    public async Task<List<UpdateListDto>> GetAllLists(int page, int start, int end)
+    // public async Task<List<UpdateListDto>> GetAllLists(int page, int start, int end)
+    // {
+    //     var lists = await _listRepository.GetAllPublicLists();
+    //
+    //
+    //     var result = _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
+    //     
+    //     var paginatedResult =await  _paginator.PaginateUpdatedListDto(result, page, start, end);
+    //
+    //     foreach (var tempList in paginatedResult)
+    //     {
+    //         var l = await AssignImageToList(tempList);
+    //         tempList.BackdropPath = l.BackdropPath;
+    //     }
+    //     
+    //     
+    //     return paginatedResult;
+    //
+    // }
+
+    public async Task<PaginatedResult<UpdateListDto>> GetAllLists(int page, int start, int end)
     {
         var lists = await _listRepository.GetAllPublicLists();
 
-
         var result = _mapper.ProjectTo<UpdateListDto>(lists.AsQueryable()).ToList();
-        
-        var paginatedResult =await  _paginator.PaginateUpdatedListDto(result, page, start, end);
 
-        foreach (var tempList in paginatedResult)
+        var paginatedResult = await _paginator.PaginateUpdatedListDto(result, page, start, end);
+
+        foreach (var tempList in paginatedResult.Result)
         {
             var l = await AssignImageToList(tempList);
             tempList.BackdropPath = l.BackdropPath;
-
         }
-        
-        
+
         return paginatedResult;
-
     }
-
+    
     public async Task<UpdateListDto> GetUsersLikedList(Guid userId)
     {
         var allLists = await _listRepository.GetAllListsByUserId(userId);

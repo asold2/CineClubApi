@@ -54,19 +54,42 @@ public class PaginatorImpl : IPaginator
         return  listsToTake.ToList();
     }
 
-    public async Task<List<UpdateListDto>> PaginateUpdatedListDto(List<UpdateListDto> lists, int page, int start, int end)
+    // public async Task<List<UpdateListDto>> PaginateUpdatedListDto(List<UpdateListDto> lists, int page, int start, int end)
+    // {
+    //     int pageSize = end - start + 1;
+    //
+    //     if (page < 1 )
+    //     {
+    //         return new List<UpdateListDto>();
+    //     }
+    //
+    //     var listsToTake = lists.Skip((int)start - 1).Take(pageSize).AsQueryable();
+    //     
+    //     // var lists = _mapper.ProjectTo<ListDto>(listsToTake).ToList();
+    //
+    //     return  listsToTake.ToList();
+    // }
+    
+    public async Task<PaginatedResult<UpdateListDto>> PaginateUpdatedListDto(List<UpdateListDto> lists, int page, int start, int end)
     {
         int pageSize = end - start + 1;
 
-        if (page < 1 )
+        if (page < 1)
         {
-            return new List<UpdateListDto>();
+            return new PaginatedResult<UpdateListDto>
+            {
+                Result = new List<UpdateListDto>(),
+                TotalPages = 0
+            };
         }
 
-        var listsToTake = lists.Skip((int)start - 1).Take(pageSize).AsQueryable();
-        
-        // var lists = _mapper.ProjectTo<ListDto>(listsToTake).ToList();
+        var paginatedLists = lists.Skip((int)start - 1).Take(pageSize).ToList();
 
-        return  listsToTake.ToList();
+        return new PaginatedResult<UpdateListDto>
+        {
+            Result = paginatedLists,
+            TotalPages = (int)Math.Ceiling((double)lists.Count / pageSize)
+        };
     }
+    
 }
