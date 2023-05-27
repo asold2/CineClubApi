@@ -12,6 +12,7 @@ using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.ListTagsRepository;
 using CineClubApi.Services.ListTagService;
+using CineClubApi.Services.TmdbGenre;
 using CineClubApi.Services.TMDBLibService;
 using CineClubApi.Services.TMDBLibService.Actor;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,8 @@ public class ListServiceImpl : IListService
     private readonly IMapper _mapper;
     private readonly IPaginator _paginator;
     private ITMDBMovieService _movieService;
-    private ITMDBPeopleService _peopleService; 
+    private ITMDBPeopleService _peopleService;
+    private ITMDBGenreService _genreService;
     
     public ListServiceImpl(IListRepository listRepository, 
         IUserRepository userRepository, 
@@ -35,7 +37,8 @@ public class ListServiceImpl : IListService
         ITagRepository tagRepository,
         IPaginator paginator,
         ITMDBMovieService movieService,
-        ITMDBPeopleService peopleService)
+        ITMDBPeopleService peopleService,
+        ITMDBGenreService genreService)
     {
         _listRepository = listRepository;
         _userRepository = userRepository;
@@ -44,6 +47,7 @@ public class ListServiceImpl : IListService
         _paginator = paginator;
         _movieService = movieService;
         _peopleService = peopleService;
+        _genreService = genreService;
     }
     
     
@@ -205,9 +209,35 @@ public class ListServiceImpl : IListService
         return paginatedResult;
     }
 
-    public async Task<List<MovieForListDto>> GetListOfRecommendedMoviesForUser(Guid listId)
+    public async Task<List<MovieForListDto>> GetListOfRecommendedMoviesForUser(Guid userId, int page, int start, int end)
     {
-        // var watchedList = await _listRepository.getLis
+        var watchedList = await GetUsersLikedList(userId);
+        var likedList = await GetUsersWatchedList(userId);
+
+        var watchedListWithMovies = await GetListsById(watchedList.Id);
+        var likedListWithMovies = await GetListsById(likedList.Id);
+        
+        
+        if (watchedListWithMovies.MovieDtos.Count==0 && likedListWithMovies.MovieDtos.Count==0)
+        {
+            return new List<MovieForListDto>();
+        }
+
+        var recommendedMovies = new List<MovieForListDto>();
+
+        foreach (var movie in watchedListWithMovies.MovieDtos)
+        {
+            var likedMovieGenres = movie.Genres.Select(x=>x.Id).ToList();
+
+            foreach (var genre in likedMovieGenres)
+            {
+                var similarMovies = _genreService.GetMoviesByGenre(likedMovieGenres, page, start, end);
+                
+            }
+        }
+        
+        
+        
         return null;
     }
 

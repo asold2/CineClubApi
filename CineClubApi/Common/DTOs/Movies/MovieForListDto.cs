@@ -7,6 +7,7 @@ public class MovieForListDto
 
     public int Id { get; set; }
     public List<TMDbLib.Objects.General.Genre> Genres { get; set; }
+    public List<int> GenreIds { get; set; }
     public string OriginalLanguage { get; set; }
     public string OriginalTitle { get; set; }
     public string Title { get; set; }
