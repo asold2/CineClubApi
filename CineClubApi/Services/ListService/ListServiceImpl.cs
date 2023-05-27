@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics.Contracts;
+using AutoMapper;
 using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
@@ -227,13 +228,10 @@ public class ListServiceImpl : IListService
 
         foreach (var movie in watchedListWithMovies.MovieDtos)
         {
-            var likedMovieGenres = movie.Genres.Select(x=>x.Id).ToList();
-
-            foreach (var genre in likedMovieGenres)
-            {
-                var similarMovies = _genreService.GetMoviesByGenre(likedMovieGenres, page, start, end);
-                
-            }
+            
+            var similarMovies =await _genreService.GetMoviesByGenre(movie.GenreIds, page, start, end);
+            
+            
         }
         
         
@@ -353,8 +351,15 @@ public class ListServiceImpl : IListService
         {
         
             var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
-            var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
+            var genreDtos = new List<int>();
+
+            foreach (var genre in tmdbMovie.Genres)
+            {
+                genreDtos.Add(genre.Id);
+            }
             
+            var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
+            movieDto.GenreIds = genreDtos;
             result.MovieDtos.Add(movieDto);
 
         }
