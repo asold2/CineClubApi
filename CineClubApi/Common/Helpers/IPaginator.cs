@@ -19,4 +19,8 @@ public interface IPaginator
     Task<PaginatedResult<UpdateListDto>>
         PaginateUpdatedListDto(List<UpdateListDto> lists, int page, int start, int end);
 
+    
+    Task<PaginatedResult<List<MovieForListDto>>>
+        PaginateListOfMovieDtos(List<MovieForListDto> lists, int page, int start, int end);
+    
 }

@@ -1,9 +1,12 @@
 ﻿using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Common.Permissions;
 using CineClubApi.Models;
 using CineClubApi.Services.ListService;
+using CineClubApi.Services.ListService.LikedList;
+using CineClubApi.Services.ListService.WatchedList;
 using CineClubApi.Services.MovieService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,12 +16,14 @@ public class GetListController : CineClubControllerBase
 { 
     
     private readonly IListService _listService;
-    private readonly IMovieService _movieService;
+    private readonly ILikedListService _likedListService;
+    private readonly IWatchedListService _watchedListService;
 
-    public GetListController(IListService listService, IMovieService movieService)
+    public GetListController(IListService listService, IWatchedListService watchedListService, ILikedListService likedListService)
     {
+        _watchedListService = watchedListService;
+        _likedListService = likedListService;
         _listService = listService;
-        _movieService = movieService;
     }
     
     [HttpGet("lists")]
@@ -52,7 +57,7 @@ public class GetListController : CineClubControllerBase
     [HttpGet("liked_list")]
     public async Task<ActionResult<UpdateListDto>> GetUsersLikedList([FromQuery] Guid userId)
     {
-        var result = await _listService.GetUsersLikedList(userId);
+        var result = await _likedListService.GetUsersLikedList(userId);
 
         return Ok(result);
     }
@@ -60,7 +65,7 @@ public class GetListController : CineClubControllerBase
     [HttpGet("watched_list")]
     public async Task<ActionResult<UpdateListDto>> GetUsersWatchedList([FromQuery] Guid userId)
     {
-        var result = await _listService.GetUsersWatchedList(userId);
+        var result = await _watchedListService.GetUsersWatchedList(userId);
 
         return Ok(result);
     }
@@ -97,6 +102,16 @@ public class GetListController : CineClubControllerBase
     public async Task<List<MoviePersonDto>> GetTop5DirectorsPerList([FromQuery] Guid listId)
     {
         return await _listService.GetTop5DirectorsByListId(listId);
+    }
+
+
+    [HttpGet("moive/liked_watched")]
+    public async Task<ActionResult<MovieLikedWathedDto>> GetMovieLikedWatchedByUser([FromQuery] Guid userId, [FromQuery]int tmdbId)
+    {
+        var watched = await _watchedListService.MovieBelongsToWatched(userId, tmdbId);
+        var liked = await _likedListService.MovieBelongsToLiked(userId, tmdbId);
+
+        return Ok(new MovieLikedWathedDto { Watched = watched, Liked = liked});
     }
 
 }
