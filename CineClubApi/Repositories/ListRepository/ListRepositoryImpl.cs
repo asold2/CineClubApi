@@ -105,6 +105,11 @@ public class ListRepositoryImpl : IListRepository
             .Include(x=>x.MovieDaos)
             .FirstOrDefaultAsync(x => x.Id == listId);
 
+        if (result == null)
+        {
+            return new List();
+        }
+
         return result;
 
     }
