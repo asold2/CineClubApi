@@ -56,7 +56,18 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
         var crewToReturn = _mapper.ProjectTo<MoviePersonDto>(crew).ToList();
 
         return crewToReturn;
+    }
 
+
+    public async Task<List<MoviePersonDto>> GetMovieDirectors(int movieId)
+    {
+        var crew = client.GetMovieCreditsAsync(movieId).Result.Crew
+            .Where(x=> x.Job=="Director")
+            .AsQueryable();
+
+        var crewToReturn = _mapper.ProjectTo<MoviePersonDto>(crew).ToList();
+
+        return crewToReturn;
     }
 
 

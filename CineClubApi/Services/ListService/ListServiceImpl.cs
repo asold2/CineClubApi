@@ -319,18 +319,47 @@ public class ListServiceImpl : IListService
         // result.MovieDtos = movieDtos;
         result.TagsDtos = tagDtos;
 
+        // var topActorsFromEachMove = new List<MoviePersonDto>();
+        //
+        // foreach (var movie in neededList.MovieDaos)
+        // {
+        //
+        //     var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
+        //     var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
+        //     
+        //     result.MovieDtos.Add(movieDto);
+        //     
+        //     var top15Actors = await _peopleService.GetAllActors(movie.tmdbId);
+        //
+        //     topActorsFromEachMove.AddRange(top15Actors);
+        // }
+        //
+        // var top5Actors = topActorsFromEachMove
+        //     .OrderByDescending(actor => actor.Popularity)
+        //     .Take(5)
+        //     .ToList();
+        //
+        // result.Top5ActorsFromList = top5Actors;
+        
+
+        return result;
+    }
+    
+    
+    public async Task<List<MoviePersonDto>> GetTop5ActorsByListId(Guid listId)
+    {
+        var neededList = await _listRepository.GetListByIdWithEverythingIncluded(listId);
+
+        
         var topActorsFromEachMove = new List<MoviePersonDto>();
         
         foreach (var movie in neededList.MovieDaos)
         {
-
+        
             var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
-            var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
-            
-            result.MovieDtos.Add(movieDto);
             
             var top15Actors = await _peopleService.GetAllActors(movie.tmdbId);
-
+        
             topActorsFromEachMove.AddRange(top15Actors);
         }
         
@@ -339,9 +368,34 @@ public class ListServiceImpl : IListService
             .Take(5)
             .ToList();
 
-        result.Top5ActorsFromList = top5Actors;
-        
 
-        return result;
+        return top5Actors;
+
+    }
+
+    public async Task<List<MoviePersonDto>> GetTop5DirectorsByListId(Guid listId)
+    {
+        var neededList = await _listRepository.GetListByIdWithEverythingIncluded(listId);
+
+        
+        var topDirectorsFromEachMove = new List<MoviePersonDto>();
+        
+        foreach (var movie in neededList.MovieDaos)
+        {
+        
+            var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
+            
+            var movieDirectors = await _peopleService.GetMovieDirectors(movie.tmdbId);
+        
+            topDirectorsFromEachMove.AddRange(movieDirectors);
+        }
+        
+        var top5Actors = topDirectorsFromEachMove
+            .OrderByDescending(director => director.Popularity)
+            .Take(5)
+            .ToList();
+
+
+        return top5Actors;
     }
 }

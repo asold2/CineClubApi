@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.DTOs.List;
+﻿using CineClubApi.Common.DTOs.Actor;
+using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.Permissions;
 using CineClubApi.Models;
 using CineClubApi.Services.ListService;
@@ -83,6 +84,18 @@ public class GetListController : CineClubControllerBase
         var result = await _listService.GetListsById(listId);
 
         return Ok(result);
+    }
+
+    [HttpGet("list/top_actors")]
+    public async Task<List<MoviePersonDto>> GetTop5ActorsPerList([FromQuery] Guid listId)
+    {
+        return await _listService.GetTop5ActorsByListId(listId);
+    }
+    
+    [HttpGet("list/top_directors")]
+    public async Task<List<MoviePersonDto>> GetTop5DirectorsPerList([FromQuery] Guid listId)
+    {
+        return await _listService.GetTop5DirectorsByListId(listId);
     }
 
 }

@@ -19,6 +19,7 @@ public class StatisticsServiceImpl :TmdbLib, IStatisticsService
     private readonly ITMDBGenreService _genreService;
     private readonly IStatisticsRepo _statisticsRepo;
     
+    
     public StatisticsServiceImpl(IMapper mapper,
         IPaginator paginator,
         ITMDBMovieService tmdbMovieService,
@@ -310,11 +311,10 @@ public class StatisticsServiceImpl :TmdbLib, IStatisticsService
 
         return topDirectors;
     }
-        
-        
-        
-        
-        // const int pageSize = 20; // Results per page
+
+
+
+    // const int pageSize = 20; // Results per page
         // const int totalPeople = 500; // Total number of people to retrieve
         //
         // var popularDirectors = new List<MoviePersonDto>();
