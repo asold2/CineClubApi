@@ -1,4 +1,5 @@
-﻿using CineClubApi.Common.DTOs.List;
+﻿using CineClubApi.Common.DTOs.Actor;
+using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
@@ -23,4 +24,8 @@ public interface IListService
     Task<UpdateListDto> AssignImageToList(UpdateListDto listDto);
 
     Task<DetailedListDto> GetListsById(Guid listId);
+    Task<List<MoviePersonDto>> GetTop5ActorsByListId(Guid listId);
+
+    Task<List<MoviePersonDto>> GetTop5DirectorsByListId(Guid listId);
+
 }
