@@ -1,4 +1,5 @@
 ﻿using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Permissions;
 using CineClubApi.Common.RequestBody;
 using CineClubApi.Common.ServiceResults;
@@ -76,22 +77,6 @@ public class ListController : CineClubControllerBase
         };
     }
     
-    // [LoggedInPermission]
-    // [HttpDelete("list/movie")]
-    // public async Task<ActionResult> RemoveMovieFromList([FromBody] AddMovieToListBody body)
-    // {
-    //     var result = await _movieService.RemoveMovieFromList(body.ListId, body.UserId, body.TmdbId);
-    //
-    //     return new ContentResult
-    //     {
-    //         Content = result.Result,
-    //         ContentType = "text/plain",
-    //         StatusCode = result.StatusCode
-    //     };
-    // }
-    
-    
-
     [LoggedInPermission]
     [HttpDelete("list/movie")]
     public async Task<ActionResult> DeleteMovieFromList([FromBody] AddMovieToListBody body)
@@ -104,6 +89,14 @@ public class ListController : CineClubControllerBase
             ContentType = "text/plain",
             StatusCode = result.StatusCode
         };
+        
+    }
+
+    [LoggedInPermission]
+    [HttpGet("list/recommendations")]
+    public async Task<List<MovieForListDto>> GetListOfRecommendedMovies([FromQuery] Guid listId)
+    {
+        return await _listService.GetListOfRecommendedMoviesForUser(listId);
         
     }
 

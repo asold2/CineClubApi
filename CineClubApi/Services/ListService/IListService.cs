@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
@@ -31,4 +32,5 @@ public interface IListService
 
     Task<PaginatedResult<UpdateListDto>> GetAllLists(int page, int start, int end);
 
+    Task<List<MovieForListDto>> GetListOfRecommendedMoviesForUser(Guid listId);
 }
