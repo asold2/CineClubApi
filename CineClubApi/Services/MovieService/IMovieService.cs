@@ -14,4 +14,7 @@ public interface IMovieService
 
     Task<ServiceResult> AddMovieToLikedList(Guid userid, int tmdbId);
     Task<ServiceResult> AddMovieToWatchedList(Guid userid, int tmdbId);
+    Task<ServiceResult> RemoveMovieFromWatchedList(Guid userid, int tmdbId);
+    // Task<ServiceResult> RemoveMovieFromList(Guid listId, Guid userId, int tmdbId);
+    Task<ServiceResult> RemoveMovieFromLikedList(Guid userid, int tmdbId);
 }
