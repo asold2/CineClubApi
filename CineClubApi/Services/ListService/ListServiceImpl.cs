@@ -310,38 +310,22 @@ public class ListServiceImpl : IListService
             return new DetailedListDto();
         }
 
-        // var movieDtos = _mapper.ProjectTo<MovieForListDto>(neededList.MovieDaos.AsQueryable()).ToList();
         var tagDtos = _mapper.ProjectTo<TagForListDto>(neededList.Tags.AsQueryable()).ToList();
-        
-        
-        var result = _mapper.Map<DetailedListDto>(neededList);
 
-        // result.MovieDtos = movieDtos;
+        var result = _mapper.Map<DetailedListDto>(neededList);
+       
         result.TagsDtos = tagDtos;
 
-        // var topActorsFromEachMove = new List<MoviePersonDto>();
-        //
-        // foreach (var movie in neededList.MovieDaos)
-        // {
-        //
-        //     var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
-        //     var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
-        //     
-        //     result.MovieDtos.Add(movieDto);
-        //     
-        //     var top15Actors = await _peopleService.GetAllActors(movie.tmdbId);
-        //
-        //     topActorsFromEachMove.AddRange(top15Actors);
-        // }
-        //
-        // var top5Actors = topActorsFromEachMove
-        //     .OrderByDescending(actor => actor.Popularity)
-        //     .Take(5)
-        //     .ToList();
-        //
-        // result.Top5ActorsFromList = top5Actors;
+        foreach (var movie in neededList.MovieDaos)
+        {
         
+            var tmdbMovie = await _movieService.getMovieById(movie.tmdbId);
+            var movieDto = _mapper.Map<MovieForListDto>(tmdbMovie);
+            
+            result.MovieDtos.Add(movieDto);
 
+        }
+        
         return result;
     }
     
