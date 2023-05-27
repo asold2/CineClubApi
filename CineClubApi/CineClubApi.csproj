@@ -31,4 +31,20 @@
       <Folder Include="Common\DTOs\Genre" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Services\LikedWatchedService\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Services\LikedWatchedService\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Services\LikedWatchedService\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Services\LikedWatchedService\**" />
+    </ItemGroup>
+
 </Project>

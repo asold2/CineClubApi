@@ -11,6 +11,9 @@ using CineClubApi.Services;
 using CineClubApi.Services.AccountService;
 using CineClubApi.Services.LikeService;
 using CineClubApi.Services.ListService;
+using CineClubApi.Services.ListService.LikedList;
+using CineClubApi.Services.ListService.RecommendedLists;
+using CineClubApi.Services.ListService.WatchedList;
 using CineClubApi.Services.ListTagService;
 using CineClubApi.Services.MovieService;
 using CineClubApi.Services.TmdbGenre;
@@ -58,6 +61,11 @@ builder.Services.AddScoped<ILikeRepository,LikeRepositoryImpl>();
 builder.Services.AddScoped<ILikeService, LikeServiceImpl>();
 builder.Services.AddScoped<IStatisticsService, StatisticsServiceImpl>();
 builder.Services.AddScoped<IStatisticsRepo, StatisticsRepoImpl>();
+builder.Services.AddScoped<ILikedListService, LikedListServiceImpl>();
+builder.Services.AddScoped<IWatchedListService, WatchedListServiceImpl>();
+builder.Services.AddScoped<IServiceResultListService, ServiceResultListServiceImpl>();
+builder.Services.AddScoped<IRecommendedListsService, RecommendedListsServiceImpl>();
+
 
 
 

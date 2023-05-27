@@ -6,6 +6,8 @@ using CineClubApi.Models;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.MovieRepository;
 using CineClubApi.Services.ListService;
+using CineClubApi.Services.ListService.LikedList;
+using CineClubApi.Services.ListService.WatchedList;
 using CineClubApi.Services.TMDBLibService;
 
 namespace CineClubApi.Services.MovieService;
@@ -19,17 +21,24 @@ public class MovieServiceImpl :  IMovieService
     private readonly IMapper _mapper;
     private readonly IListService _listService;
 
+    private readonly ILikedListService _likedListService;
+    private readonly IWatchedListService _watchedListService;
+    
     public MovieServiceImpl(IMovieRepository movieRepository,
         IListRepository listRepository,
         ITMDBMovieService tmdbMovieService,
         IMapper mapper,
-        IListService listService)
+        IListService listService,
+        ILikedListService likedListService,
+        IWatchedListService watchedListService)
     {
         _movieRepository = movieRepository;
         _listRepository = listRepository;
         _tmdbMovieService = tmdbMovieService;
         _mapper = mapper;
         _listService = listService;
+        _likedListService = likedListService;
+        _watchedListService = watchedListService;
     }
     
     
@@ -93,42 +102,7 @@ public class MovieServiceImpl :  IMovieService
         return new MovieAddedToListResult();
 
     }
-
-    // public async Task<ServiceResult> RemoveMovieFromList(Guid listId, Guid userId, int tmdbId)
-    // {
-    //     if (await _listRepository.GetListById(listId) == null)
-    //     {
-    //         return new ServiceResult
-    //         {
-    //             StatusCode = 400,
-    //             Result = "List not found!"
-    //         };
-    //     }
-    //     
-    //     if (!await UserHasRightTOUpdateList(listId,userId))
-    //     {
-    //         return new ServiceResult
-    //         {
-    //             StatusCode = 403,
-    //             Result = "User has no right to update this list!"
-    //         };
-    //     }
-    //     
-    //     var neededMovieId = await SaveOrGetMovieDao(tmdbId);
-    //
-    //     if (neededMovieId == Guid.Empty)
-    //     {
-    //         return new ServiceResult
-    //         {
-    //             Result = "Movie with this TMDB id not found",
-    //             StatusCode = 400
-    //         };
-    //     }
-    //
-    //     await _movieRepository.RemoveMovieFromList(listId, neededMovieId);
-    //
-    //     return new MovieRemovedFromList();
-    // }
+    
 
     public async Task<ServiceResult> DeleteMovieFromList(Guid listId, Guid userId, int tmdbId)
     {
@@ -226,7 +200,7 @@ public class MovieServiceImpl :  IMovieService
 
     public async Task<ServiceResult> AddMovieToLikedList(Guid userid, int tmdbId)
     {
-        var likedList =await  _listService.GetUsersLikedList(userid);
+        var likedList =await  _likedListService.GetUsersLikedList(userid);
 
         if (likedList==null)
         {
@@ -245,7 +219,7 @@ public class MovieServiceImpl :  IMovieService
     
     public async Task<ServiceResult> AddMovieToWatchedList(Guid userid, int tmdbId)
     {
-        var watchedList = await  _listService.GetUsersWatchedList(userid);
+        var watchedList = await  _watchedListService.GetUsersWatchedList(userid);
 
         if (watchedList==null)
         {
@@ -264,7 +238,7 @@ public class MovieServiceImpl :  IMovieService
 
     public async Task<ServiceResult> RemoveMovieFromWatchedList(Guid userid, int tmdbId)
     {
-        var watchedList = await  _listService.GetUsersWatchedList(userid);
+        var watchedList = await  _watchedListService.GetUsersWatchedList(userid);
 
         if (watchedList==null)
         {
@@ -283,7 +257,7 @@ public class MovieServiceImpl :  IMovieService
     
     public async Task<ServiceResult> RemoveMovieFromLikedList(Guid userid, int tmdbId)
     {
-        var likedList = await  _listService.GetUsersLikedList(userid);
+        var likedList = await  _likedListService.GetUsersLikedList(userid);
 
         if (likedList==null)
         {
