@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.Helpers;
 using CineClubApi.Common.Permissions;
 using CineClubApi.Models;
 using CineClubApi.Services.ListService;
@@ -39,11 +40,11 @@ public class GetListController : CineClubControllerBase
     }
     
     [HttpGet("all_lists")]
-    public async Task<ActionResult<List<UpdateListDto>>> GetAllLists([FromQuery]int page, [FromQuery]int start,[FromQuery] int end)
+    public async Task<ActionResult<PaginatedResult<UpdateListDto>>> GetAllLists([FromQuery]int page, [FromQuery]int start,[FromQuery] int end)
     {
         var result = await _listService.GetAllLists(page, start, end);
 
-        return result;
+        return Ok(result);
 
     }
 

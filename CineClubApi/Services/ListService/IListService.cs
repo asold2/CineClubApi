@@ -1,5 +1,6 @@
 ﻿using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.List;
+using CineClubApi.Common.Helpers;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Models;
 using CineClubApi.Models.Auth;
@@ -18,7 +19,7 @@ public interface IListService
 
 
     Task<List<ListDto>> GetListsByTags(List<Guid> tagIds);
-    Task<List<UpdateListDto>> GetAllLists(int page, int start, int end);
+    // Task<List<UpdateListDto>> GetAllLists(int page, int start, int end);
     Task<UpdateListDto> GetUsersLikedList(Guid userId);
     Task<UpdateListDto> GetUsersWatchedList(Guid userId);
     Task<UpdateListDto> AssignImageToList(UpdateListDto listDto);
@@ -27,5 +28,7 @@ public interface IListService
     Task<List<MoviePersonDto>> GetTop5ActorsByListId(Guid listId);
 
     Task<List<MoviePersonDto>> GetTop5DirectorsByListId(Guid listId);
+
+    Task<PaginatedResult<UpdateListDto>> GetAllLists(int page, int start, int end);
 
 }
