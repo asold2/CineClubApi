@@ -94,9 +94,12 @@ public class ListController : CineClubControllerBase
 
     [LoggedInPermission]
     [HttpGet("list/recommendations")]
-    public async Task<List<MovieForListDto>> GetListOfRecommendedMovies([FromQuery] Guid listId)
+    public async Task<List<MovieForListDto>> GetListOfRecommendedMovies([FromQuery] Guid userId, 
+        [FromQuery]int page,
+        [FromQuery] int start,
+        [FromQuery]int end)
     {
-        return await _listService.GetListOfRecommendedMoviesForUser(listId);
+        return await _listService.GetListOfRecommendedMoviesForUser(userId, page, start, end);
         
     }
 

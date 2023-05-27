@@ -32,5 +32,5 @@ public interface IListService
 
     Task<PaginatedResult<UpdateListDto>> GetAllLists(int page, int start, int end);
 
-    Task<List<MovieForListDto>> GetListOfRecommendedMoviesForUser(Guid listId);
+    Task<List<MovieForListDto>> GetListOfRecommendedMoviesForUser(Guid listId, int page, int start, int end);
 }
