@@ -15,51 +15,78 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
 
     public async Task<PaginatedListOfMovies> GetPopularMovies(int page, int? start, int? end)
     {
-
-        var popularMoviesList = new List<MovieForListDto>();
-        var popularMovies = await client.GetMoviePopularListAsync(null, page, null);
-
-        if (start != null && end != null)
+        try
         {
-            popularMoviesList = await _paginator.PaginateMoviesList(popularMovies, start, page, end);
-        }
-        else
-        {
-            popularMoviesList = _mapper.ProjectTo<MovieForListDto>(popularMovies.Results.AsQueryable()).ToList();
-        }
+            var popularMoviesList = new List<MovieForListDto>();
+            var popularMovies = await client.GetMoviePopularListAsync(null, page, null);
+
+            if (start != null && end != null)
+            {
+                popularMoviesList = await _paginator.PaginateMoviesList(popularMovies, start, page, end);
+            }
+            else
+            {
+                popularMoviesList = _mapper.ProjectTo<MovieForListDto>(popularMovies.Results.AsQueryable()).ToList();
+            }
 
 
-        var paginatedList = new PaginatedListOfMovies
-        {
-            Movies = popularMoviesList,
-            numberOfPages = popularMovies.TotalPages
-        };
+            var paginatedList = new PaginatedListOfMovies
+            {
+                Movies = popularMoviesList,
+                numberOfPages = 500
+            };
  
-        return paginatedList;
+            return paginatedList;
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.StackTrace);
+            // return await GetTopRatedMovies(page - 1, start, end);
+            return new PaginatedListOfMovies
+            {
+                Movies = new List<MovieForListDto>(),
+                numberOfPages = 0
+            };
+        }
+        
     }
     
     public async Task<PaginatedListOfMovies> GetTopRatedMovies(int page, int? start, int? end)
     {
         var topRatedMoviesList = new List<MovieForListDto>();
-        
-        var topRatedMovies = await client.GetMovieTopRatedListAsync(null, page, null);
+        try
+        {
+            var topRatedMovies = await client.GetMovieTopRatedListAsync(null, page, null);
 
-        if (start != null && end != null)
-        {
-            topRatedMoviesList = await _paginator.PaginateMoviesList(topRatedMovies, start, page, end);
+            if (start != null && end != null)
+            {
+                topRatedMoviesList = await _paginator.PaginateMoviesList(topRatedMovies, start, page, end);
+            }
+            else
+            {
+                topRatedMoviesList = _mapper.ProjectTo<MovieForListDto>(topRatedMovies.Results.AsQueryable()).ToList();
+            }
+
+            var paginatedList = new PaginatedListOfMovies
+            {
+                Movies = topRatedMoviesList,
+                numberOfPages = 500
+            };
+
+            return paginatedList;
         }
-        else
+        catch(Exception e)
         {
-            topRatedMoviesList = _mapper.ProjectTo<MovieForListDto>(topRatedMovies.Results.AsQueryable()).ToList();
+            Console.WriteLine(e.StackTrace);
+            // return await GetTopRatedMovies(page - 1, start, end);
+            return new PaginatedListOfMovies
+            {
+                Movies = new List<MovieForListDto>(),
+                numberOfPages = 0
+            };
         }
-        
-        var paginatedList = new PaginatedListOfMovies
-        {
-            Movies = topRatedMoviesList,
-            numberOfPages = topRatedMovies.TotalPages
-        };
- 
-        return paginatedList;
+
+
     }
     
     public async Task<PaginatedListOfMovies> GetUpcomingMovies(int page, int? start, int? end)
@@ -98,25 +125,39 @@ public class TmdbListServiceImpl :TmdbLib, ITmdbListService
                 break;
         }
 
-        var trendingMoviesList = new List<MovieForListDto>();
-        var trendingMovies =  await client.GetTrendingMoviesAsync(timeWindow, page);
+        try
+        {
+            var trendingMoviesList = new List<MovieForListDto>();
+            var trendingMovies =  await client.GetTrendingMoviesAsync(timeWindow, page);
         
-        if (start != null && end != null)
+            if (start != null && end != null)
+            {
+                trendingMoviesList = await _paginator.PaginateMoviesList(trendingMovies, start, page, end);
+            }
+            else
+            {
+                trendingMoviesList = _mapper.ProjectTo<MovieForListDto>(trendingMovies.Results.AsQueryable()).ToList();
+            }
+
+            var paginatedList = new PaginatedListOfMovies
+            {
+                Movies = trendingMoviesList,
+                numberOfPages = trendingMovies.TotalPages
+            };
+ 
+            return paginatedList;
+        }catch(Exception e)
         {
-            trendingMoviesList = await _paginator.PaginateMoviesList(trendingMovies, start, page, end);
-        }
-        else
-        {
-            trendingMoviesList = _mapper.ProjectTo<MovieForListDto>(trendingMovies.Results.AsQueryable()).ToList();
+            Console.WriteLine(e.StackTrace);
+            // return await GetTopRatedMovies(page - 1, start, end);
+            return new PaginatedListOfMovies
+            {
+                Movies = new List<MovieForListDto>(),
+                numberOfPages = 0
+            };
         }
 
-        var paginatedList = new PaginatedListOfMovies
-        {
-            Movies = trendingMoviesList,
-            numberOfPages = trendingMovies.TotalPages
-        };
- 
-        return paginatedList;
+        
     }
     
 }
