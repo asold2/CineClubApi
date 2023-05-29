@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Drawing.Printing;
+using AutoMapper;
 using CineClubApi.Common.DTOs.Actor;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
@@ -22,9 +23,21 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
 
         foreach (var member in movieCast)
         {
-            var person = await client.GetPersonAsync(member.Id);
+            try
+            {
+                var person = await client.GetPersonAsync(member.Id);
+                if (person.ProfilePath != null)
+                {
+                    member.ProfilePath = person.ProfilePath;
+                }
 
-            member.ProfilePath = person.ProfilePath;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                continue;
+            }
+           
         }
         return movieCast;
     }
@@ -35,15 +48,9 @@ public class ItmdbPeopleServiceImpl : TmdbLib, ITMDBPeopleService
         
         var personToReturn = _mapper.Map<DetailedPersonInfoDto>(person);
         
-        // personToReturn.Picture = await GetImageFromPath(person.ProfilePath);
-
-
         personToReturn.MoviesPersonTakesPartIn =
             await GetMoviesPersonParticipatesIn(personId, person.KnownForDepartment);
 
-        // personToReturn.MoviesPersonTakesPartIn = await AssignImagesToMovie(personToReturn.MoviesPersonTakesPartIn, false);
-        
-        
         return personToReturn;
     }
 
