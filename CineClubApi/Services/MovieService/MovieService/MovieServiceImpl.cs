@@ -3,8 +3,10 @@ using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.ServiceResults;
 using CineClubApi.Common.ServiceResults.MovieResult;
 using CineClubApi.Models;
+using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.MovieRepository;
+using CineClubApi.Services.AccountService;
 using CineClubApi.Services.ListService;
 using CineClubApi.Services.ListService.LikedList;
 using CineClubApi.Services.ListService.WatchedList;
@@ -15,8 +17,17 @@ namespace CineClubApi.Services.MovieService;
 public class MovieServiceImpl : MovieService, IMovieService
 {
 
-    public MovieServiceImpl(IMovieRepository movieRepository, IListRepository listRepository, ITMDBMovieService tmdbMovieService, IMapper mapper, IListService listService, ILikedListService likedListService, IWatchedListService watchedListService) : base(movieRepository, listRepository, tmdbMovieService, mapper, listService, likedListService, watchedListService)
+    private readonly IUserRepository _userRepository;
+    public MovieServiceImpl(IMovieRepository movieRepository,
+        IListRepository listRepository,
+        ITMDBMovieService tmdbMovieService,
+        IMapper mapper,
+        IListService listService,
+        ILikedListService likedListService,
+        IWatchedListService watchedListService,
+        IUserRepository userRepository) : base(movieRepository, listRepository, tmdbMovieService, mapper, listService, likedListService, watchedListService)
     {
+        _userRepository = userRepository;
     }
     
     public async Task<Guid> SaveOrGetMovieDao(int tmdbMovieId)
@@ -83,6 +94,18 @@ public class MovieServiceImpl : MovieService, IMovieService
 
     public async Task<ServiceResult> DeleteMovieFromList(Guid listId, Guid userId, int tmdbId)
     {
+        var neededUser = await _userRepository.GetUserById(userId);
+
+        if (neededUser == null)
+        {
+            return new ServiceResult
+            {
+                StatusCode = 400,
+                Result = "User not found!"
+            };
+        }
+
+
         if (!await UserHasRightTOUpdateList(listId,userId))
         {
             return new ServiceResult
@@ -107,8 +130,8 @@ public class MovieServiceImpl : MovieService, IMovieService
         {
             return new ServiceResult
             {
-                StatusCode = 400,
-                Result = "Movie does not belong to this list!"
+                StatusCode = 200,
+                Result = "Movie no longer belongs to this list!"
             }; 
         }
 
