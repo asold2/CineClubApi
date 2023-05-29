@@ -6,6 +6,9 @@ using CineClubApi.Models;
 using CineClubApi.Repositories.AccountRepository;
 using CineClubApi.Repositories.ListRepository;
 using CineClubApi.Repositories.ListTagsRepository;
+using CineClubApi.Services.ListService;
+using CineClubApi.Services.ListService.LikedList;
+using CineClubApi.Services.ListService.WatchedList;
 using Microsoft.EntityFrameworkCore;
 
 namespace CineClubApi.Services.ListTagService;
@@ -16,13 +19,26 @@ public class TagServiceImpl : ITagService
     private readonly IUserRepository _userRepository;
     private readonly IListRepository _listRepository;
     private readonly IMapper _mapper;
+    private readonly ILikedListService _likedListService;
+    private readonly IWatchedListService _watchedListService;
+    private IListService _listService;
 
-    public TagServiceImpl(ITagRepository tagRepository, IUserRepository userRepository, IListRepository listRepository, IMapper mapper)
+    public TagServiceImpl(ITagRepository tagRepository,
+        IUserRepository userRepository,
+        IListRepository listRepository,
+        IMapper mapper,
+        ILikedListService likedListService,
+        IWatchedListService watchedListService,
+        IListService listService
+        )
     {
         _tagRepository = tagRepository;
         _userRepository = userRepository;
         _listRepository = listRepository;
         _mapper = mapper;
+        _likedListService = likedListService;
+        _watchedListService = watchedListService;
+        _listService = listService;
     }
     
     
@@ -199,5 +215,35 @@ public class TagServiceImpl : ITagService
         var result = _mapper.Map<TagDto>(neededTag);
 
         return result;
+    }
+
+    public async Task<List<TagDto>> GetTagsForUsersLists(Guid userId)
+    {
+        var watchedlist = await _watchedListService.GetUsersWatchedList(userId);
+
+        var likedList = await _likedListService.GetUsersLikedList(userId);
+
+        var usersLists = await _listService.GetListsByUserId(userId);
+
+        var neededTags = new List<TagDto>();
+        
+        neededTags.AddRange(watchedlist.Tags);
+        neededTags.AddRange(likedList.Tags);
+        foreach (var list in usersLists)
+        {
+            neededTags.AddRange(list.Tags);
+        }
+
+        var uniqueTags = new List<TagDto>();
+
+        foreach (var tag in neededTags)
+        {
+            if (!uniqueTags.Any(t => t.Id == tag.Id))
+            {
+                uniqueTags.Add(tag);
+            }
+        }
+
+        return uniqueTags;
     }
 }

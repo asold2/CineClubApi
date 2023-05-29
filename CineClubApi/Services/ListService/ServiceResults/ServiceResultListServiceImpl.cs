@@ -76,7 +76,7 @@ public class ServiceResultListServiceImpl : ListService, IServiceResultListServi
         };
     }
 
-    public async Task<ServiceResult> UpdateListNameOrStatus(UpdateListDto updateListDto)
+    public async Task<ServiceResult> UpdateListNameOrStatus(SimpleUpdateListDto updateListDto)
     {
         var listToUpdate = await _listRepository.GetListById(updateListDto.Id);
 

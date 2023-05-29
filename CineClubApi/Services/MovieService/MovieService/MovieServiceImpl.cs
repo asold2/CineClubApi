@@ -12,35 +12,12 @@ using CineClubApi.Services.TMDBLibService;
 
 namespace CineClubApi.Services.MovieService;
 
-public class MovieServiceImpl :  IMovieService
+public class MovieServiceImpl : MovieService, IMovieService
 {
 
-    private readonly IMovieRepository _movieRepository;
-    private readonly IListRepository _listRepository;
-    private readonly ITMDBMovieService _tmdbMovieService;
-    private readonly IMapper _mapper;
-    private readonly IListService _listService;
-
-    private readonly ILikedListService _likedListService;
-    private readonly IWatchedListService _watchedListService;
-    
-    public MovieServiceImpl(IMovieRepository movieRepository,
-        IListRepository listRepository,
-        ITMDBMovieService tmdbMovieService,
-        IMapper mapper,
-        IListService listService,
-        ILikedListService likedListService,
-        IWatchedListService watchedListService)
+    public MovieServiceImpl(IMovieRepository movieRepository, IListRepository listRepository, ITMDBMovieService tmdbMovieService, IMapper mapper, IListService listService, ILikedListService likedListService, IWatchedListService watchedListService) : base(movieRepository, listRepository, tmdbMovieService, mapper, listService, likedListService, watchedListService)
     {
-        _movieRepository = movieRepository;
-        _listRepository = listRepository;
-        _tmdbMovieService = tmdbMovieService;
-        _mapper = mapper;
-        _listService = listService;
-        _likedListService = likedListService;
-        _watchedListService = watchedListService;
     }
-    
     
     public async Task<Guid> SaveOrGetMovieDao(int tmdbMovieId)
     {
@@ -149,54 +126,7 @@ public class MovieServiceImpl :  IMovieService
         }; 
     }
 
-    public async Task<List<SimpleListDto>> GetUsersListsToWhichMovieBelongs(Guid userId, int tmdbId)
-    {
-        var neededMovie = await  _movieRepository.GetMovieByTmdbId(tmdbId);
-
-        if (neededMovie==null)
-        {
-            return null;
-        }
-        
-        var listsMovieBelongsTo =  neededMovie.Lists
-            .Where(x=>x.CreatorId==userId)
-            .ToList();
-
-        var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
-
-        // foreach (var tempList in result)
-        // {
-        //     var t = await _listService.AssignImageToList(tempList);
-        //
-        //     tempList.BackdropPath = t.BackdropPath;
-        //
-        // }
-
-        var listsToReturn = _mapper.ProjectTo<SimpleListDto>(result.AsQueryable()).ToList();
-        
-        return listsToReturn;
-    }
-
-    public async Task<List<UpdateListDto>> GetAllListsMoviebelongsTo(int tmdbId)
-    {
-        var neededMovie = await  _movieRepository.GetMovieByTmdbId(tmdbId);
-        
-        var listsMovieBelongsTo =  neededMovie.Lists
-            .Where(x=>x.Public)
-            .ToList();
-        
-        var result = _mapper.ProjectTo<UpdateListDto>(listsMovieBelongsTo.AsQueryable()).ToList();
-        
-        foreach (var tempList in result)
-        {
-            var t = await _listService.AssignImageToList(tempList);
-
-            tempList.BackdropPath = t.BackdropPath;
-
-        }
-
-        return result;
-    }
+    
 
     public async Task<ServiceResult> AddMovieToLikedList(Guid userid, int tmdbId)
     {
@@ -286,4 +216,6 @@ public class MovieServiceImpl :  IMovieService
 
         return false;
     }
+
+
 }

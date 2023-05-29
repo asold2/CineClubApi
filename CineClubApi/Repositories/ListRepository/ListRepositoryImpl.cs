@@ -124,6 +124,7 @@ public class ListRepositoryImpl : IListRepository
     {
 
         var lists = await _applicationDbContext.Lists
+            .Include(x=>x.Tags)
             .Where(x => x.CreatorId == userId).ToListAsync();
 
         

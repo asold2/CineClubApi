@@ -16,6 +16,7 @@ using CineClubApi.Services.ListService.RecommendedLists;
 using CineClubApi.Services.ListService.WatchedList;
 using CineClubApi.Services.ListTagService;
 using CineClubApi.Services.MovieService;
+using CineClubApi.Services.MovieService.MovieListService;
 using CineClubApi.Services.TmdbGenre;
 using CineClubApi.Services.TMDBLibService;
 using CineClubApi.Services.TMDBLibService.Actor;
@@ -65,6 +66,7 @@ builder.Services.AddScoped<ILikedListService, LikedListServiceImpl>();
 builder.Services.AddScoped<IWatchedListService, WatchedListServiceImpl>();
 builder.Services.AddScoped<IServiceResultListService, ServiceResultListServiceImpl>();
 builder.Services.AddScoped<IRecommendedListsService, RecommendedListsServiceImpl>();
+builder.Services.AddScoped<IMovieListService, MovieListServiceImpl>();
 
 
 
