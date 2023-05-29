@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1e1ac6f4_002D3967_002D4af1_002D990b_002Db7722ed25408/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CreateAccount_WithValidData_ReturnsCreatedAccountResult" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::2633FBDC-B4D8-4DF4-B106-C56DBDE2DC70::net6.0::CineClubApiTests.Services.AccountServices.UserServiceTests.CreateAccount_WithValidData_ReturnsCreatedAccountResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2633FBDC-B4D8-4DF4-B106-C56DBDE2DC70::net6.0::CineClubApiTests.Services.AccountServices.UserServiceTests.CreateAccount_WithExistingUsername_ReturnsUsernameExistsResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2633FBDC-B4D8-4DF4-B106-C56DBDE2DC70::net6.0::CineClubApiTests.Services.AccountServices.UserServiceTests.CreateAccount_UserHasLikedAndWatchedList&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
