@@ -7,7 +7,7 @@ public interface IServiceResultListService
 {
     public Task<ServiceResult> CreateNamedList(ListDto listDto);
 
-    public Task<ServiceResult> UpdateListNameOrStatus(UpdateListDto updateListDto);
+    public Task<ServiceResult> UpdateListNameOrStatus(SimpleUpdateListDto updateListDto);
     public Task<ServiceResult> DeleteListById(Guid listId, Guid userId);
 
 }

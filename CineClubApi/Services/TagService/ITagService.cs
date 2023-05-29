@@ -12,4 +12,5 @@ public interface ITagService
     Task<ServiceResult> AssignTagToList(Guid tagId, Guid listId, Guid userId);
     Task<ServiceResult> DeleteTag(Guid tagId, Guid userId);
     Task<TagDto> GetTag(Guid tagId);
+    Task<List<TagDto>> GetTagsForUsersLists(Guid userId);
 }

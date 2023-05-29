@@ -9,12 +9,10 @@ public interface IMovieService
     Task<ServiceResult> AddMovieToList(Guid listId, Guid userId, int tmdbId);
     Task<ServiceResult >DeleteMovieFromList(Guid listId, Guid userId, int tmdbId);
 
-    Task<List<SimpleListDto>> GetUsersListsToWhichMovieBelongs(Guid userId, int tmdbId);
-    Task<List<UpdateListDto>> GetAllListsMoviebelongsTo(int tmdbId);
+    
 
     Task<ServiceResult> AddMovieToLikedList(Guid userid, int tmdbId);
     Task<ServiceResult> AddMovieToWatchedList(Guid userid, int tmdbId);
     Task<ServiceResult> RemoveMovieFromWatchedList(Guid userid, int tmdbId);
-    // Task<ServiceResult> RemoveMovieFromList(Guid listId, Guid userId, int tmdbId);
     Task<ServiceResult> RemoveMovieFromLikedList(Guid userid, int tmdbId);
 }

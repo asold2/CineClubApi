@@ -41,7 +41,7 @@ public class ListController : CineClubControllerBase
 
     [LoggedInPermission]
     [HttpPut("list")]
-    public async Task<ActionResult<ServiceResult>> UpdateNamedList([FromBody] UpdateListDto updateListDto)
+    public async Task<ActionResult<ServiceResult>> UpdateNamedList([FromBody] SimpleUpdateListDto updateListDto)
     {
         var result = await _serviceResultListService.UpdateListNameOrStatus(updateListDto);
 

@@ -85,6 +85,19 @@ public class TagController : CineClubControllerBase
     }
 
 
+    [HttpGet("tag/my_lists")]
+    public async Task<List<TagDto>> GetTagsForMyLists([FromQuery] Guid userId)
+    {
+        var result = await _tagService.GetTagsForUsersLists(userId);
+
+        if (result==null)
+        {
+            return new List<TagDto>();
+        }
+        
+        return result;
+
+    }
 
 
 }
