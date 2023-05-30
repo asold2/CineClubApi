@@ -101,7 +101,7 @@ public class ListController : CineClubControllerBase
 
     [LoggedInPermission]
     [HttpGet("list/recommendations")]
-    public async Task<PaginatedResult<List<MovieForListDto>>> GetListOfRecommendedMovies([FromQuery] Guid userId, 
+    public async Task<DetailedListDto> GetListOfRecommendedMovies([FromQuery] Guid userId, 
         [FromQuery]int page,
         [FromQuery] int start,
         [FromQuery]int end)
