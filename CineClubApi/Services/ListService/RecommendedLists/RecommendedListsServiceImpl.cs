@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CineClubApi.Common.DTOs.List;
 using CineClubApi.Common.DTOs.Movies;
 using CineClubApi.Common.Helpers;
 using CineClubApi.Repositories.AccountRepository;
@@ -29,7 +30,7 @@ public class RecommendedListsServiceImpl: ListService, IRecommendedListsService
         _listService = listService;
     }
 
-    public async Task<PaginatedResult<List<MovieForListDto>>> GetListOfRecommendedMoviesForUser(Guid userId, int page, int start, int end)
+    public async Task<DetailedListDto> GetListOfRecommendedMoviesForUser(Guid userId, int page, int start, int end)
     {
         var watchedList = await _likedListService.GetUsersLikedList(userId);
         var likedList = await _watchedListService.GetUsersWatchedList(userId);
@@ -40,11 +41,21 @@ public class RecommendedListsServiceImpl: ListService, IRecommendedListsService
 
         if (watchedListWithMovies.MovieDtos.Count == 0 && likedListWithMovies.MovieDtos.Count == 0)
         {
-            return new PaginatedResult<List<MovieForListDto>>();
+            return new DetailedListDto();
         }
 
-        var recommendedMovies = new List<MovieForListDto>();
-
+        // var recommendedMovies = new List<MovieForListDto>();
+        var listToRet = new DetailedListDto
+        {
+            Name = "Recommendations",
+            Id = Guid.Empty,
+            CreatorId = Guid.Empty,
+            Public = true,
+            Top5ActorsFromList = null,
+            TagsDtos = null,
+        };
+        
+        
         foreach (var movie in watchedListWithMovies.MovieDtos)
         {
             var similarMovies = await _genreService.GetMoviesByGenre(movie.GenreIds, page, start, end);
@@ -53,9 +64,10 @@ public class RecommendedListsServiceImpl: ListService, IRecommendedListsService
             {
                 // Exclude movies already in liked and watched lists
                 if (!watchedListWithMovies.MovieDtos.Any(m => m.Id == similarMovie.Id) &&
-                    !likedListWithMovies.MovieDtos.Any(m => m.Id == similarMovie.Id))
+                    !listToRet.MovieDtos.Any(m => m.Id == similarMovie.Id))
                 {
-                    recommendedMovies.Add(similarMovie);
+                    // recommendedMovies.Add(similarMovie);
+                    listToRet.MovieDtos.Add(similarMovie);
                 }
             }
         }
@@ -68,17 +80,27 @@ public class RecommendedListsServiceImpl: ListService, IRecommendedListsService
             {
                 // Exclude movies already in liked and watched lists
                 if (!watchedListWithMovies.MovieDtos.Any(m => m.Id == similarMovie.Id) &&
-                    !likedListWithMovies.MovieDtos.Any(m => m.Id == similarMovie.Id))
+                    !listToRet.MovieDtos.Any(m => m.Id == similarMovie.Id))
                 {
-                    recommendedMovies.Add(similarMovie);
+                    // recommendedMovies.Add(similarMovie);
+                    listToRet.MovieDtos.Add(similarMovie);
+
                 }
             }
         }
 
-        var paginatedList = await _paginator.PaginateListOfMovieDtos(recommendedMovies, page, start, end);
+        // var paginatedList = await _paginator.PaginateListOfMovieDtos(recommendedMovies, page, start, end);
+
+        var listOfMovies = new List<MovieForListDto>();
         
+        for(int i=0; i<20; i++){
+            listOfMovies.Add(listToRet.MovieDtos[i]);
+        }
+
+        listToRet.MovieDtos = listOfMovies;
+        Console.WriteLine(listToRet.MovieDtos.Count);
         
-        return paginatedList;
+        return listToRet;
     }
 
 }
